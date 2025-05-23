@@ -1,4 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using RoditriPekanbaru.Models;
 
 namespace RoditriPekanbaru.Data
@@ -47,6 +47,16 @@ namespace RoditriPekanbaru.Data
                     Level = "Penjualan",
                     IsActive = true,
                     CreatedDate = new DateTime(2024, 1, 1) // Ganti DateTime.Now dengan tanggal statis
+                },
+                new Admin
+                {
+                    AdminId = 3,
+                    Username = "customer",
+                    Password = "customer123",
+                    NamaLengkap = "Customer User",
+                    Level = "Customer",
+                    IsActive = true,
+                    CreatedDate = new DateTime(2024, 1, 1)
                 }
             );
 
