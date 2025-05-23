@@ -1,0 +1,81 @@
+﻿@model RoditriPekanbaru.Models.TransaksiPenjualan
+
+@{
+    ViewData["Title"] = "Hapus Transaksi";
+}
+
+<div class="container-fluid">
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Hapus Transaksi</h1>
+        <a asp-action="Index" class="btn btn-secondary">
+            <i class="fas fa-arrow-left"></i> Kembali ke Daftar
+        </a>
+    </div>
+
+    <!-- Delete Card -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Konfirmasi Hapus Data</h6>
+        </div>
+        <div class="card-body">
+            <div class="alert alert-danger">
+                <h5>Apakah Anda yakin ingin menghapus transaksi ini?</h5>
+                <p>Menghapus transaksi akan mengembalikan status mobil menjadi 'Tersedia' kembali.</p>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <dl class="row">
+                        <dt class="col-sm-4">No. Faktur</dt>
+                        <dd class="col-sm-8">@Html.DisplayFor(model => model.NoFaktur)</dd>
+
+                        <dt class="col-sm-4">Tanggal</dt>
+                        <dd class="col-sm-8">@Model.TanggalTransaksi.ToString("dd MMMM yyyy")</dd>
+
+                        <dt class="col-sm-4">Customer</dt>
+                        <dd class="col-sm-8">@Html.DisplayFor(model => model.Customer.NamaCustomer)</dd>
+
+                        <dt class="col-sm-4">Mobil</dt>
+                        <dd class="col-sm-8">@(Model.Mobil?.Merek + " " + Model.Mobil?.Model)</dd>
+                    </dl>
+                </div>
+
+                <div class="col-md-6">
+                    <dl class="row">
+                        <dt class="col-sm-4">Total Bayar</dt>
+                        <dd class="col-sm-8">@Model.TotalBayar.ToString("C0", new System.Globalization.CultureInfo("id-ID"))</dd>
+
+                        <dt class="col-sm-4">Status</dt>
+                        <dd class="col-sm-8">
+                            @if (Model.StatusPembayaran == "Lunas")
+                            {
+                                <span class="badge bg-success text-white">@Model.StatusPembayaran</span>
+                            }
+                            else
+                            {
+                                <span class="badge bg-warning text-white">@Model.StatusPembayaran</span>
+                            }
+                        </dd>
+
+                        <dt class="col-sm-4">Cara Bayar</dt>
+                        <dd class="col-sm-8">@Html.DisplayFor(model => model.CaraPembayaran)</dd>
+
+                        <dt class="col-sm-4">Admin</dt>
+                        <dd class="col-sm-8">@Html.DisplayFor(model => model.Admin)</dd>
+                    </dl>
+                </div>
+            </div>
+
+            <form asp-action="Delete" class="text-center mt-4">
+                <input type="hidden" asp-for="TransaksiId" />
+                <button type="submit" class="btn btn-danger">
+                    <i class="fas fa-trash"></i> Hapus Transaksi
+                </button>
+                <a asp-action="Index" class="btn btn-secondary ml-2">
+                    <i class="fas fa-times"></i> Batal
+                </a>
+            </form>
+        </div>
+    </div>
+</div>

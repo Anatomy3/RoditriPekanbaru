@@ -1,0 +1,88 @@
+﻿@model RoditriPekanbaru.Models.Customer
+
+@{
+    ViewData["Title"] = "Tambah Customer Baru";
+}
+
+<div class="container-fluid">
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Tambah Customer Baru</h1>
+        <a asp-action="Index" class="btn btn-secondary">
+            <i class="fas fa-arrow-left"></i> Kembali ke Daftar
+        </a>
+    </div>
+
+    <!-- Form Card -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Form Data Customer</h6>
+        </div>
+        <div class="card-body">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="NamaCustomer" class="control-label"></label>
+                            <input asp-for="NamaCustomer" class="form-control" />
+                            <span asp-validation-for="NamaCustomer" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="JenisKelamin" class="control-label"></label>
+                            <select asp-for="JenisKelamin" class="form-control">
+                                <option value="">-- Pilih Jenis Kelamin --</option>
+                                <option value="Laki-laki">Laki-laki</option>
+                                <option value="Perempuan">Perempuan</option>
+                            </select>
+                            <span asp-validation-for="JenisKelamin" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="NoTelepon" class="control-label"></label>
+                            <input asp-for="NoTelepon" class="form-control" />
+                            <span asp-validation-for="NoTelepon" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="Email" class="control-label"></label>
+                            <input asp-for="Email" class="form-control" />
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="Alamat" class="control-label"></label>
+                            <textarea asp-for="Alamat" class="form-control" rows="3"></textarea>
+                            <span asp-validation-for="Alamat" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="Pekerjaan" class="control-label"></label>
+                            <input asp-for="Pekerjaan" class="form-control" />
+                            <span asp-validation-for="Pekerjaan" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group text-center mt-4">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-save"></i> Simpan
+                    </button>
+                    <a asp-action="Index" class="btn btn-secondary ml-2">
+                        <i class="fas fa-times"></i> Batal
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

@@ -1,0 +1,191 @@
+﻿@model RoditriPekanbaru.Models.TransaksiPenjualan
+
+@{
+    ViewData["Title"] = "Edit Transaksi";
+}
+
+<div class="container-fluid">
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Edit Transaksi</h1>
+        <a asp-action="Index" class="btn btn-secondary">
+            <i class="fas fa-arrow-left"></i> Kembali ke Daftar
+        </a>
+    </div>
+
+    <!-- Form Card -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Edit Transaksi Penjualan</h6>
+        </div>
+        <div class="card-body">
+            <form asp-action="Edit">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="TransaksiId" />
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group mb-3">
+                            <label asp-for="NoFaktur" class="control-label"></label>
+                            <input asp-for="NoFaktur" class="form-control" readonly />
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label asp-for="TanggalTransaksi" class="control-label"></label>
+                            <input asp-for="TanggalTransaksi" class="form-control" type="date" />
+                            <span asp-validation-for="TanggalTransaksi" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label asp-for="CustomerId" class="control-label">Customer</label>
+                            <select asp-for="CustomerId" class="form-control" asp-items="ViewBag.CustomerId">
+                                <option value="">-- Pilih Customer --</option>
+                            </select>
+                            <span asp-validation-for="CustomerId" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label asp-for="MobilId" class="control-label">Mobil</label>
+                            <select asp-for="MobilId" class="form-control" asp-items="ViewBag.MobilId" readonly>
+                                <option value="">-- Pilih Mobil --</option>
+                            </select>
+                            <span asp-validation-for="MobilId" class="text-danger"></span>
+                            <small class="text-muted">*Mobil tidak dapat diubah</small>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group mb-3">
+                            <label asp-for="HargaJual" class="control-label"></label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Rp</span>
+                                </div>
+                                <input asp-for="HargaJual" class="form-control" id="hargaJual" />
+                            </div>
+                            <span asp-validation-for="HargaJual" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label asp-for="Diskon" class="control-label"></label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Rp</span>
+                                </div>
+                                <input asp-for="Diskon" class="form-control" id="diskon" />
+                            </div>
+                            <span asp-validation-for="Diskon" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label asp-for="TotalBayar" class="control-label"></label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Rp</span>
+                                </div>
+                                <input asp-for="TotalBayar" class="form-control bg-light" id="totalBayar" readonly />
+                            </div>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label asp-for="UangMuka" class="control-label"></label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Rp</span>
+                                </div>
+                                <input asp-for="UangMuka" class="form-control" id="uangMuka" />
+                            </div>
+                            <span asp-validation-for="UangMuka" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label asp-for="SisaPembayaran" class="control-label"></label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Rp</span>
+                                </div>
+                                <input asp-for="SisaPembayaran" class="form-control bg-light" id="sisaPembayaran" readonly />
+                            </div>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label asp-for="CaraPembayaran" class="control-label"></label>
+                            <select asp-for="CaraPembayaran" class="form-control">
+                                <option value="Tunai">Tunai</option>
+                                <option value="Transfer Bank">Transfer Bank</option>
+                                <option value="Kredit">Kredit</option>
+                            </select>
+                            <span asp-validation-for="CaraPembayaran" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label asp-for="StatusMobil" class="control-label"></label>
+                            <select asp-for="StatusMobil" class="form-control">
+                                <option value="Siap Diambil">Siap Diambil</option>
+                                <option value="Proses Delivery">Proses Delivery</option>
+                                <option value="Sudah Diterima">Sudah Diterima</option>
+                            </select>
+                            <span asp-validation-for="StatusMobil" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label asp-for="Keterangan" class="control-label"></label>
+                            <textarea asp-for="Keterangan" class="form-control" rows="2"></textarea>
+                            <span asp-validation-for="Keterangan" class="text-danger"></span>
+                        </div>
+
+                        <input type="hidden" asp-for="Admin" />
+                    </div>
+                </div>
+
+                <div class="form-group text-center mt-4">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-save"></i> Simpan Perubahan
+                    </button>
+                    <a asp-action="Index" class="btn btn-secondary ml-2">
+                        <i class="fas fa-times"></i> Batal
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <script>
+        $(document).ready(function() {
+            // Format number inputs
+            function formatNumber(num) {
+                return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+            }
+
+            // Calculate total payment
+            function calculateTotal() {
+                var hargaJual = parseFloat($('#hargaJual').val()) || 0;
+                var diskon = parseFloat($('#diskon').val()) || 0;
+                var uangMuka = parseFloat($('#uangMuka').val()) || 0;
+
+                var totalBayar = hargaJual - diskon;
+                var sisaPembayaran = totalBayar - uangMuka;
+
+                $('#totalBayar').val(totalBayar);
+                $('#sisaPembayaran').val(sisaPembayaran);
+            }
+
+            // Update calculations when input changes
+            $('#hargaJual, #diskon, #uangMuka').on('input', function() {
+                calculateTotal();
+            });
+
+            // Initialize calculation
+            calculateTotal();
+
+            // Disable MobilId changing
+            $('#MobilId').attr('disabled', 'disabled');
+        });
+    </script>
+}

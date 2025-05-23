@@ -1,0 +1,145 @@
+﻿@model RoditriPekanbaru.Models.TransaksiPenjualan
+
+@{
+    ViewData["Title"] = "Detail Transaksi";
+}
+
+<div class="container-fluid">
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Detail Transaksi Penjualan</h1>
+        <div>
+            <a asp-action="Edit" asp-route-id="@Model.TransaksiId" class="btn btn-warning">
+                <i class="fas fa-edit"></i> Edit
+            </a>
+            <a asp-action="Index" class="btn btn-secondary">
+                <i class="fas fa-arrow-left"></i> Kembali ke Daftar
+            </a>
+        </div>
+    </div>
+
+    <!-- Details Card -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Informasi Transaksi</h6>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card bg-light mb-3">
+                        <div class="card-header font-weight-bold">Informasi Transaksi</div>
+                        <div class="card-body">
+                            <dl class="row mb-0">
+                                <dt class="col-sm-4">@Html.DisplayNameFor(model => model.NoFaktur)</dt>
+                                <dd class="col-sm-8">@Html.DisplayFor(model => model.NoFaktur)</dd>
+
+                                <dt class="col-sm-4">@Html.DisplayNameFor(model => model.TanggalTransaksi)</dt>
+                                <dd class="col-sm-8">@Model.TanggalTransaksi.ToString("dd MMMM yyyy")</dd>
+
+                                <dt class="col-sm-4">@Html.DisplayNameFor(model => model.Admin)</dt>
+                                <dd class="col-sm-8">@Html.DisplayFor(model => model.Admin)</dd>
+
+                                <dt class="col-sm-4">@Html.DisplayNameFor(model => model.StatusPembayaran)</dt>
+                                <dd class="col-sm-8">
+                                    @if (Model.StatusPembayaran == "Lunas")
+                                    {
+                                        <span class="badge bg-success text-white">@Model.StatusPembayaran</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge bg-warning text-white">@Model.StatusPembayaran</span>
+                                    }
+                                </dd>
+                            </dl>
+                        </div>
+                    </div>
+
+                    <div class="card bg-light mb-3">
+                        <div class="card-header font-weight-bold">Informasi Customer</div>
+                        <div class="card-body">
+                            <dl class="row mb-0">
+                                <dt class="col-sm-4">Nama</dt>
+                                <dd class="col-sm-8">@Html.DisplayFor(model => model.Customer.NamaCustomer)</dd>
+
+                                <dt class="col-sm-4">Alamat</dt>
+                                <dd class="col-sm-8">@Html.DisplayFor(model => model.Customer.Alamat)</dd>
+
+                                <dt class="col-sm-4">No. Telepon</dt>
+                                <dd class="col-sm-8">@Html.DisplayFor(model => model.Customer.NoTelepon)</dd>
+
+                                <dt class="col-sm-4">Email</dt>
+                                <dd class="col-sm-8">@Html.DisplayFor(model => model.Customer.Email)</dd>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="card bg-light mb-3">
+                        <div class="card-header font-weight-bold">Informasi Mobil</div>
+                        <div class="card-body">
+                            <dl class="row mb-0">
+                                <dt class="col-sm-4">Merek</dt>
+                                <dd class="col-sm-8">@Html.DisplayFor(model => model.Mobil.Merek)</dd>
+
+                                <dt class="col-sm-4">Model</dt>
+                                <dd class="col-sm-8">@Html.DisplayFor(model => model.Mobil.Model)</dd>
+
+                                <dt class="col-sm-4">Tahun</dt>
+                                <dd class="col-sm-8">@Html.DisplayFor(model => model.Mobil.Tahun)</dd>
+
+                                <dt class="col-sm-4">Warna</dt>
+                                <dd class="col-sm-8">@Html.DisplayFor(model => model.Mobil.Warna)</dd>
+
+                                <dt class="col-sm-4">No. Polisi</dt>
+                                <dd class="col-sm-8">@Html.DisplayFor(model => model.Mobil.NoPolisi)</dd>
+
+                                <dt class="col-sm-4">Status Mobil</dt>
+                                <dd class="col-sm-8">@Html.DisplayFor(model => model.StatusMobil)</dd>
+                            </dl>
+                        </div>
+                    </div>
+
+                    <div class="card bg-light mb-3">
+                        <div class="card-header font-weight-bold">Informasi Pembayaran</div>
+                        <div class="card-body">
+                            <dl class="row mb-0">
+                                <dt class="col-sm-4">@Html.DisplayNameFor(model => model.HargaJual)</dt>
+                                <dd class="col-sm-8">@Model.HargaJual.ToString("C0", new System.Globalization.CultureInfo("id-ID"))</dd>
+
+                                <dt class="col-sm-4">@Html.DisplayNameFor(model => model.Diskon)</dt>
+                                <dd class="col-sm-8">@Model.Diskon.ToString("C0", new System.Globalization.CultureInfo("id-ID"))</dd>
+
+                                <dt class="col-sm-4">@Html.DisplayNameFor(model => model.TotalBayar)</dt>
+                                <dd class="col-sm-8">@Model.TotalBayar.ToString("C0", new System.Globalization.CultureInfo("id-ID"))</dd>
+
+                                <dt class="col-sm-4">@Html.DisplayNameFor(model => model.UangMuka)</dt>
+                                <dd class="col-sm-8">@Model.UangMuka.ToString("C0", new System.Globalization.CultureInfo("id-ID"))</dd>
+
+                                <dt class="col-sm-4">@Html.DisplayNameFor(model => model.SisaPembayaran)</dt>
+                                <dd class="col-sm-8">@Model.SisaPembayaran.ToString("C0", new System.Globalization.CultureInfo("id-ID"))</dd>
+
+                                <dt class="col-sm-4">@Html.DisplayNameFor(model => model.CaraPembayaran)</dt>
+                                <dd class="col-sm-8">@Html.DisplayFor(model => model.CaraPembayaran)</dd>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            @if (!string.IsNullOrEmpty(Model.Keterangan))
+            {
+                <div class="row mt-3">
+                    <div class="col-12">
+                        <div class="card bg-light">
+                            <div class="card-header font-weight-bold">Keterangan</div>
+                            <div class="card-body">
+                                @Html.DisplayFor(model => model.Keterangan)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
