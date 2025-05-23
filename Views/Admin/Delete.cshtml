@@ -1,0 +1,71 @@
+﻿@model RoditriPekanbaru.Models.Admin
+
+@{
+    ViewData["Title"] = "Hapus User";
+}
+
+<div class="container-fluid">
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Hapus User</h1>
+        <a asp-action="Index" class="btn btn-secondary">
+            <i class="fas fa-arrow-left"></i> Kembali ke Daftar
+        </a>
+    </div>
+
+    <!-- Delete Card -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Konfirmasi Hapus Data</h6>
+        </div>
+        <div class="card-body">
+            <div class="alert alert-danger">
+                <h5>Apakah Anda yakin ingin menghapus user ini?</h5>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <dl class="row">
+                        <dt class="col-sm-4">Username</dt>
+                        <dd class="col-sm-8">@Html.DisplayFor(model => model.Username)</dd>
+
+                        <dt class="col-sm-4">Nama Lengkap</dt>
+                        <dd class="col-sm-8">@Html.DisplayFor(model => model.NamaLengkap)</dd>
+
+                        <dt class="col-sm-4">Level</dt>
+                        <dd class="col-sm-8">@Html.DisplayFor(model => model.Level)</dd>
+                    </dl>
+                </div>
+
+                <div class="col-md-6">
+                    <dl class="row">
+                        <dt class="col-sm-4">Status</dt>
+                        <dd class="col-sm-8">
+                            @if (Model.IsActive)
+                            {
+                                <span class="badge bg-success text-white">Aktif</span>
+                            }
+                            else
+                            {
+                                <span class="badge bg-secondary text-white">Nonaktif</span>
+                            }
+                        </dd>
+
+                        <dt class="col-sm-4">Tanggal Buat</dt>
+                        <dd class="col-sm-8">@Model.CreatedDate.ToString("dd MMMM yyyy")</dd>
+                    </dl>
+                </div>
+            </div>
+
+            <form asp-action="Delete" class="text-center mt-4">
+                <input type="hidden" asp-for="AdminId" />
+                <button type="submit" class="btn btn-danger">
+                    <i class="fas fa-trash"></i> Hapus User
+                </button>
+                <a asp-action="Index" class="btn btn-secondary ml-2">
+                    <i class="fas fa-times"></i> Batal
+                </a>
+            </form>
+        </div>
+    </div>
+</div>

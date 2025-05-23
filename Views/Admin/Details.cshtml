@@ -1,0 +1,78 @@
+﻿@model RoditriPekanbaru.Models.Admin
+
+@{
+    ViewData["Title"] = "Detail User";
+}
+
+<div class="container-fluid">
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Detail User</h1>
+        <div>
+            <a asp-action="Edit" asp-route-id="@Model.AdminId" class="btn btn-warning">
+                <i class="fas fa-edit"></i> Edit
+            </a>
+            <a asp-action="Index" class="btn btn-secondary">
+                <i class="fas fa-arrow-left"></i> Kembali ke Daftar
+            </a>
+        </div>
+    </div>
+
+    <!-- Details Card -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Informasi User</h6>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <dl class="row">
+                        <dt class="col-sm-4">@Html.DisplayNameFor(model => model.Username)</dt>
+                        <dd class="col-sm-8">@Html.DisplayFor(model => model.Username)</dd>
+
+                        <dt class="col-sm-4">@Html.DisplayNameFor(model => model.NamaLengkap)</dt>
+                        <dd class="col-sm-8">@Html.DisplayFor(model => model.NamaLengkap)</dd>
+
+                        <dt class="col-sm-4">@Html.DisplayNameFor(model => model.Level)</dt>
+                        <dd class="col-sm-8">
+                            @if (Model.Level == "Admin")
+                            {
+                                <span class="badge bg-danger text-white">@Model.Level</span>
+                            }
+                            else if (Model.Level == "Customer")
+                            {
+                                <span class="badge bg-warning text-white">@Model.Level</span>
+                            }
+                            else
+                            {
+                                <span class="badge bg-info text-white">@Model.Level</span>
+                            }
+                        </dd>
+                    </dl>
+                </div>
+
+                <div class="col-md-6">
+                    <dl class="row">
+                        <dt class="col-sm-4">Status</dt>
+                        <dd class="col-sm-8">
+                            @if (Model.IsActive)
+                            {
+                                <span class="badge bg-success text-white">Aktif</span>
+                            }
+                            else
+                            {
+                                <span class="badge bg-secondary text-white">Nonaktif</span>
+                            }
+                        </dd>
+
+                        <dt class="col-sm-4">@Html.DisplayNameFor(model => model.CreatedDate)</dt>
+                        <dd class="col-sm-8">@Model.CreatedDate.ToString("dd MMMM yyyy")</dd>
+
+                        <dt class="col-sm-4">Terakhir Login</dt>
+                        <dd class="col-sm-8">@(Model.LastLogin?.ToString("dd MMMM yyyy HH:mm") ?? "Belum pernah login")</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
