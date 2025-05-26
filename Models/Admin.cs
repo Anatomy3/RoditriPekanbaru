@@ -18,13 +18,13 @@ namespace RoditriPekanbaru.Models
         [DataType(DataType.Password)]
         public string Password { get; set; } = string.Empty;
 
-        [Required(ErrorMessage = "Nama admin harus diisi")]
+        [Required(ErrorMessage = "Nama lengkap harus diisi")]
         [StringLength(100)]
         [Display(Name = "Nama Lengkap")]
         public string NamaLengkap { get; set; } = string.Empty;
 
         [Display(Name = "Level Access")]
-        public string Level { get; set; } = "Bagian Penjualan";
+        public string Level { get; set; } = "User"; // Hanya "Admin" atau "User"
 
         [Display(Name = "Status")]
         public bool IsActive { get; set; } = true;

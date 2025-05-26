@@ -5,7 +5,7 @@ using RoditriPekanbaru.Models;
 
 namespace RoditriPekanbaru.Controllers
 {
-    public class AdminController : Controller
+    public class AdminController : BaseController
     {
         private readonly ApplicationDbContext _context;
 
@@ -17,16 +17,9 @@ namespace RoditriPekanbaru.Controllers
         // GET: Admin
         public async Task<IActionResult> Index()
         {
-            // Check if user is logged in and is Admin
-            if (HttpContext.Session.GetString("Username") == null)
-            {
-                return RedirectToAction("Login", "Auth");
-            }
-
-            if (HttpContext.Session.GetString("Level") != "Admin")
-            {
-                return RedirectToAction("Index", "Home");
-            }
+            // Check admin access
+            var accessCheck = CheckAdminAccess();
+            if (accessCheck != null) return accessCheck;
 
             return View(await _context.Admins.ToListAsync());
         }
@@ -34,10 +27,8 @@ namespace RoditriPekanbaru.Controllers
         // GET: Admin/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (HttpContext.Session.GetString("Username") == null)
-            {
-                return RedirectToAction("Login", "Auth");
-            }
+            var accessCheck = CheckAdminAccess();
+            if (accessCheck != null) return accessCheck;
 
             if (id == null)
             {
@@ -58,15 +49,8 @@ namespace RoditriPekanbaru.Controllers
         // GET: Admin/Create
         public IActionResult Create()
         {
-            if (HttpContext.Session.GetString("Username") == null)
-            {
-                return RedirectToAction("Login", "Auth");
-            }
-
-            if (HttpContext.Session.GetString("Level") != "Admin")
-            {
-                return RedirectToAction("Index", "Home");
-            }
+            var accessCheck = CheckAdminAccess();
+            if (accessCheck != null) return accessCheck;
 
             return View();
         }
@@ -76,10 +60,8 @@ namespace RoditriPekanbaru.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Username,Password,NamaLengkap,Level,IsActive")] Admin admin)
         {
-            if (HttpContext.Session.GetString("Username") == null)
-            {
-                return RedirectToAction("Login", "Auth");
-            }
+            var accessCheck = CheckAdminAccess();
+            if (accessCheck != null) return accessCheck;
 
             if (ModelState.IsValid)
             {
@@ -93,6 +75,12 @@ namespace RoditriPekanbaru.Controllers
                     return View(admin);
                 }
 
+                // Validate level - only Admin or User allowed
+                if (admin.Level != "Admin" && admin.Level != "User")
+                {
+                    admin.Level = "User"; // Default to User if invalid level
+                }
+
                 admin.CreatedDate = DateTime.Now;
                 _context.Add(admin);
                 await _context.SaveChangesAsync();
@@ -104,15 +92,8 @@ namespace RoditriPekanbaru.Controllers
         // GET: Admin/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (HttpContext.Session.GetString("Username") == null)
-            {
-                return RedirectToAction("Login", "Auth");
-            }
-
-            if (HttpContext.Session.GetString("Level") != "Admin")
-            {
-                return RedirectToAction("Index", "Home");
-            }
+            var accessCheck = CheckAdminAccess();
+            if (accessCheck != null) return accessCheck;
 
             if (id == null)
             {
@@ -132,10 +113,8 @@ namespace RoditriPekanbaru.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("AdminId,Username,Password,NamaLengkap,Level,IsActive,CreatedDate")] Admin admin)
         {
-            if (HttpContext.Session.GetString("Username") == null)
-            {
-                return RedirectToAction("Login", "Auth");
-            }
+            var accessCheck = CheckAdminAccess();
+            if (accessCheck != null) return accessCheck;
 
             if (id != admin.AdminId)
             {
@@ -146,6 +125,12 @@ namespace RoditriPekanbaru.Controllers
             {
                 try
                 {
+                    // Validate level - only Admin or User allowed
+                    if (admin.Level != "Admin" && admin.Level != "User")
+                    {
+                        admin.Level = "User"; // Default to User if invalid level
+                    }
+
                     _context.Update(admin);
                     await _context.SaveChangesAsync();
                 }
@@ -168,15 +153,8 @@ namespace RoditriPekanbaru.Controllers
         // GET: Admin/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (HttpContext.Session.GetString("Username") == null)
-            {
-                return RedirectToAction("Login", "Auth");
-            }
-
-            if (HttpContext.Session.GetString("Level") != "Admin")
-            {
-                return RedirectToAction("Index", "Home");
-            }
+            var accessCheck = CheckAdminAccess();
+            if (accessCheck != null) return accessCheck;
 
             if (id == null)
             {
@@ -198,14 +176,20 @@ namespace RoditriPekanbaru.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (HttpContext.Session.GetString("Username") == null)
-            {
-                return RedirectToAction("Login", "Auth");
-            }
+            var accessCheck = CheckAdminAccess();
+            if (accessCheck != null) return accessCheck;
 
             var admin = await _context.Admins.FindAsync(id);
             if (admin != null)
             {
+                // Prevent deleting the last admin
+                var adminCount = await _context.Admins.CountAsync(a => a.Level == "Admin" && a.IsActive);
+                if (admin.Level == "Admin" && adminCount <= 1)
+                {
+                    ModelState.AddModelError("", "Tidak dapat menghapus admin terakhir");
+                    return View("Delete", admin);
+                }
+
                 _context.Admins.Remove(admin);
             }
 

@@ -1,5 +1,17 @@
 ﻿<Project>
   <ItemGroup>
+    <StaticWebAssetEndpoint Include="_content/RoditriPekanbaru/css/landing.css">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\landing.css'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-opB3qdm7j5xV6HWsiQIFROINA4MUn0Ck\u002BHJyD8/vSn4="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"8067"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022opB3qdm7j5xV6HWsiQIFROINA4MUn0Ck\u002BHJyD8/vSn4=\u0022"},{"Name":"Last-Modified","Value":"Sat, 24 May 2025 01:07:45 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/RoditriPekanbaru/css/landing.edkm4faz0q.css">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\landing.css'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"edkm4faz0q"},{"Name":"integrity","Value":"sha256-opB3qdm7j5xV6HWsiQIFROINA4MUn0Ck\u002BHJyD8/vSn4="},{"Name":"label","Value":"_content/RoditriPekanbaru/css/landing.css"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"8067"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022opB3qdm7j5xV6HWsiQIFROINA4MUn0Ck\u002BHJyD8/vSn4=\u0022"},{"Name":"Last-Modified","Value":"Sat, 24 May 2025 01:07:45 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/RoditriPekanbaru/css/site.c2tiyv64ts.css">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\site.css'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
@@ -23,6 +35,18 @@
       <Selectors><![CDATA[[]]]></Selectors>
       <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-Jtxf9L\u002B5ITKRc1gIRl4VbUpGkRNfOBXjYTdhJD4facM="}]]]></EndpointProperties>
       <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"5430"},{"Name":"Content-Type","Value":"image/x-icon"},{"Name":"ETag","Value":"\u0022Jtxf9L\u002B5ITKRc1gIRl4VbUpGkRNfOBXjYTdhJD4facM=\u0022"},{"Name":"Last-Modified","Value":"Mon, 19 May 2025 18:50:11 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/RoditriPekanbaru/js/landing.js">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\landing.js'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-yRxALk9QPA4gs6l8/VTyiUEDNyjWDeEYYQlwJUlVN\u002Bk="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"11185"},{"Name":"Content-Type","Value":"text/javascript"},{"Name":"ETag","Value":"\u0022yRxALk9QPA4gs6l8/VTyiUEDNyjWDeEYYQlwJUlVN\u002Bk=\u0022"},{"Name":"Last-Modified","Value":"Sat, 24 May 2025 01:08:47 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/RoditriPekanbaru/js/landing.pgf6lhjp61.js">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\landing.js'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"pgf6lhjp61"},{"Name":"integrity","Value":"sha256-yRxALk9QPA4gs6l8/VTyiUEDNyjWDeEYYQlwJUlVN\u002Bk="},{"Name":"label","Value":"_content/RoditriPekanbaru/js/landing.js"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"11185"},{"Name":"Content-Type","Value":"text/javascript"},{"Name":"ETag","Value":"\u0022yRxALk9QPA4gs6l8/VTyiUEDNyjWDeEYYQlwJUlVN\u002Bk=\u0022"},{"Name":"Last-Modified","Value":"Sat, 24 May 2025 01:08:47 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/RoditriPekanbaru/js/site.js">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\site.js'))</AssetFile>
@@ -724,13 +748,13 @@
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\RoditriPekanbaru.9yraqhr789.bundle.scp.css'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
       <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"9yraqhr789"},{"Name":"integrity","Value":"sha256-AVrNDPUJ3lMYGBOz7HibFf3t60N4v\u002BHlNHVKPCbtPLE="},{"Name":"label","Value":"_content/RoditriPekanbaru/RoditriPekanbaru.bundle.scp.css"}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"1134"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022AVrNDPUJ3lMYGBOz7HibFf3t60N4v\u002BHlNHVKPCbtPLE=\u0022"},{"Name":"Last-Modified","Value":"Wed, 21 May 2025 06:40:08 GMT"}]]]></ResponseHeaders>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"1134"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022AVrNDPUJ3lMYGBOz7HibFf3t60N4v\u002BHlNHVKPCbtPLE=\u0022"},{"Name":"Last-Modified","Value":"Sat, 24 May 2025 01:33:31 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/RoditriPekanbaru/RoditriPekanbaru.bundle.scp.css">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\RoditriPekanbaru.9yraqhr789.bundle.scp.css'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
       <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-AVrNDPUJ3lMYGBOz7HibFf3t60N4v\u002BHlNHVKPCbtPLE="}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"1134"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022AVrNDPUJ3lMYGBOz7HibFf3t60N4v\u002BHlNHVKPCbtPLE=\u0022"},{"Name":"Last-Modified","Value":"Wed, 21 May 2025 06:40:08 GMT"}]]]></ResponseHeaders>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"1134"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022AVrNDPUJ3lMYGBOz7HibFf3t60N4v\u002BHlNHVKPCbtPLE=\u0022"},{"Name":"Last-Modified","Value":"Sat, 24 May 2025 01:33:31 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/RoditriPekanbaru/uploads/mobil/3b3dfc54-b50e-464d-9fa6-a0676d9aec6c_Mind Map.3zqyl95x7f.png">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\mobil\3b3dfc54-b50e-464d-9fa6-a0676d9aec6c_Mind Map.png'))</AssetFile>
@@ -744,6 +768,18 @@
       <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-D0b3HRpTC9c5i9ZdRMdg1IPbPllF3jVUQgBqYoURfis="}]]]></EndpointProperties>
       <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"1337957"},{"Name":"Content-Type","Value":"image/png"},{"Name":"ETag","Value":"\u0022D0b3HRpTC9c5i9ZdRMdg1IPbPllF3jVUQgBqYoURfis=\u0022"},{"Name":"Last-Modified","Value":"Wed, 21 May 2025 08:22:47 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/RoditriPekanbaru/uploads/mobil/4c892f73-30c4-4d19-8d3c-0db533645570_images (1).jpg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\mobil\4c892f73-30c4-4d19-8d3c-0db533645570_images (1).jpg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-9/6r1xn1ViURFqLKESQ9V7nlytO0/\u002BdyQH/Vy5Amdes="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"9831"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u00229/6r1xn1ViURFqLKESQ9V7nlytO0/\u002BdyQH/Vy5Amdes=\u0022"},{"Name":"Last-Modified","Value":"Sat, 24 May 2025 01:36:57 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/RoditriPekanbaru/uploads/mobil/4c892f73-30c4-4d19-8d3c-0db533645570_images (1).jx40eaz6aj.jpg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\mobil\4c892f73-30c4-4d19-8d3c-0db533645570_images (1).jpg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"jx40eaz6aj"},{"Name":"integrity","Value":"sha256-9/6r1xn1ViURFqLKESQ9V7nlytO0/\u002BdyQH/Vy5Amdes="},{"Name":"label","Value":"_content/RoditriPekanbaru/uploads/mobil/4c892f73-30c4-4d19-8d3c-0db533645570_images (1).jpg"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"9831"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u00229/6r1xn1ViURFqLKESQ9V7nlytO0/\u002BdyQH/Vy5Amdes=\u0022"},{"Name":"Last-Modified","Value":"Sat, 24 May 2025 01:36:57 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/RoditriPekanbaru/uploads/mobil/9e823ebf-0ee8-473d-9d8a-da5722201f17_screencapture-127-0-0-1-8000-admin-categories-create-2025-05-19-19_54_34.many4d1hz6.png">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\mobil\9e823ebf-0ee8-473d-9d8a-da5722201f17_screencapture-127-0-0-1-8000-admin-categories-create-2025-05-19-19_54_34.png'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
@@ -755,6 +791,18 @@
       <Selectors><![CDATA[[]]]></Selectors>
       <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-btLV/UoJRdlVAJ4nsUpgVtS5gPD/ojxcl7n5HbYC5Cw="}]]]></EndpointProperties>
       <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"54764"},{"Name":"Content-Type","Value":"image/png"},{"Name":"ETag","Value":"\u0022btLV/UoJRdlVAJ4nsUpgVtS5gPD/ojxcl7n5HbYC5Cw=\u0022"},{"Name":"Last-Modified","Value":"Wed, 21 May 2025 08:06:30 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/RoditriPekanbaru/uploads/mobil/e73896a6-ea48-4dbe-9c55-1998b768ce89_Cobit Studi Kasus.jpg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\mobil\e73896a6-ea48-4dbe-9c55-1998b768ce89_Cobit Studi Kasus.jpg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-31SkxB8f3SHirmECph\u002Bjz7J8ZbxSQv61vA8/iZExhi4="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"89139"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u002231SkxB8f3SHirmECph\u002Bjz7J8ZbxSQv61vA8/iZExhi4=\u0022"},{"Name":"Last-Modified","Value":"Fri, 23 May 2025 18:47:27 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/RoditriPekanbaru/uploads/mobil/e73896a6-ea48-4dbe-9c55-1998b768ce89_Cobit Studi Kasus.putcdjv59a.jpg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\mobil\e73896a6-ea48-4dbe-9c55-1998b768ce89_Cobit Studi Kasus.jpg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"putcdjv59a"},{"Name":"integrity","Value":"sha256-31SkxB8f3SHirmECph\u002Bjz7J8ZbxSQv61vA8/iZExhi4="},{"Name":"label","Value":"_content/RoditriPekanbaru/uploads/mobil/e73896a6-ea48-4dbe-9c55-1998b768ce89_Cobit Studi Kasus.jpg"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"89139"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u002231SkxB8f3SHirmECph\u002Bjz7J8ZbxSQv61vA8/iZExhi4=\u0022"},{"Name":"Last-Modified","Value":"Fri, 23 May 2025 18:47:27 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/RoditriPekanbaru/uploads/mobil/e856d07a-7aad-44da-9633-4670ea218b6b_Mind Map.3zqyl95x7f.png">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\mobil\e856d07a-7aad-44da-9633-4670ea218b6b_Mind Map.png'))</AssetFile>

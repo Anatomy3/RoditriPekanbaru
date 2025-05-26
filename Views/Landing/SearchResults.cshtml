@@ -1,0 +1,208 @@
+﻿@model List<RoditriPekanbaru.Models.Mobil>
+@{
+    var searchQuery = ViewBag.SearchQuery?.ToString() ?? "";
+    ViewData["Title"] = $"Hasil Pencarian: {searchQuery}";
+    Layout = "~/Views/Shared/_LandingLayout.cshtml";
+}
+
+<div class="container py-5">
+    <!-- Search Header -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a href="@Url.Action("Index")" class="text-decoration-none">
+                            <i class="fas fa-home"></i> Beranda
+                        </a>
+                    </li>
+                    <li class="breadcrumb-item active">Hasil Pencarian</li>
+                </ol>
+            </nav>
+
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <h2 class="fw-bold mb-1">Hasil Pencarian</h2>
+                    <p class="text-muted mb-0">
+                        Menampilkan @(Model?.Count ?? 0) hasil untuk "<strong>@searchQuery</strong>"
+                    </p>
+                </div>
+                <div>
+                    <a href="@Url.Action("Index")" class="btn btn-outline-primary">
+                        <i class="fas fa-arrow-left me-2"></i>Kembali ke Beranda
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Search Results -->
+    @if (Model?.Any() == true)
+    {
+        <div class="row">
+            @foreach (var car in Model)
+            {
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="car-card h-100">
+                        @* Flash Sale Badge *@
+                        @if (car.Harga < 300000000)
+                        {
+                            <div class="flash-sale">
+                                <i class="fas fa-fire me-1"></i>FLASH SALE
+                            </div>
+                        }
+
+                        @if (!string.IsNullOrEmpty(car.GambarMobil))
+                        {
+                            <img src="@car.GambarMobil" alt="@car.NamaMobil" class="car-image">
+                        }
+                        else
+                        {
+                            <div class="car-image bg-gradient d-flex align-items-center justify-content-center" style="background: linear-gradient(135deg, #f8f9fa, #e9ecef);">
+                                <i class="fas fa-car fa-4x text-muted"></i>
+                            </div>
+                        }
+
+                        <div class="p-3 d-flex flex-column">
+                            <div class="price-tag mb-2">@car.Harga.ToString("C0", new System.Globalization.CultureInfo("id-ID"))</div>
+                            <h5 class="card-title mb-2">@car.NamaMobil</h5>
+
+                            <div class="row text-muted small mb-3">
+                                <div class="col-6">
+                                    <i class="fas fa-calendar text-primary"></i> @car.Tahun
+                                </div>
+                                <div class="col-6">
+                                    <i class="fas fa-palette text-primary"></i> @car.Warna
+                                </div>
+                            </div>
+
+                            @if (!string.IsNullOrEmpty(car.Kondisi))
+                            {
+                                <p class="text-muted small mb-3 flex-grow-1">@car.Kondisi</p>
+                            }
+
+                            <div class="mt-auto">
+                                <div class="d-grid gap-2">
+                                    <a href="@Url.Action("CarDetails", new { id = car.MobilId })" class="btn btn-primary">
+                                        <i class="fas fa-eye"></i> Lihat Detail
+                                    </a>
+                                    <a href="https://wa.me/6281234567890?text=Halo,%20saya%20tertarik%20dengan%20mobil%20@Uri.EscapeDataString(car.NamaMobil)%20dari%20hasil%20pencarian%20@Uri.EscapeDataString(searchQuery)"
+                                       class="btn btn-success btn-sm" target="_blank">
+                                        <i class="fab fa-whatsapp"></i> Chat WhatsApp
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+
+        <!-- Refined Search -->
+        <div class="mt-5">
+            <div class="card bg-light">
+                <div class="card-body">
+                    <h5 class="fw-bold mb-3">
+                        <i class="fas fa-search me-2"></i>Perbaiki Pencarian
+                    </h5>
+                    <form method="get" asp-action="Index">
+                        <div class="row g-3">
+                            <div class="col-md-3">
+                                <label class="form-label">Merek</label>
+                                <select name="merek" class="form-select">
+                                    <option value="">Semua Merek</option>
+                                    @if (Model?.Any() == true)
+                                    {
+                                        @foreach (var brand in Model.Select(m => m.Merek).Distinct().OrderBy(b => b))
+                                        {
+                                            <option value="@brand">@brand</option>
+                                        }
+                                    }
+                                </select>
+                            </div>
+                            <div class="col-md-3">
+                                <label class="form-label">Harga Maksimal</label>
+                                <select name="maxHarga" class="form-select">
+                                    <option value="">Semua Harga</option>
+                                    <option value="100000000">Kurang dari 100 Juta</option>
+                                    <option value="200000000">Kurang dari 200 Juta</option>
+                                    <option value="300000000">Kurang dari 300 Juta</option>
+                                    <option value="500000000">Kurang dari 500 Juta</option>
+                                    <option value="1000000000">Kurang dari 1 Miliar</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3">
+                                <label class="form-label">Tahun Minimal</label>
+                                <select name="tahunMin" class="form-select">
+                                    <option value="">Semua Tahun</option>
+                                    <option value="2020">2020 ke atas</option>
+                                    <option value="2015">2015 ke atas</option>
+                                    <option value="2010">2010 ke atas</option>
+                                    <option value="2005">2005 ke atas</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3 d-flex align-items-end">
+                                <button type="submit" class="btn btn-primary w-100">
+                                    <i class="fas fa-filter"></i> Terapkan Filter
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    }
+    else
+    {
+        <!-- No Results -->
+        <div class="text-center py-5">
+            <div class="mb-4">
+                <i class="fas fa-search fa-5x text-muted"></i>
+            </div>
+            <h4 class="fw-bold text-muted mb-3">Tidak ada hasil ditemukan</h4>
+            <p class="text-muted mb-4">
+                Maaf, tidak ada mobil yang cocok dengan pencarian "<strong>@searchQuery</strong>"
+            </p>
+
+            <!-- Search Suggestions -->
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="card bg-light">
+                        <div class="card-body">
+                            <h6 class="fw-bold mb-3">Saran Pencarian:</h6>
+                            <ul class="list-unstyled text-start">
+                                <li class="mb-2">
+                                    <i class="fas fa-check text-success me-2"></i>
+                                    Periksa ejaan kata kunci
+                                </li>
+                                <li class="mb-2">
+                                    <i class="fas fa-check text-success me-2"></i>
+                                    Gunakan kata kunci yang lebih umum (contoh: "Toyota" bukan "Toyota Alphard 2021")
+                                </li>
+                                <li class="mb-2">
+                                    <i class="fas fa-check text-success me-2"></i>
+                                    Coba cari berdasarkan merek atau model mobil
+                                </li>
+                                <li class="mb-2">
+                                    <i class="fas fa-check text-success me-2"></i>
+                                    Hubungi kami jika mencari mobil spesifik
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Alternative Actions -->
+            <div class="mt-4">
+                <a href="@Url.Action("Index")" class="btn btn-primary me-2">
+                    <i class="fas fa-car me-2"></i>Lihat Semua Mobil
+                </a>
+                <a href="https://wa.me/6281234567890?text=Halo,%20saya%20mencari%20mobil%20dengan%20kriteria%20@Uri.EscapeDataString(searchQuery)%20tapi%20tidak%20menemukan%20di%20website.%20Bisa%20dibantu?"
+                   class="btn btn-success" target="_blank">
+                    <i class="fab fa-whatsapp me-2"></i>Chat Admin
+                </a>
+            </div>
+        </div>
+    }
+</div>

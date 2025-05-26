@@ -1,4 +1,3 @@
-// Controllers/HomeController.cs
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using RoditriPekanbaru.Data;
@@ -8,7 +7,7 @@ using System.Diagnostics;
 
 namespace RoditriPekanbaru.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         private readonly ApplicationDbContext _context;
         private readonly ILogger<HomeController> _logger;
@@ -19,16 +18,14 @@ namespace RoditriPekanbaru.Controllers
             _logger = logger;
         }
 
-        // GET: /Home/Index
+        // GET: /Home/Index - Admin Dashboard
         public async Task<IActionResult> Index()
         {
-            // Check if user is logged in
-            if (HttpContext.Session.GetString("Username") == null)
-            {
-                return RedirectToAction("Login", "Auth");
-            }
+            // Check admin access
+            var accessCheck = CheckAdminAccess();
+            if (accessCheck != null) return accessCheck;
 
-            // Create dashboard view model
+            // Create dashboard view model for admin
             var dashboard = new DashboardViewModel
             {
                 TotalCustomer = await _context.Customers.CountAsync(),
@@ -60,9 +57,20 @@ namespace RoditriPekanbaru.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+        // Helper methods for other controllers
+        public static bool IsAdmin(HttpContext context)
+        {
+            return context.Session.GetString("Level") == "Admin";
+        }
+
+        public static bool IsAuthenticated(HttpContext context)
+        {
+            return context.Session.GetString("Username") != null;
+        }
     }
 
-    // Add this to handle errors
+    // Error ViewModel
     public class ErrorViewModel
     {
         public string? RequestId { get; set; }

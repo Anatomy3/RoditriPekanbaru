@@ -1,5 +1,7 @@
+wwwroot\css\landing.css
 wwwroot\css\site.css
 wwwroot\favicon.ico
+wwwroot\js\landing.js
 wwwroot\js\site.js
 wwwroot\lib\bootstrap\dist\css\bootstrap.css
 wwwroot\lib\bootstrap\dist\css\bootstrap.css.map
@@ -59,6 +61,8 @@ wwwroot\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.js
 wwwroot\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.min.js
 wwwroot\lib\jquery-validation-unobtrusive\LICENSE.txt
 wwwroot\uploads\mobil\3b3dfc54-b50e-464d-9fa6-a0676d9aec6c_Mind Map.png
+wwwroot\uploads\mobil\4c892f73-30c4-4d19-8d3c-0db533645570_images (1).jpg
 wwwroot\uploads\mobil\9e823ebf-0ee8-473d-9d8a-da5722201f17_screencapture-127-0-0-1-8000-admin-categories-create-2025-05-19-19_54_34.png
+wwwroot\uploads\mobil\e73896a6-ea48-4dbe-9c55-1998b768ce89_Cobit Studi Kasus.jpg
 wwwroot\uploads\mobil\e856d07a-7aad-44da-9633-4670ea218b6b_Mind Map.png
 wwwroot\uploads\mobil\ebe18add-f9b2-47f4-b31a-e4fd3a42a094_Mind Map.png

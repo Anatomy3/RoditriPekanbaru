@@ -1,0 +1,225 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - RodiTri Pekanbaru</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/landing.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/RoditriPekanbaru.styles.css" asp-append-version="true" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .navbar-brand img {
+            height: 40px;
+        }
+
+        .search-box {
+            min-width: 300px;
+        }
+
+        .brand-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            padding: 20px 0;
+        }
+
+        .brand-card {
+            text-align: center;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+        }
+
+            .brand-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+                text-decoration: none;
+                color: inherit;
+            }
+
+        .brand-logo {
+            height: 60px;
+            margin-bottom: 10px;
+        }
+
+        .car-card {
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            transition: transform 0.3s ease;
+        }
+
+            .car-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            }
+
+        .car-image {
+            height: 200px;
+            object-fit: cover;
+            width: 100%;
+        }
+
+        .price-tag {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: #e74c3c;
+        }
+
+        .filter-section {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+
+        .hero-banner {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .footer {
+            background-color: #2c3e50;
+            color: white;
+            padding: 40px 0;
+            margin-top: 50px;
+        }
+
+        .flash-sale {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: bold;
+            z-index: 10;
+        }
+
+        .car-card {
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+            <div class="container">
+                <!-- Logo -->
+                <a class="navbar-brand" href="@Url.Action("Index", "Landing")">
+                    <i class="fas fa-car text-primary me-2" style="font-size: 1.5rem;"></i>
+                    <span class="fw-bold text-primary">RodiTri Pekanbaru</span>
+                </a>
+
+                <!-- User Account -->
+                <div class="navbar-nav ms-auto">
+                    @if (Context.Session.GetString("Username") != null)
+                    {
+                        <div class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" role="button" data-bs-toggle="dropdown">
+                                <i class="fas fa-user-circle me-1" style="font-size: 1.2rem;"></i>
+                                @Context.Session.GetString("NamaLengkap")
+                            </a>
+                            <ul class="dropdown-menu">
+                                @if (Context.Session.GetString("Level") == "Admin")
+                                {
+                                    <li>
+                                        <a class="dropdown-item" href="@Url.Action("Index", "Home")">
+                                            <i class="fas fa-cog me-2"></i> Admin Panel
+                                        </a>
+                                    </li>
+                                    <li><hr class="dropdown-divider"></li>
+                                }
+                                <li>
+                                    <a class="dropdown-item" href="@Url.Action("Logout", "Auth")">
+                                        <i class="fas fa-sign-out-alt me-2"></i> Logout
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    }
+                    else
+                    {
+                        <a class="btn btn-outline-primary me-2" href="@Url.Action("Login", "Auth")">
+                            <i class="fas fa-sign-in-alt"></i> Masuk
+                        </a>
+                        <a class="btn btn-primary" href="@Url.Action("Register", "Auth")">
+                            <i class="fas fa-user-plus"></i> Daftar
+                        </a>
+                    }
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main role="main">
+        @RenderBody()
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5><i class="fas fa-car me-2"></i>RodiTri Pekanbaru</h5>
+                    <p>Dealer mobil terpercaya di Pekanbaru dengan pilihan mobil bekas berkualitas dan pelayanan terbaik sejak 2020.</p>
+                    <div class="social-links">
+                        <a href="#" class="text-white me-3"><i class="fab fa-facebook fa-lg"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-instagram fa-lg"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-whatsapp fa-lg"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-youtube fa-lg"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <h5><i class="fas fa-phone me-2"></i>Kontak</h5>
+                    <p class="mb-2"><i class="fas fa-map-marker-alt me-2"></i> Jl. Sudirman No. 123, Sukajadi, Pekanbaru 28122</p>
+                    <p class="mb-2"><i class="fas fa-phone me-2"></i> (0761) 123-4567</p>
+                    <p class="mb-2"><i class="fab fa-whatsapp me-2"></i> +62 812-3456-7890</p>
+                    <p><i class="fas fa-envelope me-2"></i> info@roditripekanbaru.com</p>
+                </div>
+                <div class="col-md-4">
+                    <h5><i class="fas fa-clock me-2"></i>Jam Operasional</h5>
+                    <p class="mb-1"><strong>Senin - Jumat:</strong> 08.00 - 17.00 WIB</p>
+                    <p class="mb-1"><strong>Sabtu:</strong> 08.00 - 16.00 WIB</p>
+                    <p class="mb-3"><strong>Minggu:</strong> 09.00 - 15.00 WIB</p>
+                    <h6><i class="fas fa-info-circle me-2"></i>Layanan</h6>
+                    <ul class="list-unstyled">
+                        <li>• Jual Beli Mobil Bekas</li>
+                        <li>• Trade In</li>
+                        <li>• Konsultasi Pembelian</li>
+                        <li>• Bantuan Kredit</li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="mb-0">&copy; 2024 RodiTri Pekanbaru. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-end">
+                    <p class="mb-0">
+                        <a href="#" class="text-white text-decoration-none me-3">Privacy Policy</a>
+                        <a href="#" class="text-white text-decoration-none">Terms of Service</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/landing.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

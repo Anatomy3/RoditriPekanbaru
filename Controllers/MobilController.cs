@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace RoditriPekanbaru.Controllers
 {
-    public class MobilController : Controller
+    public class MobilController : BaseController
     {
         private readonly ApplicationDbContext _context;
         private readonly IWebHostEnvironment _hostEnvironment;
@@ -23,11 +23,9 @@ namespace RoditriPekanbaru.Controllers
         // GET: Mobil
         public async Task<IActionResult> Index()
         {
-            // Check if user is logged in
-            if (HttpContext.Session.GetString("Username") == null)
-            {
-                return RedirectToAction("Login", "Auth");
-            }
+            // Check admin access
+            var accessCheck = CheckAdminAccess();
+            if (accessCheck != null) return accessCheck;
 
             return View(await _context.Mobils.ToListAsync());
         }
@@ -35,10 +33,8 @@ namespace RoditriPekanbaru.Controllers
         // GET: Mobil/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (HttpContext.Session.GetString("Username") == null)
-            {
-                return RedirectToAction("Login", "Auth");
-            }
+            var accessCheck = CheckAdminAccess();
+            if (accessCheck != null) return accessCheck;
 
             if (id == null)
             {
@@ -59,10 +55,8 @@ namespace RoditriPekanbaru.Controllers
         // GET: Mobil/Create
         public IActionResult Create()
         {
-            if (HttpContext.Session.GetString("Username") == null)
-            {
-                return RedirectToAction("Login", "Auth");
-            }
+            var accessCheck = CheckAdminAccess();
+            if (accessCheck != null) return accessCheck;
 
             return View();
         }
@@ -72,10 +66,8 @@ namespace RoditriPekanbaru.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Merek,Model,Tahun,Warna,Harga,Kondisi,NoRangka,NoMesin,NoPolisi")] Mobil mobil, IFormFile gambarFile)
         {
-            if (HttpContext.Session.GetString("Username") == null)
-            {
-                return RedirectToAction("Login", "Auth");
-            }
+            var accessCheck = CheckAdminAccess();
+            if (accessCheck != null) return accessCheck;
 
             if (ModelState.IsValid)
             {
@@ -117,10 +109,8 @@ namespace RoditriPekanbaru.Controllers
         // GET: Mobil/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (HttpContext.Session.GetString("Username") == null)
-            {
-                return RedirectToAction("Login", "Auth");
-            }
+            var accessCheck = CheckAdminAccess();
+            if (accessCheck != null) return accessCheck;
 
             if (id == null)
             {
@@ -140,10 +130,8 @@ namespace RoditriPekanbaru.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("MobilId,Merek,Model,Tahun,Warna,Harga,Kondisi,IsAvailable,NoRangka,NoMesin,NoPolisi,TanggalInput,GambarMobil")] Mobil mobil, IFormFile gambarFile)
         {
-            if (HttpContext.Session.GetString("Username") == null)
-            {
-                return RedirectToAction("Login", "Auth");
-            }
+            var accessCheck = CheckAdminAccess();
+            if (accessCheck != null) return accessCheck;
 
             if (id != mobil.MobilId)
             {
@@ -211,10 +199,8 @@ namespace RoditriPekanbaru.Controllers
         // GET: Mobil/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (HttpContext.Session.GetString("Username") == null)
-            {
-                return RedirectToAction("Login", "Auth");
-            }
+            var accessCheck = CheckAdminAccess();
+            if (accessCheck != null) return accessCheck;
 
             if (id == null)
             {
@@ -236,10 +222,8 @@ namespace RoditriPekanbaru.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (HttpContext.Session.GetString("Username") == null)
-            {
-                return RedirectToAction("Login", "Auth");
-            }
+            var accessCheck = CheckAdminAccess();
+            if (accessCheck != null) return accessCheck;
 
             var mobil = await _context.Mobils.FindAsync(id);
             if (mobil != null)

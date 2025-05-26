@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "w9P+cLUltqgl5TmRjJX9G0nZQl/hhtppRhx9vuGimFA=",
+  "Hash": "nR2Jvf5YYdzkyrv3SwqPui8/FgS0x6AKfDhDrU2gWSo=",
   "Source": "RoditriPekanbaru",
   "BasePath": "_content/RoditriPekanbaru",
   "Mode": "Default",
@@ -59,6 +59,27 @@
       "OriginalItemSpec": "D:\\Framework\\RoditriPekanbaru\\RoditriPekanbaru\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\RoditriPekanbaru.bundle.scp.css"
     },
     {
+      "Identity": "D:\\Framework\\RoditriPekanbaru\\RoditriPekanbaru\\wwwroot\\css\\landing.css",
+      "SourceId": "RoditriPekanbaru",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Framework\\RoditriPekanbaru\\RoditriPekanbaru\\wwwroot\\",
+      "BasePath": "_content/RoditriPekanbaru",
+      "RelativePath": "css/landing#[.{fingerprint}]?.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "edkm4faz0q",
+      "Integrity": "opB3qdm7j5xV6HWsiQIFROINA4MUn0Ck+HJyD8/vSn4=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\landing.css"
+    },
+    {
       "Identity": "D:\\Framework\\RoditriPekanbaru\\RoditriPekanbaru\\wwwroot\\css\\site.css",
       "SourceId": "RoditriPekanbaru",
       "SourceType": "Discovered",
@@ -99,6 +120,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "D:\\Framework\\RoditriPekanbaru\\RoditriPekanbaru\\wwwroot\\js\\landing.js",
+      "SourceId": "RoditriPekanbaru",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Framework\\RoditriPekanbaru\\RoditriPekanbaru\\wwwroot\\",
+      "BasePath": "_content/RoditriPekanbaru",
+      "RelativePath": "js/landing#[.{fingerprint}]?.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "pgf6lhjp61",
+      "Integrity": "yRxALk9QPA4gs6l8/VTyiUEDNyjWDeEYYQlwJUlVN+k=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\landing.js"
     },
     {
       "Identity": "D:\\Framework\\RoditriPekanbaru\\RoditriPekanbaru\\wwwroot\\js\\site.js",
@@ -1340,6 +1382,27 @@
       "OriginalItemSpec": "wwwroot\\uploads\\mobil\\3b3dfc54-b50e-464d-9fa6-a0676d9aec6c_Mind Map.png"
     },
     {
+      "Identity": "D:\\Framework\\RoditriPekanbaru\\RoditriPekanbaru\\wwwroot\\uploads\\mobil\\4c892f73-30c4-4d19-8d3c-0db533645570_images (1).jpg",
+      "SourceId": "RoditriPekanbaru",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Framework\\RoditriPekanbaru\\RoditriPekanbaru\\wwwroot\\",
+      "BasePath": "_content/RoditriPekanbaru",
+      "RelativePath": "uploads/mobil/4c892f73-30c4-4d19-8d3c-0db533645570_images (1)#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "jx40eaz6aj",
+      "Integrity": "9/6r1xn1ViURFqLKESQ9V7nlytO0/+dyQH/Vy5Amdes=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\mobil\\4c892f73-30c4-4d19-8d3c-0db533645570_images (1).jpg"
+    },
+    {
       "Identity": "D:\\Framework\\RoditriPekanbaru\\RoditriPekanbaru\\wwwroot\\uploads\\mobil\\9e823ebf-0ee8-473d-9d8a-da5722201f17_screencapture-127-0-0-1-8000-admin-categories-create-2025-05-19-19_54_34.png",
       "SourceId": "RoditriPekanbaru",
       "SourceType": "Discovered",
@@ -1359,6 +1422,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\uploads\\mobil\\9e823ebf-0ee8-473d-9d8a-da5722201f17_screencapture-127-0-0-1-8000-admin-categories-create-2025-05-19-19_54_34.png"
+    },
+    {
+      "Identity": "D:\\Framework\\RoditriPekanbaru\\RoditriPekanbaru\\wwwroot\\uploads\\mobil\\e73896a6-ea48-4dbe-9c55-1998b768ce89_Cobit Studi Kasus.jpg",
+      "SourceId": "RoditriPekanbaru",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Framework\\RoditriPekanbaru\\RoditriPekanbaru\\wwwroot\\",
+      "BasePath": "_content/RoditriPekanbaru",
+      "RelativePath": "uploads/mobil/e73896a6-ea48-4dbe-9c55-1998b768ce89_Cobit Studi Kasus#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "putcdjv59a",
+      "Integrity": "31SkxB8f3SHirmECph+jz7J8ZbxSQv61vA8/iZExhi4=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\mobil\\e73896a6-ea48-4dbe-9c55-1998b768ce89_Cobit Studi Kasus.jpg"
     },
     {
       "Identity": "D:\\Framework\\RoditriPekanbaru\\RoditriPekanbaru\\wwwroot\\uploads\\mobil\\e856d07a-7aad-44da-9633-4670ea218b6b_Mind Map.png",
@@ -1404,6 +1488,88 @@
     }
   ],
   "Endpoints": [
+    {
+      "Route": "css/landing.css",
+      "AssetFile": "D:\\Framework\\RoditriPekanbaru\\RoditriPekanbaru\\wwwroot\\css\\landing.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "8067"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"opB3qdm7j5xV6HWsiQIFROINA4MUn0Ck+HJyD8/vSn4=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 24 May 2025 01:07:45 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-opB3qdm7j5xV6HWsiQIFROINA4MUn0Ck+HJyD8/vSn4="
+        }
+      ]
+    },
+    {
+      "Route": "css/landing.edkm4faz0q.css",
+      "AssetFile": "D:\\Framework\\RoditriPekanbaru\\RoditriPekanbaru\\wwwroot\\css\\landing.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "8067"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"opB3qdm7j5xV6HWsiQIFROINA4MUn0Ck+HJyD8/vSn4=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 24 May 2025 01:07:45 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "edkm4faz0q"
+        },
+        {
+          "Name": "label",
+          "Value": "css/landing.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-opB3qdm7j5xV6HWsiQIFROINA4MUn0Ck+HJyD8/vSn4="
+        }
+      ]
+    },
     {
       "Route": "css/site.c2tiyv64ts.css",
       "AssetFile": "D:\\Framework\\RoditriPekanbaru\\RoditriPekanbaru\\wwwroot\\css\\site.css",
@@ -1565,6 +1731,88 @@
         {
           "Name": "integrity",
           "Value": "sha256-Jtxf9L+5ITKRc1gIRl4VbUpGkRNfOBXjYTdhJD4facM="
+        }
+      ]
+    },
+    {
+      "Route": "js/landing.js",
+      "AssetFile": "D:\\Framework\\RoditriPekanbaru\\RoditriPekanbaru\\wwwroot\\js\\landing.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "11185"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"yRxALk9QPA4gs6l8/VTyiUEDNyjWDeEYYQlwJUlVN+k=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 24 May 2025 01:08:47 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-yRxALk9QPA4gs6l8/VTyiUEDNyjWDeEYYQlwJUlVN+k="
+        }
+      ]
+    },
+    {
+      "Route": "js/landing.pgf6lhjp61.js",
+      "AssetFile": "D:\\Framework\\RoditriPekanbaru\\RoditriPekanbaru\\wwwroot\\js\\landing.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "11185"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"yRxALk9QPA4gs6l8/VTyiUEDNyjWDeEYYQlwJUlVN+k=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 24 May 2025 01:08:47 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "pgf6lhjp61"
+        },
+        {
+          "Name": "label",
+          "Value": "js/landing.js"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-yRxALk9QPA4gs6l8/VTyiUEDNyjWDeEYYQlwJUlVN+k="
         }
       ]
     },
@@ -6347,7 +6595,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 21 May 2025 06:40:08 GMT"
+          "Value": "Sat, 24 May 2025 01:33:31 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -6392,7 +6640,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 21 May 2025 06:40:08 GMT"
+          "Value": "Sat, 24 May 2025 01:33:31 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -6437,7 +6685,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 21 May 2025 06:40:08 GMT"
+          "Value": "Sat, 24 May 2025 01:33:31 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -6474,7 +6722,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 21 May 2025 06:40:08 GMT"
+          "Value": "Sat, 24 May 2025 01:33:31 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -6571,6 +6819,88 @@
       ]
     },
     {
+      "Route": "uploads/mobil/4c892f73-30c4-4d19-8d3c-0db533645570_images (1).jpg",
+      "AssetFile": "D:\\Framework\\RoditriPekanbaru\\RoditriPekanbaru\\wwwroot\\uploads\\mobil\\4c892f73-30c4-4d19-8d3c-0db533645570_images (1).jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "9831"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"9/6r1xn1ViURFqLKESQ9V7nlytO0/+dyQH/Vy5Amdes=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 24 May 2025 01:36:57 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-9/6r1xn1ViURFqLKESQ9V7nlytO0/+dyQH/Vy5Amdes="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/mobil/4c892f73-30c4-4d19-8d3c-0db533645570_images (1).jx40eaz6aj.jpg",
+      "AssetFile": "D:\\Framework\\RoditriPekanbaru\\RoditriPekanbaru\\wwwroot\\uploads\\mobil\\4c892f73-30c4-4d19-8d3c-0db533645570_images (1).jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "9831"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"9/6r1xn1ViURFqLKESQ9V7nlytO0/+dyQH/Vy5Amdes=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 24 May 2025 01:36:57 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "jx40eaz6aj"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/mobil/4c892f73-30c4-4d19-8d3c-0db533645570_images (1).jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-9/6r1xn1ViURFqLKESQ9V7nlytO0/+dyQH/Vy5Amdes="
+        }
+      ]
+    },
+    {
       "Route": "uploads/mobil/9e823ebf-0ee8-473d-9d8a-da5722201f17_screencapture-127-0-0-1-8000-admin-categories-create-2025-05-19-19_54_34.many4d1hz6.png",
       "AssetFile": "D:\\Framework\\RoditriPekanbaru\\RoditriPekanbaru\\wwwroot\\uploads\\mobil\\9e823ebf-0ee8-473d-9d8a-da5722201f17_screencapture-127-0-0-1-8000-admin-categories-create-2025-05-19-19_54_34.png",
       "Selectors": [],
@@ -6649,6 +6979,88 @@
         {
           "Name": "integrity",
           "Value": "sha256-btLV/UoJRdlVAJ4nsUpgVtS5gPD/ojxcl7n5HbYC5Cw="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/mobil/e73896a6-ea48-4dbe-9c55-1998b768ce89_Cobit Studi Kasus.jpg",
+      "AssetFile": "D:\\Framework\\RoditriPekanbaru\\RoditriPekanbaru\\wwwroot\\uploads\\mobil\\e73896a6-ea48-4dbe-9c55-1998b768ce89_Cobit Studi Kasus.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "89139"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"31SkxB8f3SHirmECph+jz7J8ZbxSQv61vA8/iZExhi4=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 23 May 2025 18:47:27 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-31SkxB8f3SHirmECph+jz7J8ZbxSQv61vA8/iZExhi4="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/mobil/e73896a6-ea48-4dbe-9c55-1998b768ce89_Cobit Studi Kasus.putcdjv59a.jpg",
+      "AssetFile": "D:\\Framework\\RoditriPekanbaru\\RoditriPekanbaru\\wwwroot\\uploads\\mobil\\e73896a6-ea48-4dbe-9c55-1998b768ce89_Cobit Studi Kasus.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "89139"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"31SkxB8f3SHirmECph+jz7J8ZbxSQv61vA8/iZExhi4=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 23 May 2025 18:47:27 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "putcdjv59a"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/mobil/e73896a6-ea48-4dbe-9c55-1998b768ce89_Cobit Studi Kasus.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-31SkxB8f3SHirmECph+jz7J8ZbxSQv61vA8/iZExhi4="
         }
       ]
     },

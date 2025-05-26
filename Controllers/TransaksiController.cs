@@ -3,14 +3,10 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using RoditriPekanbaru.Data;
 using RoditriPekanbaru.Models;
-using RoditriPekanbaru.ViewModels;
-using System;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace RoditriPekanbaru.Controllers
 {
-    public class TransaksiController : Controller
+    public class TransaksiController : BaseController
     {
         private readonly ApplicationDbContext _context;
 
@@ -22,11 +18,9 @@ namespace RoditriPekanbaru.Controllers
         // GET: Transaksi
         public async Task<IActionResult> Index()
         {
-            // Check if user is logged in
-            if (HttpContext.Session.GetString("Username") == null)
-            {
-                return RedirectToAction("Login", "Auth");
-            }
+            // Check admin access
+            var accessCheck = CheckAdminAccess();
+            if (accessCheck != null) return accessCheck;
 
             var transaksi = await _context.TransaksiPenjualans
                 .Include(t => t.Customer)
@@ -40,10 +34,8 @@ namespace RoditriPekanbaru.Controllers
         // GET: Transaksi/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (HttpContext.Session.GetString("Username") == null)
-            {
-                return RedirectToAction("Login", "Auth");
-            }
+            var accessCheck = CheckAdminAccess();
+            if (accessCheck != null) return accessCheck;
 
             if (id == null)
             {
@@ -66,10 +58,8 @@ namespace RoditriPekanbaru.Controllers
         // GET: Transaksi/Create
         public IActionResult Create()
         {
-            if (HttpContext.Session.GetString("Username") == null)
-            {
-                return RedirectToAction("Login", "Auth");
-            }
+            var accessCheck = CheckAdminAccess();
+            if (accessCheck != null) return accessCheck;
 
             ViewData["CustomerId"] = new SelectList(_context.Customers, "CustomerId", "NamaCustomer");
             ViewData["MobilId"] = new SelectList(_context.Mobils.Where(m => m.IsAvailable), "MobilId", "NamaMobil");
@@ -78,7 +68,7 @@ namespace RoditriPekanbaru.Controllers
             {
                 TanggalTransaksi = DateTime.Now,
                 NoFaktur = GenerateInvoiceNumber(),
-                Admin = HttpContext.Session.GetString("NamaLengkap") ?? "Admin"
+                Admin = GetCurrentUserFullName() ?? "Admin"
             };
 
             return View(model);
@@ -89,10 +79,8 @@ namespace RoditriPekanbaru.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("NoFaktur,TanggalTransaksi,CustomerId,MobilId,HargaJual,Diskon,TotalBayar,UangMuka,SisaPembayaran,StatusPembayaran,CaraPembayaran,Keterangan,Admin,StatusMobil")] TransaksiPenjualan transaksi)
         {
-            if (HttpContext.Session.GetString("Username") == null)
-            {
-                return RedirectToAction("Login", "Auth");
-            }
+            var accessCheck = CheckAdminAccess();
+            if (accessCheck != null) return accessCheck;
 
             if (ModelState.IsValid)
             {
@@ -131,10 +119,8 @@ namespace RoditriPekanbaru.Controllers
         // GET: Transaksi/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (HttpContext.Session.GetString("Username") == null)
-            {
-                return RedirectToAction("Login", "Auth");
-            }
+            var accessCheck = CheckAdminAccess();
+            if (accessCheck != null) return accessCheck;
 
             if (id == null)
             {
@@ -157,10 +143,8 @@ namespace RoditriPekanbaru.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("TransaksiId,NoFaktur,TanggalTransaksi,CustomerId,MobilId,HargaJual,Diskon,TotalBayar,UangMuka,SisaPembayaran,StatusPembayaran,CaraPembayaran,Keterangan,Admin,StatusMobil")] TransaksiPenjualan transaksi)
         {
-            if (HttpContext.Session.GetString("Username") == null)
-            {
-                return RedirectToAction("Login", "Auth");
-            }
+            var accessCheck = CheckAdminAccess();
+            if (accessCheck != null) return accessCheck;
 
             if (id != transaksi.TransaksiId)
             {
@@ -209,10 +193,8 @@ namespace RoditriPekanbaru.Controllers
         // GET: Transaksi/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (HttpContext.Session.GetString("Username") == null)
-            {
-                return RedirectToAction("Login", "Auth");
-            }
+            var accessCheck = CheckAdminAccess();
+            if (accessCheck != null) return accessCheck;
 
             if (id == null)
             {
@@ -236,10 +218,8 @@ namespace RoditriPekanbaru.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (HttpContext.Session.GetString("Username") == null)
-            {
-                return RedirectToAction("Login", "Auth");
-            }
+            var accessCheck = CheckAdminAccess();
+            if (accessCheck != null) return accessCheck;
 
             var transaksi = await _context.TransaksiPenjualans.FindAsync(id);
             if (transaksi != null)

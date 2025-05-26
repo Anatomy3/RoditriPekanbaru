@@ -1,12 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using RoditriPekanbaru.Data;
-using RoditriPekanbaru.Models;
 using RoditriPekanbaru.ViewModels;
 
 namespace RoditriPekanbaru.Controllers
 {
-    public class LaporanController : Controller
+    public class LaporanController : BaseController
     {
         private readonly ApplicationDbContext _context;
 
@@ -18,11 +17,9 @@ namespace RoditriPekanbaru.Controllers
         // GET: Laporan
         public async Task<IActionResult> Index(DateTime? startDate, DateTime? endDate)
         {
-            // Check if user is logged in
-            if (HttpContext.Session.GetString("Username") == null)
-            {
-                return RedirectToAction("Login", "Auth");
-            }
+            // Check admin access
+            var accessCheck = CheckAdminAccess();
+            if (accessCheck != null) return accessCheck;
 
             // Set default date range if not provided
             if (!startDate.HasValue)

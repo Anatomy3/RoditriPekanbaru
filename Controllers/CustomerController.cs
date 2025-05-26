@@ -1,12 +1,11 @@
-﻿// Controllers/CustomerController.cs
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using RoditriPekanbaru.Data;
 using RoditriPekanbaru.Models;
 
 namespace RoditriPekanbaru.Controllers
 {
-    public class CustomerController : Controller
+    public class CustomerController : BaseController
     {
         private readonly ApplicationDbContext _context;
 
@@ -18,11 +17,9 @@ namespace RoditriPekanbaru.Controllers
         // GET: Customer
         public async Task<IActionResult> Index()
         {
-            // Check if user is logged in
-            if (HttpContext.Session.GetString("Username") == null)
-            {
-                return RedirectToAction("Login", "Auth");
-            }
+            // Check admin access
+            var accessCheck = CheckAdminAccess();
+            if (accessCheck != null) return accessCheck;
 
             return View(await _context.Customers.ToListAsync());
         }
@@ -30,10 +27,8 @@ namespace RoditriPekanbaru.Controllers
         // GET: Customer/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (HttpContext.Session.GetString("Username") == null)
-            {
-                return RedirectToAction("Login", "Auth");
-            }
+            var accessCheck = CheckAdminAccess();
+            if (accessCheck != null) return accessCheck;
 
             if (id == null)
             {
@@ -54,10 +49,8 @@ namespace RoditriPekanbaru.Controllers
         // GET: Customer/Create
         public IActionResult Create()
         {
-            if (HttpContext.Session.GetString("Username") == null)
-            {
-                return RedirectToAction("Login", "Auth");
-            }
+            var accessCheck = CheckAdminAccess();
+            if (accessCheck != null) return accessCheck;
 
             return View();
         }
@@ -67,10 +60,8 @@ namespace RoditriPekanbaru.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("NamaCustomer,Alamat,NoTelepon,Email,JenisKelamin,Pekerjaan")] Customer customer)
         {
-            if (HttpContext.Session.GetString("Username") == null)
-            {
-                return RedirectToAction("Login", "Auth");
-            }
+            var accessCheck = CheckAdminAccess();
+            if (accessCheck != null) return accessCheck;
 
             if (ModelState.IsValid)
             {
@@ -85,10 +76,8 @@ namespace RoditriPekanbaru.Controllers
         // GET: Customer/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (HttpContext.Session.GetString("Username") == null)
-            {
-                return RedirectToAction("Login", "Auth");
-            }
+            var accessCheck = CheckAdminAccess();
+            if (accessCheck != null) return accessCheck;
 
             if (id == null)
             {
@@ -108,10 +97,8 @@ namespace RoditriPekanbaru.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("CustomerId,NamaCustomer,Alamat,NoTelepon,Email,JenisKelamin,Pekerjaan,TanggalDaftar")] Customer customer)
         {
-            if (HttpContext.Session.GetString("Username") == null)
-            {
-                return RedirectToAction("Login", "Auth");
-            }
+            var accessCheck = CheckAdminAccess();
+            if (accessCheck != null) return accessCheck;
 
             if (id != customer.CustomerId)
             {
@@ -144,10 +131,8 @@ namespace RoditriPekanbaru.Controllers
         // GET: Customer/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (HttpContext.Session.GetString("Username") == null)
-            {
-                return RedirectToAction("Login", "Auth");
-            }
+            var accessCheck = CheckAdminAccess();
+            if (accessCheck != null) return accessCheck;
 
             if (id == null)
             {
@@ -169,10 +154,8 @@ namespace RoditriPekanbaru.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (HttpContext.Session.GetString("Username") == null)
-            {
-                return RedirectToAction("Login", "Auth");
-            }
+            var accessCheck = CheckAdminAccess();
+            if (accessCheck != null) return accessCheck;
 
             var customer = await _context.Customers.FindAsync(id);
             if (customer != null)

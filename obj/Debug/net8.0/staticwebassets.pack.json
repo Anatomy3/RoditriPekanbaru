@@ -5,12 +5,20 @@
       "PackagePath": "staticwebassets\\RoditriPekanbaru.9yraqhr789.bundle.scp.css"
     },
     {
+      "Id": "D:\\Framework\\RoditriPekanbaru\\RoditriPekanbaru\\wwwroot\\css\\landing.css",
+      "PackagePath": "staticwebassets\\css\\landing.css"
+    },
+    {
       "Id": "D:\\Framework\\RoditriPekanbaru\\RoditriPekanbaru\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },
     {
       "Id": "D:\\Framework\\RoditriPekanbaru\\RoditriPekanbaru\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "D:\\Framework\\RoditriPekanbaru\\RoditriPekanbaru\\wwwroot\\js\\landing.js",
+      "PackagePath": "staticwebassets\\js\\landing.js"
     },
     {
       "Id": "D:\\Framework\\RoditriPekanbaru\\RoditriPekanbaru\\wwwroot\\js\\site.js",
@@ -249,8 +257,16 @@
       "PackagePath": "staticwebassets\\uploads\\mobil\\3b3dfc54-b50e-464d-9fa6-a0676d9aec6c_Mind Map.png"
     },
     {
+      "Id": "D:\\Framework\\RoditriPekanbaru\\RoditriPekanbaru\\wwwroot\\uploads\\mobil\\4c892f73-30c4-4d19-8d3c-0db533645570_images (1).jpg",
+      "PackagePath": "staticwebassets\\uploads\\mobil\\4c892f73-30c4-4d19-8d3c-0db533645570_images (1).jpg"
+    },
+    {
       "Id": "D:\\Framework\\RoditriPekanbaru\\RoditriPekanbaru\\wwwroot\\uploads\\mobil\\9e823ebf-0ee8-473d-9d8a-da5722201f17_screencapture-127-0-0-1-8000-admin-categories-create-2025-05-19-19_54_34.png",
       "PackagePath": "staticwebassets\\uploads\\mobil\\9e823ebf-0ee8-473d-9d8a-da5722201f17_screencapture-127-0-0-1-8000-admin-categories-create-2025-05-19-19_54_34.png"
+    },
+    {
+      "Id": "D:\\Framework\\RoditriPekanbaru\\RoditriPekanbaru\\wwwroot\\uploads\\mobil\\e73896a6-ea48-4dbe-9c55-1998b768ce89_Cobit Studi Kasus.jpg",
+      "PackagePath": "staticwebassets\\uploads\\mobil\\e73896a6-ea48-4dbe-9c55-1998b768ce89_Cobit Studi Kasus.jpg"
     },
     {
       "Id": "D:\\Framework\\RoditriPekanbaru\\RoditriPekanbaru\\wwwroot\\uploads\\mobil\\e856d07a-7aad-44da-9633-4670ea218b6b_Mind Map.png",

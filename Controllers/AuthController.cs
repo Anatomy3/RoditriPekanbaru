@@ -1,5 +1,4 @@
-﻿// Controllers/AuthController.cs
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using RoditriPekanbaru.Data;
 using RoditriPekanbaru.Models;
@@ -24,9 +23,12 @@ namespace RoditriPekanbaru.Controllers
             // Redirect if already logged in
             if (HttpContext.Session.GetString("Username") != null)
             {
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "Landing");
             }
-            return View();
+
+            // Always return a valid model
+            var model = new LoginViewModel();
+            return View(model);
         }
 
         // POST: /Auth/Login
@@ -38,7 +40,7 @@ namespace RoditriPekanbaru.Controllers
             {
                 // Simple login for presentation (no password hashing)
                 var admin = await _context.Admins
-                    .FirstOrDefaultAsync(a => a.Username == model.Username && a.Password == model.Password);
+                    .FirstOrDefaultAsync(a => a.Username == model.Username && a.Password == model.Password && a.IsActive);
 
                 if (admin != null)
                 {
@@ -52,10 +54,55 @@ namespace RoditriPekanbaru.Controllers
                     admin.LastLogin = DateTime.Now;
                     await _context.SaveChangesAsync();
 
-                    return RedirectToAction("Index", "Home");
+                    // Redirect to landing page instead of admin dashboard
+                    return RedirectToAction("Index", "Landing");
                 }
 
                 ModelState.AddModelError("", "Username atau password salah");
+            }
+
+            return View(model);
+        }
+
+        // GET: /Auth/Register
+        public IActionResult Register()
+        {
+            // Always return a valid model
+            var model = new RegisterViewModel();
+            return View(model);
+        }
+
+        // POST: /Auth/Register
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Register(RegisterViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                // Check if username already exists
+                var existingUser = await _context.Admins
+                    .FirstOrDefaultAsync(a => a.Username == model.Username);
+
+                if (existingUser != null)
+                {
+                    ModelState.AddModelError("Username", "Username sudah digunakan");
+                    return View(model);
+                }
+
+                var newUser = new Admin
+                {
+                    Username = model.Username,
+                    Password = model.Password, // In production, hash this
+                    NamaLengkap = model.NamaLengkap,
+                    Level = "User", // Default level for registration
+                    IsActive = true,
+                    CreatedDate = DateTime.Now
+                };
+
+                _context.Add(newUser);
+                await _context.SaveChangesAsync();
+
+                return RedirectToAction("Login");
             }
 
             return View(model);
@@ -65,13 +112,19 @@ namespace RoditriPekanbaru.Controllers
         public IActionResult Logout()
         {
             HttpContext.Session.Clear();
-            return RedirectToAction("Login");
+            return RedirectToAction("Index", "Landing");
         }
 
         // Helper method to check if user is logged in
         private bool IsAuthenticated()
         {
             return HttpContext.Session.GetString("Username") != null;
+        }
+
+        // Helper method to check if user is admin
+        private bool IsAdmin()
+        {
+            return HttpContext.Session.GetString("Level") == "Admin";
         }
     }
 }
