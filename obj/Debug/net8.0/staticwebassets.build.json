@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "axNR/rI87ZkxbhVHJEDyen6+Dsirq2Vxl2TRmy6Y1/Q=",
+  "Hash": "ulhZyh9gOTvX9r2jaeN8w9fwHce42WD5GtCFtMkVoZg=",
   "Source": "RoditriPekanbaru",
   "BasePath": "_content/RoditriPekanbaru",
   "Mode": "Default",
@@ -1403,6 +1403,27 @@
       "OriginalItemSpec": "wwwroot\\uploads\\mobil\\02940923-756f-4042-827d-f0a96af30397_toyota-avanza-1.5-veloz-gr-sport-at-2021-silver-59Q1MLY3PQ-carro-013.webp"
     },
     {
+      "Identity": "D:\\Framework\\RoditriPekanbaru\\RoditriPekanbaru\\wwwroot\\uploads\\mobil\\04eaad4f-3b46-4139-8760-da35de45fa55_toyota-alphard-2.webp",
+      "SourceId": "RoditriPekanbaru",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Framework\\RoditriPekanbaru\\RoditriPekanbaru\\wwwroot\\",
+      "BasePath": "_content/RoditriPekanbaru",
+      "RelativePath": "uploads/mobil/04eaad4f-3b46-4139-8760-da35de45fa55_toyota-alphard-2#[.{fingerprint}]?.webp",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "px9pn9llze",
+      "Integrity": "jckRGg+HNxpCakfodTBk63ZS8OWMNNJi+wRIT+YGTsE=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\mobil\\04eaad4f-3b46-4139-8760-da35de45fa55_toyota-alphard-2.webp"
+    },
+    {
       "Identity": "D:\\Framework\\RoditriPekanbaru\\RoditriPekanbaru\\wwwroot\\uploads\\mobil\\3737aa78-5c1c-489b-94b8-b458cca5a172_honda-city-e-at-2020-hitam-LP63M136P7-carro-008.webp",
       "SourceId": "RoditriPekanbaru",
       "SourceType": "Discovered",
@@ -1466,6 +1487,27 @@
       "OriginalItemSpec": "wwwroot\\uploads\\mobil\\4c892f73-30c4-4d19-8d3c-0db533645570_images (1).jpg"
     },
     {
+      "Identity": "D:\\Framework\\RoditriPekanbaru\\RoditriPekanbaru\\wwwroot\\uploads\\mobil\\54b0e9d8-6833-467b-a208-46339381dfd0_toyota-alphard-2.webp",
+      "SourceId": "RoditriPekanbaru",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Framework\\RoditriPekanbaru\\RoditriPekanbaru\\wwwroot\\",
+      "BasePath": "_content/RoditriPekanbaru",
+      "RelativePath": "uploads/mobil/54b0e9d8-6833-467b-a208-46339381dfd0_toyota-alphard-2#[.{fingerprint}]?.webp",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "px9pn9llze",
+      "Integrity": "jckRGg+HNxpCakfodTBk63ZS8OWMNNJi+wRIT+YGTsE=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\mobil\\54b0e9d8-6833-467b-a208-46339381dfd0_toyota-alphard-2.webp"
+    },
+    {
       "Identity": "D:\\Framework\\RoditriPekanbaru\\RoditriPekanbaru\\wwwroot\\uploads\\mobil\\73d4cf61-3200-46c8-af34-eb671f9e4796_images (1).jpg",
       "SourceId": "RoditriPekanbaru",
       "SourceType": "Discovered",
@@ -1508,6 +1550,27 @@
       "OriginalItemSpec": "wwwroot\\uploads\\mobil\\74296a80-b1ef-416e-a231-aff47adc62ba_toyota-alphard-2.webp"
     },
     {
+      "Identity": "D:\\Framework\\RoditriPekanbaru\\RoditriPekanbaru\\wwwroot\\uploads\\mobil\\7ac2156c-f7b7-4bcc-a892-513e73903d48_honda-city-e-at-2020-hitam-LP63M136P7-carro-008.webp",
+      "SourceId": "RoditriPekanbaru",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Framework\\RoditriPekanbaru\\RoditriPekanbaru\\wwwroot\\",
+      "BasePath": "_content/RoditriPekanbaru",
+      "RelativePath": "uploads/mobil/7ac2156c-f7b7-4bcc-a892-513e73903d48_honda-city-e-at-2020-hitam-LP63M136P7-carro-008#[.{fingerprint}]?.webp",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "eqsga6sua3",
+      "Integrity": "iqjMJOgUlBbhl44TxHeVx/xfyzmigNwyVCz6iO9Zapo=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\mobil\\7ac2156c-f7b7-4bcc-a892-513e73903d48_honda-city-e-at-2020-hitam-LP63M136P7-carro-008.webp"
+    },
+    {
       "Identity": "D:\\Framework\\RoditriPekanbaru\\RoditriPekanbaru\\wwwroot\\uploads\\mobil\\7ae9024f-3201-4a9b-8afb-b79a77269cfc_images (1).jpg",
       "SourceId": "RoditriPekanbaru",
       "SourceType": "Discovered",
@@ -1527,6 +1590,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\uploads\\mobil\\7ae9024f-3201-4a9b-8afb-b79a77269cfc_images (1).jpg"
+    },
+    {
+      "Identity": "D:\\Framework\\RoditriPekanbaru\\RoditriPekanbaru\\wwwroot\\uploads\\mobil\\7c48f4c8-8043-488c-a149-388b1c333e85_images (1).jpg",
+      "SourceId": "RoditriPekanbaru",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Framework\\RoditriPekanbaru\\RoditriPekanbaru\\wwwroot\\",
+      "BasePath": "_content/RoditriPekanbaru",
+      "RelativePath": "uploads/mobil/7c48f4c8-8043-488c-a149-388b1c333e85_images (1)#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "jx40eaz6aj",
+      "Integrity": "9/6r1xn1ViURFqLKESQ9V7nlytO0/+dyQH/Vy5Amdes=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\mobil\\7c48f4c8-8043-488c-a149-388b1c333e85_images (1).jpg"
     },
     {
       "Identity": "D:\\Framework\\RoditriPekanbaru\\RoditriPekanbaru\\wwwroot\\uploads\\mobil\\9e823ebf-0ee8-473d-9d8a-da5722201f17_screencapture-127-0-0-1-8000-admin-categories-create-2025-05-19-19_54_34.png",
@@ -1613,6 +1697,69 @@
       "OriginalItemSpec": "wwwroot\\uploads\\mobil\\c8f4e8ad-6596-4931-ac1c-9755e7c557f4_toyota-avanza-1.5-veloz-gr-sport-at-2021-silver-59Q1MLY3PQ-carro-013.webp"
     },
     {
+      "Identity": "D:\\Framework\\RoditriPekanbaru\\RoditriPekanbaru\\wwwroot\\uploads\\mobil\\dc837b7f-7ddf-43fa-adcc-8595ebb1702e_toyota-avanza-1.5-veloz-gr-sport-at-2021-silver-59Q1MLY3PQ-carro-013.webp",
+      "SourceId": "RoditriPekanbaru",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Framework\\RoditriPekanbaru\\RoditriPekanbaru\\wwwroot\\",
+      "BasePath": "_content/RoditriPekanbaru",
+      "RelativePath": "uploads/mobil/dc837b7f-7ddf-43fa-adcc-8595ebb1702e_toyota-avanza-1.5-veloz-gr-sport-at-2021-silver-59Q1MLY3PQ-carro-013#[.{fingerprint}]?.webp",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "lkniswji7p",
+      "Integrity": "K+yWl231hKmn3/9KcKu1eftsv/Xg1Ozu8VOJ6ERuZSo=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\mobil\\dc837b7f-7ddf-43fa-adcc-8595ebb1702e_toyota-avanza-1.5-veloz-gr-sport-at-2021-silver-59Q1MLY3PQ-carro-013.webp"
+    },
+    {
+      "Identity": "D:\\Framework\\RoditriPekanbaru\\RoditriPekanbaru\\wwwroot\\uploads\\mobil\\e5e6a740-b7b7-4d90-b87a-cb712cf819cd_images (1).jpg",
+      "SourceId": "RoditriPekanbaru",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Framework\\RoditriPekanbaru\\RoditriPekanbaru\\wwwroot\\",
+      "BasePath": "_content/RoditriPekanbaru",
+      "RelativePath": "uploads/mobil/e5e6a740-b7b7-4d90-b87a-cb712cf819cd_images (1)#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "jx40eaz6aj",
+      "Integrity": "9/6r1xn1ViURFqLKESQ9V7nlytO0/+dyQH/Vy5Amdes=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\mobil\\e5e6a740-b7b7-4d90-b87a-cb712cf819cd_images (1).jpg"
+    },
+    {
+      "Identity": "D:\\Framework\\RoditriPekanbaru\\RoditriPekanbaru\\wwwroot\\uploads\\mobil\\e73896a6-ea48-4dbe-9c55-1998b768ce89_Cobit Studi Kasus.jpg",
+      "SourceId": "RoditriPekanbaru",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Framework\\RoditriPekanbaru\\RoditriPekanbaru\\wwwroot\\",
+      "BasePath": "_content/RoditriPekanbaru",
+      "RelativePath": "uploads/mobil/e73896a6-ea48-4dbe-9c55-1998b768ce89_Cobit Studi Kasus#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "putcdjv59a",
+      "Integrity": "31SkxB8f3SHirmECph+jz7J8ZbxSQv61vA8/iZExhi4=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\mobil\\e73896a6-ea48-4dbe-9c55-1998b768ce89_Cobit Studi Kasus.jpg"
+    },
+    {
       "Identity": "D:\\Framework\\RoditriPekanbaru\\RoditriPekanbaru\\wwwroot\\uploads\\mobil\\e856d07a-7aad-44da-9633-4670ea218b6b_Mind Map.png",
       "SourceId": "RoditriPekanbaru",
       "SourceType": "Discovered",
@@ -1653,6 +1800,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\uploads\\mobil\\ebe18add-f9b2-47f4-b31a-e4fd3a42a094_Mind Map.png"
+    },
+    {
+      "Identity": "D:\\Framework\\RoditriPekanbaru\\RoditriPekanbaru\\wwwroot\\uploads\\mobil\\f881d0dd-d53a-4ecb-9f89-ba7c32e7c241_honda-city-e-at-2020-hitam-LP63M136P7-carro-008.webp",
+      "SourceId": "RoditriPekanbaru",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Framework\\RoditriPekanbaru\\RoditriPekanbaru\\wwwroot\\",
+      "BasePath": "_content/RoditriPekanbaru",
+      "RelativePath": "uploads/mobil/f881d0dd-d53a-4ecb-9f89-ba7c32e7c241_honda-city-e-at-2020-hitam-LP63M136P7-carro-008#[.{fingerprint}]?.webp",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "eqsga6sua3",
+      "Integrity": "iqjMJOgUlBbhl44TxHeVx/xfyzmigNwyVCz6iO9Zapo=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\mobil\\f881d0dd-d53a-4ecb-9f89-ba7c32e7c241_honda-city-e-at-2020-hitam-LP63M136P7-carro-008.webp"
     }
   ],
   "Endpoints": [
@@ -7069,6 +7237,88 @@
       ]
     },
     {
+      "Route": "uploads/mobil/04eaad4f-3b46-4139-8760-da35de45fa55_toyota-alphard-2.px9pn9llze.webp",
+      "AssetFile": "D:\\Framework\\RoditriPekanbaru\\RoditriPekanbaru\\wwwroot\\uploads\\mobil\\04eaad4f-3b46-4139-8760-da35de45fa55_toyota-alphard-2.webp",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "82974"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/webp"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"jckRGg+HNxpCakfodTBk63ZS8OWMNNJi+wRIT+YGTsE=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 28 May 2025 02:53:19 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "px9pn9llze"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/mobil/04eaad4f-3b46-4139-8760-da35de45fa55_toyota-alphard-2.webp"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-jckRGg+HNxpCakfodTBk63ZS8OWMNNJi+wRIT+YGTsE="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/mobil/04eaad4f-3b46-4139-8760-da35de45fa55_toyota-alphard-2.webp",
+      "AssetFile": "D:\\Framework\\RoditriPekanbaru\\RoditriPekanbaru\\wwwroot\\uploads\\mobil\\04eaad4f-3b46-4139-8760-da35de45fa55_toyota-alphard-2.webp",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "82974"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/webp"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"jckRGg+HNxpCakfodTBk63ZS8OWMNNJi+wRIT+YGTsE=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 28 May 2025 02:53:19 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-jckRGg+HNxpCakfodTBk63ZS8OWMNNJi+wRIT+YGTsE="
+        }
+      ]
+    },
+    {
       "Route": "uploads/mobil/3737aa78-5c1c-489b-94b8-b458cca5a172_honda-city-e-at-2020-hitam-LP63M136P7-carro-008.eqsga6sua3.webp",
       "AssetFile": "D:\\Framework\\RoditriPekanbaru\\RoditriPekanbaru\\wwwroot\\uploads\\mobil\\3737aa78-5c1c-489b-94b8-b458cca5a172_honda-city-e-at-2020-hitam-LP63M136P7-carro-008.webp",
       "Selectors": [],
@@ -7315,6 +7565,88 @@
       ]
     },
     {
+      "Route": "uploads/mobil/54b0e9d8-6833-467b-a208-46339381dfd0_toyota-alphard-2.px9pn9llze.webp",
+      "AssetFile": "D:\\Framework\\RoditriPekanbaru\\RoditriPekanbaru\\wwwroot\\uploads\\mobil\\54b0e9d8-6833-467b-a208-46339381dfd0_toyota-alphard-2.webp",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "82974"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/webp"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"jckRGg+HNxpCakfodTBk63ZS8OWMNNJi+wRIT+YGTsE=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 28 May 2025 02:52:56 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "px9pn9llze"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/mobil/54b0e9d8-6833-467b-a208-46339381dfd0_toyota-alphard-2.webp"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-jckRGg+HNxpCakfodTBk63ZS8OWMNNJi+wRIT+YGTsE="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/mobil/54b0e9d8-6833-467b-a208-46339381dfd0_toyota-alphard-2.webp",
+      "AssetFile": "D:\\Framework\\RoditriPekanbaru\\RoditriPekanbaru\\wwwroot\\uploads\\mobil\\54b0e9d8-6833-467b-a208-46339381dfd0_toyota-alphard-2.webp",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "82974"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/webp"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"jckRGg+HNxpCakfodTBk63ZS8OWMNNJi+wRIT+YGTsE=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 28 May 2025 02:52:56 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-jckRGg+HNxpCakfodTBk63ZS8OWMNNJi+wRIT+YGTsE="
+        }
+      ]
+    },
+    {
       "Route": "uploads/mobil/73d4cf61-3200-46c8-af34-eb671f9e4796_images (1).jpg",
       "AssetFile": "D:\\Framework\\RoditriPekanbaru\\RoditriPekanbaru\\wwwroot\\uploads\\mobil\\73d4cf61-3200-46c8-af34-eb671f9e4796_images (1).jpg",
       "Selectors": [],
@@ -7479,6 +7811,88 @@
       ]
     },
     {
+      "Route": "uploads/mobil/7ac2156c-f7b7-4bcc-a892-513e73903d48_honda-city-e-at-2020-hitam-LP63M136P7-carro-008.eqsga6sua3.webp",
+      "AssetFile": "D:\\Framework\\RoditriPekanbaru\\RoditriPekanbaru\\wwwroot\\uploads\\mobil\\7ac2156c-f7b7-4bcc-a892-513e73903d48_honda-city-e-at-2020-hitam-LP63M136P7-carro-008.webp",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "83210"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/webp"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"iqjMJOgUlBbhl44TxHeVx/xfyzmigNwyVCz6iO9Zapo=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 28 May 2025 02:52:48 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "eqsga6sua3"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/mobil/7ac2156c-f7b7-4bcc-a892-513e73903d48_honda-city-e-at-2020-hitam-LP63M136P7-carro-008.webp"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-iqjMJOgUlBbhl44TxHeVx/xfyzmigNwyVCz6iO9Zapo="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/mobil/7ac2156c-f7b7-4bcc-a892-513e73903d48_honda-city-e-at-2020-hitam-LP63M136P7-carro-008.webp",
+      "AssetFile": "D:\\Framework\\RoditriPekanbaru\\RoditriPekanbaru\\wwwroot\\uploads\\mobil\\7ac2156c-f7b7-4bcc-a892-513e73903d48_honda-city-e-at-2020-hitam-LP63M136P7-carro-008.webp",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "83210"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/webp"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"iqjMJOgUlBbhl44TxHeVx/xfyzmigNwyVCz6iO9Zapo=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 28 May 2025 02:52:48 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-iqjMJOgUlBbhl44TxHeVx/xfyzmigNwyVCz6iO9Zapo="
+        }
+      ]
+    },
+    {
       "Route": "uploads/mobil/7ae9024f-3201-4a9b-8afb-b79a77269cfc_images (1).jpg",
       "AssetFile": "D:\\Framework\\RoditriPekanbaru\\RoditriPekanbaru\\wwwroot\\uploads\\mobil\\7ae9024f-3201-4a9b-8afb-b79a77269cfc_images (1).jpg",
       "Selectors": [],
@@ -7553,6 +7967,88 @@
         {
           "Name": "label",
           "Value": "uploads/mobil/7ae9024f-3201-4a9b-8afb-b79a77269cfc_images (1).jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-9/6r1xn1ViURFqLKESQ9V7nlytO0/+dyQH/Vy5Amdes="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/mobil/7c48f4c8-8043-488c-a149-388b1c333e85_images (1).jpg",
+      "AssetFile": "D:\\Framework\\RoditriPekanbaru\\RoditriPekanbaru\\wwwroot\\uploads\\mobil\\7c48f4c8-8043-488c-a149-388b1c333e85_images (1).jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "9831"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"9/6r1xn1ViURFqLKESQ9V7nlytO0/+dyQH/Vy5Amdes=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 28 May 2025 02:53:01 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-9/6r1xn1ViURFqLKESQ9V7nlytO0/+dyQH/Vy5Amdes="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/mobil/7c48f4c8-8043-488c-a149-388b1c333e85_images (1).jx40eaz6aj.jpg",
+      "AssetFile": "D:\\Framework\\RoditriPekanbaru\\RoditriPekanbaru\\wwwroot\\uploads\\mobil\\7c48f4c8-8043-488c-a149-388b1c333e85_images (1).jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "9831"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"9/6r1xn1ViURFqLKESQ9V7nlytO0/+dyQH/Vy5Amdes=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 28 May 2025 02:53:01 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "jx40eaz6aj"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/mobil/7c48f4c8-8043-488c-a149-388b1c333e85_images (1).jpg"
         },
         {
           "Name": "integrity",
@@ -7889,6 +8385,252 @@
       ]
     },
     {
+      "Route": "uploads/mobil/dc837b7f-7ddf-43fa-adcc-8595ebb1702e_toyota-avanza-1.5-veloz-gr-sport-at-2021-silver-59Q1MLY3PQ-carro-013.lkniswji7p.webp",
+      "AssetFile": "D:\\Framework\\RoditriPekanbaru\\RoditriPekanbaru\\wwwroot\\uploads\\mobil\\dc837b7f-7ddf-43fa-adcc-8595ebb1702e_toyota-avanza-1.5-veloz-gr-sport-at-2021-silver-59Q1MLY3PQ-carro-013.webp",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "18032"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/webp"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"K+yWl231hKmn3/9KcKu1eftsv/Xg1Ozu8VOJ6ERuZSo=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 28 May 2025 02:52:40 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "lkniswji7p"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/mobil/dc837b7f-7ddf-43fa-adcc-8595ebb1702e_toyota-avanza-1.5-veloz-gr-sport-at-2021-silver-59Q1MLY3PQ-carro-013.webp"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-K+yWl231hKmn3/9KcKu1eftsv/Xg1Ozu8VOJ6ERuZSo="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/mobil/dc837b7f-7ddf-43fa-adcc-8595ebb1702e_toyota-avanza-1.5-veloz-gr-sport-at-2021-silver-59Q1MLY3PQ-carro-013.webp",
+      "AssetFile": "D:\\Framework\\RoditriPekanbaru\\RoditriPekanbaru\\wwwroot\\uploads\\mobil\\dc837b7f-7ddf-43fa-adcc-8595ebb1702e_toyota-avanza-1.5-veloz-gr-sport-at-2021-silver-59Q1MLY3PQ-carro-013.webp",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "18032"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/webp"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"K+yWl231hKmn3/9KcKu1eftsv/Xg1Ozu8VOJ6ERuZSo=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 28 May 2025 02:52:40 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-K+yWl231hKmn3/9KcKu1eftsv/Xg1Ozu8VOJ6ERuZSo="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/mobil/e5e6a740-b7b7-4d90-b87a-cb712cf819cd_images (1).jpg",
+      "AssetFile": "D:\\Framework\\RoditriPekanbaru\\RoditriPekanbaru\\wwwroot\\uploads\\mobil\\e5e6a740-b7b7-4d90-b87a-cb712cf819cd_images (1).jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "9831"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"9/6r1xn1ViURFqLKESQ9V7nlytO0/+dyQH/Vy5Amdes=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 28 May 2025 02:53:13 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-9/6r1xn1ViURFqLKESQ9V7nlytO0/+dyQH/Vy5Amdes="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/mobil/e5e6a740-b7b7-4d90-b87a-cb712cf819cd_images (1).jx40eaz6aj.jpg",
+      "AssetFile": "D:\\Framework\\RoditriPekanbaru\\RoditriPekanbaru\\wwwroot\\uploads\\mobil\\e5e6a740-b7b7-4d90-b87a-cb712cf819cd_images (1).jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "9831"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"9/6r1xn1ViURFqLKESQ9V7nlytO0/+dyQH/Vy5Amdes=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 28 May 2025 02:53:13 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "jx40eaz6aj"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/mobil/e5e6a740-b7b7-4d90-b87a-cb712cf819cd_images (1).jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-9/6r1xn1ViURFqLKESQ9V7nlytO0/+dyQH/Vy5Amdes="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/mobil/e73896a6-ea48-4dbe-9c55-1998b768ce89_Cobit Studi Kasus.jpg",
+      "AssetFile": "D:\\Framework\\RoditriPekanbaru\\RoditriPekanbaru\\wwwroot\\uploads\\mobil\\e73896a6-ea48-4dbe-9c55-1998b768ce89_Cobit Studi Kasus.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "89139"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"31SkxB8f3SHirmECph+jz7J8ZbxSQv61vA8/iZExhi4=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 23 May 2025 18:47:27 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-31SkxB8f3SHirmECph+jz7J8ZbxSQv61vA8/iZExhi4="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/mobil/e73896a6-ea48-4dbe-9c55-1998b768ce89_Cobit Studi Kasus.putcdjv59a.jpg",
+      "AssetFile": "D:\\Framework\\RoditriPekanbaru\\RoditriPekanbaru\\wwwroot\\uploads\\mobil\\e73896a6-ea48-4dbe-9c55-1998b768ce89_Cobit Studi Kasus.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "89139"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"31SkxB8f3SHirmECph+jz7J8ZbxSQv61vA8/iZExhi4=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 23 May 2025 18:47:27 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "putcdjv59a"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/mobil/e73896a6-ea48-4dbe-9c55-1998b768ce89_Cobit Studi Kasus.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-31SkxB8f3SHirmECph+jz7J8ZbxSQv61vA8/iZExhi4="
+        }
+      ]
+    },
+    {
       "Route": "uploads/mobil/e856d07a-7aad-44da-9633-4670ea218b6b_Mind Map.3zqyl95x7f.png",
       "AssetFile": "D:\\Framework\\RoditriPekanbaru\\RoditriPekanbaru\\wwwroot\\uploads\\mobil\\e856d07a-7aad-44da-9633-4670ea218b6b_Mind Map.png",
       "Selectors": [],
@@ -8049,6 +8791,88 @@
         {
           "Name": "integrity",
           "Value": "sha256-D0b3HRpTC9c5i9ZdRMdg1IPbPllF3jVUQgBqYoURfis="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/mobil/f881d0dd-d53a-4ecb-9f89-ba7c32e7c241_honda-city-e-at-2020-hitam-LP63M136P7-carro-008.eqsga6sua3.webp",
+      "AssetFile": "D:\\Framework\\RoditriPekanbaru\\RoditriPekanbaru\\wwwroot\\uploads\\mobil\\f881d0dd-d53a-4ecb-9f89-ba7c32e7c241_honda-city-e-at-2020-hitam-LP63M136P7-carro-008.webp",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "83210"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/webp"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"iqjMJOgUlBbhl44TxHeVx/xfyzmigNwyVCz6iO9Zapo=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 28 May 2025 02:53:07 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "eqsga6sua3"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/mobil/f881d0dd-d53a-4ecb-9f89-ba7c32e7c241_honda-city-e-at-2020-hitam-LP63M136P7-carro-008.webp"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-iqjMJOgUlBbhl44TxHeVx/xfyzmigNwyVCz6iO9Zapo="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/mobil/f881d0dd-d53a-4ecb-9f89-ba7c32e7c241_honda-city-e-at-2020-hitam-LP63M136P7-carro-008.webp",
+      "AssetFile": "D:\\Framework\\RoditriPekanbaru\\RoditriPekanbaru\\wwwroot\\uploads\\mobil\\f881d0dd-d53a-4ecb-9f89-ba7c32e7c241_honda-city-e-at-2020-hitam-LP63M136P7-carro-008.webp",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "83210"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/webp"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"iqjMJOgUlBbhl44TxHeVx/xfyzmigNwyVCz6iO9Zapo=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 28 May 2025 02:53:07 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-iqjMJOgUlBbhl44TxHeVx/xfyzmigNwyVCz6iO9Zapo="
         }
       ]
     }

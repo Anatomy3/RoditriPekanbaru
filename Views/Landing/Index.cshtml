@@ -26,7 +26,7 @@
     }
 
     #bannerCarousel {
-        margin: 20px auto 60px auto;
+        margin: 20px auto 40px auto;
     }
 
     /* Banner container spacing */
@@ -68,74 +68,77 @@
             margin-bottom: 0;
         }
 
-    /* Search Container */
+    /* Search Container - Fixed spacing */
     .search-container {
         background: white;
         border-radius: 15px;
         padding: 30px;
         box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        margin-top: -50px;
+        margin-top: 30px;
         position: relative;
         z-index: 10;
     }
 
-    /* Filter Pills */
+    /* Filter Pills - Carro Style */
     .filter-pills {
         display: flex;
         flex-wrap: wrap;
-        gap: 10px;
+        gap: 8px;
         margin-bottom: 20px;
+        justify-content: center;
     }
 
     .filter-pill {
-        background: #f8f9fa;
-        border: 1px solid #e9ecef;
-        border-radius: 25px;
-        padding: 8px 16px;
+        background: #f7f7f7;
+        border: 1px solid #e1e1e1;
+        border-radius: 30px;
+        padding: 12px 20px;
         font-size: 14px;
-        color: #6c757d;
+        color: #333;
         text-decoration: none;
-        transition: all 0.3s ease;
+        transition: all 0.2s ease;
         cursor: pointer;
         display: inline-block;
+        font-weight: 500;
+        white-space: nowrap;
     }
 
         .filter-pill:hover {
-            background: #007bff;
+            background: #ff5722;
             color: white;
-            border-color: #007bff;
+            border-color: #ff5722;
             text-decoration: none;
+            transform: translateY(-1px);
         }
 
         .filter-pill.active {
-            background: #007bff;
+            background: #ff5722;
             color: white;
-            border-color: #007bff;
+            border-color: #ff5722;
         }
 
-    /* Advanced Filters */
+    /* Location Badge - Carro Style */
+    .location-badge {
+        background: #ff5722;
+        color: white;
+        padding: 8px 15px;
+        border-radius: 25px;
+        font-size: 14px;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 20px;
+        font-weight: 500;
+    }
+
+    /* Advanced Filters - Hidden by default, Carro style */
     .advanced-filters {
-        background: #f8f9fa;
-        padding: 15px;
-        border-radius: 8px;
-        margin-top: 15px;
+        display: none;
     }
 
     /* Results Header */
     .results-header {
-        display: none;
-    }
-
-    .location-badge {
-        background: #e74c3c;
-        color: white;
-        padding: 5px 12px;
-        border-radius: 20px;
-        font-size: 14px;
-        display: inline-flex;
-        align-items: center;
-        gap: 5px;
-        margin-bottom: 15px;
+        margin-bottom: 25px;
     }
 
     .results-info {
@@ -151,16 +154,33 @@
             font-weight: 600;
         }
 
+    /* Sort Dropdown - Carro Style */
+    .sort-dropdown {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+        .sort-dropdown select {
+            background: white;
+            border: 1px solid #e1e1e1;
+            border-radius: 8px;
+            padding: 8px 12px;
+            font-size: 14px;
+            color: #333;
+            min-width: 200px;
+        }
+
     /* Car Grid */
     .car-grid {
-        margin-top: 30px;
+        margin-top: 20px;
     }
 
     .car-card {
         background: white;
         border-radius: 12px;
         overflow: hidden;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        box-shadow: 0 2px 12px rgba(0,0,0,0.08);
         transition: transform 0.3s ease, box-shadow 0.3s ease;
         margin-bottom: 20px;
         position: relative;
@@ -170,7 +190,7 @@
     }
 
         .car-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-4px);
             box-shadow: 0 8px 25px rgba(0,0,0,0.15);
         }
 
@@ -200,14 +220,14 @@
         text-align: center;
     }
 
-    /* Badges */
+    /* Badges - Carro Style */
     .flash-sale-badge {
         position: absolute;
-        top: 10px;
-        left: 10px;
-        background: linear-gradient(45deg, #ff6b35, #ff8e53);
+        top: 12px;
+        left: 12px;
+        background: #ff5722;
         color: white;
-        padding: 5px 10px;
+        padding: 6px 12px;
         border-radius: 6px;
         font-size: 12px;
         font-weight: bold;
@@ -217,30 +237,30 @@
 
     .certified-badge {
         position: absolute;
-        bottom: 10px;
-        right: 10px;
-        background: #28a745;
+        bottom: 12px;
+        right: 12px;
+        background: rgba(0,0,0,0.7);
         color: white;
         padding: 4px 8px;
         border-radius: 4px;
         font-size: 11px;
-        font-weight: bold;
+        font-weight: 500;
     }
 
-    /* Carousel Dots */
+    /* Carousel Dots - Carro Style */
     .carousel-dots {
         position: absolute;
-        bottom: 10px;
+        bottom: 12px;
         left: 50%;
         transform: translateX(-50%);
         display: flex;
-        gap: 5px;
+        gap: 4px;
         z-index: 5;
     }
 
     .carousel-dot {
-        width: 8px;
-        height: 8px;
+        width: 6px;
+        height: 6px;
         border-radius: 50%;
         background: rgba(255,255,255,0.5);
         cursor: pointer;
@@ -253,94 +273,96 @@
 
     /* Car Info */
     .car-info {
-        padding: 20px;
+        padding: 16px;
         flex-grow: 1;
         display: flex;
         flex-direction: column;
     }
 
-    /* Price Section */
+    /* Price Section - Carro Style */
     .price-section {
-        margin-bottom: 15px;
+        margin-bottom: 12px;
     }
 
     .car-price {
-        color: #dc3545;
-        font-size: 20px;
-        font-weight: bold;
-        margin-bottom: 5px;
+        color: #333;
+        font-size: 18px;
+        font-weight: 700;
+        margin-bottom: 4px;
         display: block;
     }
 
     .price-details {
         display: flex;
         align-items: center;
-        gap: 10px;
+        gap: 8px;
         flex-wrap: wrap;
     }
 
     .car-original-price {
-        color: #6c757d;
-        font-size: 14px;
+        color: #999;
+        font-size: 13px;
         text-decoration: line-through;
     }
 
     .car-discount {
-        background: #ffeaa7;
-        color: #e17055;
+        background: #e8f5e8;
+        color: #2e7d2e;
         padding: 2px 6px;
         border-radius: 4px;
-        font-size: 12px;
-        font-weight: bold;
+        font-size: 11px;
+        font-weight: 600;
     }
 
-    /* Installment */
+    /* Installment - Carro Style */
     .car-installment {
-        color: #6c757d;
-        font-size: 14px;
-        margin-bottom: 15px;
+        color: #666;
+        font-size: 13px;
+        margin-bottom: 12px;
         display: flex;
         align-items: center;
-        gap: 5px;
+        gap: 4px;
     }
 
-    /* Car Title */
+    /* Car Title - Carro Style */
     .car-title {
-        font-size: 16px;
+        font-size: 15px;
         font-weight: 600;
         color: #333;
-        margin-bottom: 15px;
+        margin-bottom: 8px;
         line-height: 1.3;
         flex-grow: 1;
     }
 
-    /* Car Specs */
+    /* Car Specs - Carro Style */
     .car-specs {
         display: flex;
-        gap: 15px;
-        font-size: 13px;
+        gap: 12px;
+        font-size: 12px;
         color: #666;
-        margin-bottom: 10px;
+        margin-bottom: 8px;
         flex-wrap: wrap;
     }
 
     .car-spec-item {
         display: flex;
         align-items: center;
-        gap: 5px;
+        gap: 4px;
     }
 
-    /* Car Location */
+    /* Car Location - Carro Style */
     .car-location {
-        color: #6c757d;
-        font-size: 13px;
+        color: #666;
+        font-size: 12px;
         display: flex;
         align-items: center;
-        gap: 5px;
+        gap: 4px;
         margin-top: auto;
+        padding-top: 8px;
+        border-top: 1px solid #f0f0f0;
     }
 
-    /* Pagination */
+    /* Pagination - Carro Style */
     .pagination-wrapper {
         display: flex;
         justify-content: center;
@@ -350,29 +372,150 @@
 
     .pagination-custom {
         display: flex;
-        gap: 5px;
+        gap: 8px;
     }
 
     .page-link-custom {
         padding: 10px 15px;
-        border: 1px solid #dee2e6;
-        color: #007bff;
+        border: 1px solid #e1e1e1;
+        color: #333;
         text-decoration: none;
-        border-radius: 5px;
-        transition: all 0.3s ease;
+        border-radius: 8px;
+        transition: all 0.2s ease;
         background: white;
+        font-weight: 500;
     }
 
         .page-link-custom:hover {
-            background: #007bff;
+            background: #ff5722;
             color: white;
+            border-color: #ff5722;
             text-decoration: none;
         }
 
         .page-link-custom.active {
-            background: #007bff;
+            background: #ff5722;
             color: white;
-            border-color: #007bff;
+            border-color: #ff5722;
+        }
+
+    /* Modal Styles - Carro Style */
+    .filter-modal {
+        border-radius: 12px;
+        border: none;
+        box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+    }
+
+        .filter-modal .modal-header {
+            border-bottom: 1px solid #f0f0f0;
+            padding: 20px 24px 16px;
+        }
+
+        .filter-modal .modal-title {
+            font-weight: 600;
+            font-size: 18px;
+            color: #333;
+        }
+
+        .filter-modal .modal-body {
+            padding: 24px;
+        }
+
+        .filter-modal .modal-footer {
+            border-top: 1px solid #f0f0f0;
+            padding: 16px 24px 20px;
+            gap: 12px;
+        }
+
+    /* Range Slider - Carro Style */
+    .range-slider {
+        padding: 20px 0;
+    }
+
+    .range-input {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 24px;
+    }
+
+        .range-input input {
+            border: 1px solid #e1e1e1;
+            border-radius: 8px;
+            padding: 12px;
+            font-size: 14px;
+        }
+
+    .range-separator {
+        color: #666;
+        font-weight: 500;
+        font-size: 16px;
+    }
+
+    .slider-track {
+        height: 4px;
+        background: #e1e1e1;
+        border-radius: 2px;
+        position: relative;
+        margin: 0 12px;
+    }
+
+    .slider-range {
+        height: 100%;
+        background: #ff5722;
+        border-radius: 2px;
+        width: 60%;
+        margin-left: 10%;
+        position: relative;
+    }
+
+        .slider-range::before,
+        .slider-range::after {
+            content: '';
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            background: #ff5722;
+            border-radius: 50%;
+            top: -6px;
+            border: 2px solid white;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+        }
+
+        .slider-range::before {
+            left: -8px;
+        }
+
+        .slider-range::after {
+            right: -8px;
+        }
+
+    /* Button Styles - Carro Style */
+    .btn-primary-carro {
+        background: #ff5722;
+        border-color: #ff5722;
+        border-radius: 8px;
+        padding: 10px 24px;
+        font-weight: 600;
+        color: white;
+    }
+
+        .btn-primary-carro:hover {
+            background: #e64a19;
+            border-color: #e64a19;
+        }
+
+    .btn-light-carro {
+        background: #f7f7f7;
+        border-color: #e1e1e1;
+        border-radius: 8px;
+        padding: 10px 24px;
+        color: #666;
+        font-weight: 500;
+    }
+
+        .btn-light-carro:hover {
+            background: #e1e1e1;
         }
 
     /* WhatsApp Float */
@@ -392,6 +535,7 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.2);
             border: none;
             background-color: #25d366;
+            border-radius: 50%;
         }
 
     /* Empty State */
@@ -399,8 +543,8 @@
         text-align: center;
         padding: 60px 20px;
         background: white;
-        border-radius: 10px;
-        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        border-radius: 12px;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.08);
     }
 
         .empty-state i {
@@ -418,72 +562,59 @@
             margin-bottom: 1rem;
         }
 
-    /* Responsive Design */
-    .responsive-mobile {
-        display: block;
-    }
-
-    .responsive-desktop {
+    /* Responsive Design - Fixed */
+    .mobile-only {
         display: none;
     }
 
-    /* Mobile Styles */
-    .mobile-hero {
-        padding: 60px 0;
+    .desktop-only {
+        display: block;
     }
 
-    .mobile-search {
-        margin: -30px 15px 0;
-        padding: 20px;
-    }
-
-    .mobile-filters {
+    /* Mobile adjustments using CSS without media queries */
+    .responsive-filter-pills {
         justify-content: center;
     }
 
-    .mobile-results {
+    .responsive-results-info {
         flex-direction: column;
         gap: 15px;
         text-align: center;
     }
 
-    .mobile-specs {
+    .responsive-car-specs {
         justify-content: center;
     }
 
-    /* Desktop Styles */
-    .desktop-view {
-        display: block;
+    .responsive-banner-height {
+        height: 280px;
     }
 
-    .mobile-view {
-        display: none;
-    }
-
-    /* Media Queries with Proper Syntax */
-    .media-query-mobile {
-        display: none;
-    }
-
-    .media-query-tablet {
-        display: none;
-    }
-
-    .media-query-desktop {
-        display: block;
-    }
-
-    /* Screen Size Adaptations */
-    .small-screen {
-        padding: 10px;
-    }
-
-    .medium-screen {
+    .responsive-search-container {
+        margin: 20px 15px;
         padding: 20px;
     }
 
-    .large-screen {
-        padding: 30px;
+    .responsive-car-card {
+        margin-bottom: 15px;
+    }
+
+    .responsive-filter-pill {
+        padding: 8px 12px;
+        font-size: 12px;
+    }
+
+    .responsive-car-info {
+        padding: 12px;
+    }
+
+    .responsive-pagination {
+        gap: 4px;
+    }
+
+    .responsive-page-link {
+        padding: 8px 12px;
+        font-size: 12px;
     }
 </style>
 
@@ -551,72 +682,26 @@
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <button type="submit" class="btn btn-primary btn-lg w-100">
+                    <button type="submit" class="btn btn-primary-carro btn-lg w-100">
                         <i class="fas fa-search me-2"></i>Cari Mobil
                     </button>
                 </div>
             </div>
 
-            <!-- Filter Pills -->
+            <!-- Filter Pills - Only Functional Filters -->
             <div class="filter-pills">
-                <a href="@Url.Action("Index")" class="filter-pill @(string.IsNullOrEmpty(Model.SelectedMerek) ? "active" : "")">
+                <a href="@Url.Action("Index")" class="filter-pill @(string.IsNullOrEmpty(Model.SelectedMerek) && Model.MinHarga == null && Model.MaxHarga == null && Model.TahunMin == null && Model.TahunMax == null ? "active" : "")">
                     Promo
                 </a>
-                <button type="button" class="filter-pill" data-bs-toggle="modal" data-bs-target="#brandModal">
+                <button type="button" class="filter-pill @(!string.IsNullOrEmpty(Model.SelectedMerek) ? "active" : "")" data-bs-toggle="modal" data-bs-target="#brandModal">
                     Brand & Model
                 </button>
-                <button type="button" class="filter-pill" data-bs-toggle="modal" data-bs-target="#distanceModal">
-                    Jarak Tempuh
-                </button>
-                <button type="button" class="filter-pill" data-bs-toggle="modal" data-bs-target="#installmentModal">
-                    Cicilan
-                </button>
-                <button type="button" class="filter-pill" data-bs-toggle="modal" data-bs-target="#priceModal">
+                <button type="button" class="filter-pill @(Model.MinHarga != null || Model.MaxHarga != null ? "active" : "")" data-bs-toggle="modal" data-bs-target="#priceModal">
                     Harga
                 </button>
-                <button type="button" class="filter-pill" data-bs-toggle="modal" data-bs-target="#yearModal">
+                <button type="button" class="filter-pill @(Model.TahunMin != null || Model.TahunMax != null ? "active" : "")" data-bs-toggle="modal" data-bs-target="#yearModal">
                     Tahun
                 </button>
-                <span class="filter-pill">Tampilan 360</span>
-                <button type="button" class="filter-pill" data-bs-toggle="modal" data-bs-target="#availabilityModal">
-                    Ketersediaan
-                </button>
-                <span class="filter-pill">Filter Lainnya</span>
-            </div>
-
-            <!-- Advanced Filters -->
-            <div class="advanced-filters">
-                <div class="row g-2">
-                    <div class="col-md-3">
-                        <select class="form-select" name="merek">
-                            <option value="">Brand & Model</option>
-                            @if (Model.Brands != null)
-                            {
-                                @foreach (var brand in Model.Brands)
-                                {
-                                    <option value="@brand" selected="@(Model.SelectedMerek == brand)">@brand</option>
-                                }
-                            }
-                        </select>
-                    </div>
-                    <div class="col-md-2">
-                        <input type="number" class="form-control" name="minHarga" value="@Model.MinHarga" placeholder="Harga Min" step="1000000">
-                    </div>
-                    <div class="col-md-2">
-                        <input type="number" class="form-control" name="maxHarga" value="@Model.MaxHarga" placeholder="Harga Max" step="1000000">
-                    </div>
-                    <div class="col-md-2">
-                        <input type="number" class="form-control" name="tahunMin" value="@Model.TahunMin" placeholder="Tahun Min" min="1990" max="2025">
-                    </div>
-                    <div class="col-md-2">
-                        <input type="number" class="form-control" name="tahunMax" value="@Model.TahunMax" placeholder="Tahun Max" min="1990" max="2025">
-                    </div>
-                    <div class="col-md-1">
-                        <button type="submit" class="btn btn-outline-primary w-100">
-                            <i class="fas fa-filter"></i>
-                        </button>
-                    </div>
-                </div>
             </div>
         </form>
     </div>
@@ -626,19 +711,15 @@
 <div class="container mt-4">
     <!-- Results Header -->
     <div class="results-header">
-        <div class="location-badge">
-            <i class="fas fa-map-marker-alt"></i>
-            Semua Lokasi
-        </div>
-
         <div class="results-info">
             <div>
                 <h5>@(Model?.TotalCars ?? 0) Mobil Ditemukan</h5>
                 <small class="text-muted">Halaman @(Model?.CurrentPage ?? 1) dari @(Model?.TotalPages ?? 1)</small>
             </div>
             <div class="sort-dropdown">
+                <span style="font-size: 14px; color: #666; margin-right: 10px;">Urutkan</span>
                 <select class="form-select" onchange="sortResults(this.value)">
-                    <option value="terbaru">Urutkan: Terbaru</option>
+                    <option value="terbaru">Terbaru</option>
                     <option value="harga-rendah">Harga: Rendah ke Tinggi</option>
                     <option value="harga-tinggi">Harga: Tinggi ke Rendah</option>
                     <option value="tahun-baru">Tahun: Terbaru</option>
@@ -730,7 +811,7 @@
                                 <div class="car-location">
                                     <i class="fas fa-tachometer-alt"></i>
                                     <span>@(new Random().Next(15000, 85000).ToString("N0")) km</span>
-                                    <span>| RodiTri Certified</span>
+                                    <span>• RodiTri Certified</span>
                                 </div>
                             </div>
 
@@ -747,7 +828,7 @@
                         <i class="fas fa-car fa-4x"></i>
                         <h4>Tidak ada mobil yang ditemukan</h4>
                         <p>Coba ubah filter pencarian Anda atau lihat semua mobil yang tersedia</p>
-                        <a href="@Url.Action("Index")" class="btn btn-primary mt-3">Lihat Semua Mobil</a>
+                        <a href="@Url.Action("Index")" class="btn btn-primary-carro mt-3">Lihat Semua Mobil</a>
                     </div>
                 </div>
             }
@@ -808,98 +889,8 @@
     }
 </div>
 
-<!-- Filter Modals -->
-<!-- Brand & Model Modal -->
-<div class="modal fade" id="brandModal" tabindex="-1">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content filter-modal">
-            <div class="modal-header">
-                <h5 class="modal-title">All Brand And Model</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-            </div>
-            <div class="modal-body">
-                @if (Model.Brands != null)
-                {
-                    @foreach (var brand in Model.Brands)
-                    {
-                        <div class="brand-item">
-                            <input type="checkbox" id="brand_@brand" name="selectedBrands" value="@brand">
-                            <label for="brand_@brand" class="brand-label">
-                                <span>@brand.ToUpper()</span>
-                                <i class="fas fa-chevron-down"></i>
-                            </label>
-                        </div>
-                    }
-                }
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Hapus</button>
-                <button type="button" class="btn btn-primary">Terapkan</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Year Modal -->
-<div class="modal fade" id="yearModal" tabindex="-1">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content filter-modal">
-            <div class="modal-header">
-                <h5 class="modal-title">Tahun</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-            </div>
-            <div class="modal-body">
-                <div class="range-slider">
-                    <div class="range-input">
-                        <input type="number" class="form-control" placeholder="2015" min="1990" max="2024">
-                        <span class="range-separator">-</span>
-                        <input type="number" class="form-control" placeholder="2024" min="1990" max="2024">
-                    </div>
-                    <div class="slider-track">
-                        <div class="slider-range"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Hapus</button>
-                <button type="button" class="btn btn-primary">Terapkan</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Distance Modal -->
-<div class="modal fade" id="distanceModal" tabindex="-1">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content filter-modal">
-            <div class="modal-header">
-                <h5 class="modal-title">Jarak Tempuh</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-            </div>
-            <div class="modal-body">
-                <p class="text-muted">Anda akan menemukan mobil dengan jarak tempuh rata-rata 38,204 KM</p>
-                <div class="range-slider">
-                    <div class="range-input">
-                        <input type="number" class="form-control" placeholder="980" min="0">
-                        <span class="range-unit">KM</span>
-                        <span class="range-separator">-</span>
-                        <input type="number" class="form-control" placeholder="97,817" min="0">
-                        <span class="range-unit">KM</span>
-                    </div>
-                    <div class="slider-track">
-                        <div class="slider-range"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Hapus</button>
-                <button type="button" class="btn btn-primary">Terapkan</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Price Modal -->
+<!-- Filter Modals - Functional Filters Only -->
+<!-- Price Modal - FUNCTIONAL -->
 <div class="modal fade" id="priceModal" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content filter-modal">
@@ -908,107 +899,89 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
             <div class="modal-body">
-                <p class="text-muted">Harga rata-rata mobil di Carro adalah Rp 200,847,138</p>
-                <div class="range-slider">
+                <p class="text-muted mb-4">Harga rata-rata mobil di RodiTri adalah Rp 200,826,152</p>
+                <form id="priceForm">
                     <div class="range-input">
-                        <input type="text" class="form-control" placeholder="Rp 66,000,000">
+                        <input type="number" class="form-control" id="minHarga" name="minHarga" placeholder="Harga Min" step="1000000" value="@Model.MinHarga">
                         <span class="range-separator">-</span>
-                        <input type="text" class="form-control" placeholder="Rp 979,000,000">
+                        <input type="number" class="form-control" id="maxHarga" name="maxHarga" placeholder="Harga Max" step="1000000" value="@Model.MaxHarga">
                     </div>
                     <div class="slider-track">
                         <div class="slider-range"></div>
                     </div>
-                </div>
+                </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Hapus</button>
-                <button type="button" class="btn btn-primary">Terapkan</button>
+                <button type="button" class="btn btn-light-carro" onclick="clearPriceFilter()">Hapus</button>
+                <button type="button" class="btn btn-primary-carro" onclick="applyPriceFilter()">Terapkan</button>
             </div>
         </div>
     </div>
 </div>
 
-<!-- Installment Modal -->
-<div class="modal fade" id="installmentModal" tabindex="-1">
+<!-- Brand & Model Modal - FUNCTIONAL -->
+<div class="modal fade" id="brandModal" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content filter-modal">
             <div class="modal-header">
-                <h5 class="modal-title">Cicilan</h5>
+                <h5 class="modal-title">Brand & Model</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
             <div class="modal-body">
-                <p class="text-muted">Rata-rata angsuran bulanan mobil di Carro adalah Rp3,697,060</p>
-                <div class="range-slider">
-                    <div class="range-input">
-                        <input type="text" class="form-control" placeholder="Rp 1,200,000">
-                        <span class="range-separator">-</span>
-                        <input type="text" class="form-control" placeholder="Rp 18,000,000">
-                    </div>
-                    <div class="slider-track">
-                        <div class="slider-range"></div>
-                    </div>
-                </div>
+                <form id="brandForm">
+                    @if (Model.Brands != null)
+                    {
+                        @foreach (var brand in Model.Brands)
+                        {
+                            <div class="brand-item">
+                                <input type="checkbox" id="brand_@brand" name="selectedBrands" value="@brand"
+                                @(Model.SelectedMerek == brand ? "checked" : "")>
+                                <label for="brand_@brand" class="brand-label">
+                                    <span>@brand.ToUpper()</span>
+                                </label>
+                            </div>
+                        }
+                    }
+                </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Hapus</button>
-                <button type="button" class="btn btn-primary">Terapkan</button>
+                <button type="button" class="btn btn-light-carro" onclick="clearBrandFilter()">Hapus</button>
+                <button type="button" class="btn btn-primary-carro" onclick="applyBrandFilter()">Terapkan</button>
             </div>
         </div>
     </div>
 </div>
 
-<!-- Availability Modal -->
-<div class="modal fade" id="availabilityModal" tabindex="-1">
+<!-- Year Modal - FUNCTIONAL -->
+<div class="modal fade" id="yearModal" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content filter-modal">
             <div class="modal-header">
-                <h5 class="modal-title">Ketersediaan</h5>
+                <h5 class="modal-title">Tahun</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
             <div class="modal-body">
-                <div class="availability-options">
-                    <button type="button" class="availability-btn active">Tersedia</button>
-                    <button type="button" class="availability-btn">Akan Datang</button>
-                </div>
-                <div class="availability-item">
-                    <span>Telah Dipesan</span>
-                </div>
+                <form id="yearForm">
+                    <div class="range-input">
+                        <input type="number" class="form-control" id="tahunMin" name="tahunMin" placeholder="Tahun Min" min="1990" max="2025" value="@Model.TahunMin">
+                        <span class="range-separator">-</span>
+                        <input type="number" class="form-control" id="tahunMax" name="tahunMax" placeholder="Tahun Max" min="1990" max="2025" value="@Model.TahunMax">
+                    </div>
+                    <div class="slider-track">
+                        <div class="slider-range"></div>
+                    </div>
+                </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Hapus</button>
-                <button type="button" class="btn btn-primary">Terapkan</button>
+                <button type="button" class="btn btn-light-carro" onclick="clearYearFilter()">Hapus</button>
+                <button type="button" class="btn btn-primary-carro" onclick="applyYearFilter()">Terapkan</button>
             </div>
         </div>
     </div>
 </div>
 
 <style>
-    .filter-modal {
-        border-radius: 15px;
-        border: none;
-    }
-
-        .filter-modal .modal-header {
-            border-bottom: 1px solid #f0f0f0;
-            padding: 20px 24px 16px;
-        }
-
-        .filter-modal .modal-title {
-            font-weight: 600;
-            font-size: 18px;
-            color: #333;
-        }
-
-        .filter-modal .modal-body {
-            padding: 20px 24px;
-        }
-
-        .filter-modal .modal-footer {
-            border-top: 1px solid #f0f0f0;
-            padding: 16px 24px 20px;
-            gap: 12px;
-        }
-
+    /* Additional Modal Styles */
     .brand-item {
         display: flex;
         align-items: center;
@@ -1030,40 +1003,10 @@
         font-weight: 500;
     }
 
-    .range-slider {
-        padding: 20px 0;
-    }
-
-    .range-input {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        margin-bottom: 20px;
-    }
-
-    .range-separator {
-        color: #666;
-        font-weight: 500;
-    }
-
     .range-unit {
         color: #666;
         font-size: 14px;
-    }
-
-    .slider-track {
-        height: 6px;
-        background: #f0f0f0;
-        border-radius: 3px;
-        position: relative;
-    }
-
-    .slider-range {
-        height: 100%;
-        background: #ff6b35;
-        border-radius: 3px;
-        width: 60%;
-        margin-left: 10%;
+        margin-left: 8px;
     }
 
     .availability-options {
@@ -1073,61 +1016,216 @@
     }
 
     .availability-btn {
-        padding: 8px 16px;
-        border: 1px solid #e0e0e0;
+        padding: 10px 20px;
+        border: 1px solid #e1e1e1;
         background: white;
-        border-radius: 20px;
+        border-radius: 8px;
         color: #666;
         font-size: 14px;
         cursor: pointer;
+        font-weight: 500;
     }
 
         .availability-btn.active {
-            background: #ff6b35;
+            background: #ff5722;
             color: white;
-            border-color: #ff6b35;
+            border-color: #ff5722;
+        }
+
+        .availability-btn:hover {
+            background: #f7f7f7;
+        }
+
+        .availability-btn.active:hover {
+            background: #e64a19;
         }
 
     .availability-item {
         padding: 12px 0;
         color: #666;
-    }
-
-    .btn-primary {
-        background: #ff6b35;
-        border-color: #ff6b35;
-        border-radius: 25px;
-        padding: 8px 24px;
-    }
-
-    .btn-light {
-        background: #f8f9fa;
-        border-color: #e9ecef;
-        border-radius: 25px;
-        padding: 8px 24px;
-        color: #666;
+        font-size: 14px;
     }
 </style>
 
 <!-- WhatsApp Float Button -->
 <div class="whatsapp-float">
     <a href="https://wa.me/6281234567890?text=Halo%20RodiTri%20Pekanbaru,%20saya%20tertarik%20dengan%20mobil%20yang%20tersedia"
-       target="_blank" class="btn btn-success rounded-circle">
+       target="_blank" class="btn btn-success">
         <i class="fab fa-whatsapp fa-2x"></i>
     </a>
 </div>
 
 <script>
+    // Filter Functions - FUNCTIONAL
+    function applyPriceFilter() {
+        const minHarga = document.getElementById('minHarga').value;
+        const maxHarga = document.getElementById('maxHarga').value;
+
+        const url = new URL(window.location);
+        if (minHarga) url.searchParams.set('minHarga', minHarga);
+        if (maxHarga) url.searchParams.set('maxHarga', maxHarga);
+
+        window.location.href = url.toString();
+    }
+
+    function clearPriceFilter() {
+        const url = new URL(window.location);
+        url.searchParams.delete('minHarga');
+        url.searchParams.delete('maxHarga');
+        window.location.href = url.toString();
+    }
+
+    function applyBrandFilter() {
+        const selectedBrands = [];
+        document.querySelectorAll('input[name="selectedBrands"]:checked').forEach(checkbox => {
+            selectedBrands.push(checkbox.value);
+        });
+
+        const url = new URL(window.location);
+        if (selectedBrands.length > 0) {
+            url.searchParams.set('merek', selectedBrands[0]); // Take first selected brand
+        } else {
+            url.searchParams.delete('merek');
+        }
+
+        window.location.href = url.toString();
+    }
+
+    function clearBrandFilter() {
+        const url = new URL(window.location);
+        url.searchParams.delete('merek');
+        window.location.href = url.toString();
+    }
+
+    function applyYearFilter() {
+        const tahunMin = document.getElementById('tahunMin').value;
+        const tahunMax = document.getElementById('tahunMax').value;
+
+        const url = new URL(window.location);
+        if (tahunMin) url.searchParams.set('tahunMin', tahunMin);
+        if (tahunMax) url.searchParams.set('tahunMax', tahunMax);
+
+        window.location.href = url.toString();
+    }
+
+    function clearYearFilter() {
+        const url = new URL(window.location);
+        url.searchParams.delete('tahunMin');
+        url.searchParams.delete('tahunMax');
+        window.location.href = url.toString();
+    }
+
     function sortResults(sortBy) {
         const url = new URL(window.location);
         url.searchParams.set('sort', sortBy);
         window.location.href = url.toString();
     }
 
+    // Responsive handler
+    function handleResponsive() {
+        const isMobile = window.innerWidth <= 768;
+        const isSmallMobile = window.innerWidth <= 576;
+
+        // Filter pills
+        const filterPills = document.querySelector('.filter-pills');
+        if (filterPills) {
+            if (isMobile) {
+                filterPills.classList.add('responsive-filter-pills');
+            } else {
+                filterPills.classList.remove('responsive-filter-pills');
+            }
+        }
+
+        // Results info
+        const resultsInfo = document.querySelector('.results-info');
+        if (resultsInfo) {
+            if (isMobile) {
+                resultsInfo.classList.add('responsive-results-info');
+            } else {
+                resultsInfo.classList.remove('responsive-results-info');
+            }
+        }
+
+        // Car specs
+        document.querySelectorAll('.car-specs').forEach(specs => {
+            if (isMobile) {
+                specs.classList.add('responsive-car-specs');
+            } else {
+                specs.classList.remove('responsive-car-specs');
+            }
+        });
+
+        // Banner height
+        document.querySelectorAll('.banner-image').forEach(banner => {
+            if (isSmallMobile) {
+                banner.classList.add('responsive-banner-height');
+                banner.style.height = '220px';
+            } else if (isMobile) {
+                banner.classList.add('responsive-banner-height');
+                banner.style.height = '280px';
+            } else {
+                banner.classList.remove('responsive-banner-height');
+                banner.style.height = '380px';
+            }
+        });
+
+        // Search container
+        const searchContainer = document.querySelector('.search-container');
+        if (searchContainer) {
+            if (isMobile) {
+                searchContainer.classList.add('responsive-search-container');
+            } else {
+                searchContainer.classList.remove('responsive-search-container');
+            }
+        }
+
+        // Filter pills size
+        document.querySelectorAll('.filter-pill').forEach(pill => {
+            if (isSmallMobile) {
+                pill.classList.add('responsive-filter-pill');
+            } else {
+                pill.classList.remove('responsive-filter-pill');
+            }
+        });
+
+        // Car info padding
+        document.querySelectorAll('.car-info').forEach(info => {
+            if (isSmallMobile) {
+                info.classList.add('responsive-car-info');
+            } else {
+                info.classList.remove('responsive-car-info');
+            }
+        });
+
+        // Pagination
+        const pagination = document.querySelector('.pagination-custom');
+        if (pagination) {
+            if (isSmallMobile) {
+                pagination.classList.add('responsive-pagination');
+            } else {
+                pagination.classList.remove('responsive-pagination');
+            }
+        }
+
+        document.querySelectorAll('.page-link-custom').forEach(link => {
+            if (isSmallMobile) {
+                link.classList.add('responsive-page-link');
+            } else {
+                link.classList.remove('responsive-page-link');
+            }
+        });
+    }
+
     document.addEventListener('DOMContentLoaded', function() {
         console.log('Landing page loaded successfully');
 
-        // Simple interactivity without complex animations
+        // Initial responsive check
+        handleResponsive();
+
+        // Handle window resize
+        window.addEventListener('resize', handleResponsive);
+
+        // Filter pill interactions
         document.querySelectorAll('.filter-pill').forEach(function(pill) {
             pill.addEventListener('click', function(e) {
                 if (this.getAttribute('href') === '#' || !this.getAttribute('href')) {

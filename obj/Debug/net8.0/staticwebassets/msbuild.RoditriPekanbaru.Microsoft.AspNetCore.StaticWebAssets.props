@@ -1170,6 +1170,24 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\mobil\02940923-756f-4042-827d-f0a96af30397_toyota-avanza-1.5-veloz-gr-sport-at-2021-silver-59Q1MLY3PQ-carro-013.webp'))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\mobil\04eaad4f-3b46-4139-8760-da35de45fa55_toyota-alphard-2.webp'))">
+      <SourceType>Package</SourceType>
+      <SourceId>RoditriPekanbaru</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/RoditriPekanbaru</BasePath>
+      <RelativePath>uploads/mobil/04eaad4f-3b46-4139-8760-da35de45fa55_toyota-alphard-2.webp</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>px9pn9llze</Fingerprint>
+      <Integrity>jckRGg+HNxpCakfodTBk63ZS8OWMNNJi+wRIT+YGTsE=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\mobil\04eaad4f-3b46-4139-8760-da35de45fa55_toyota-alphard-2.webp'))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\mobil\3737aa78-5c1c-489b-94b8-b458cca5a172_honda-city-e-at-2020-hitam-LP63M136P7-carro-008.webp'))">
       <SourceType>Package</SourceType>
       <SourceId>RoditriPekanbaru</SourceId>
@@ -1224,6 +1242,24 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\mobil\4c892f73-30c4-4d19-8d3c-0db533645570_images (1).jpg'))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\mobil\54b0e9d8-6833-467b-a208-46339381dfd0_toyota-alphard-2.webp'))">
+      <SourceType>Package</SourceType>
+      <SourceId>RoditriPekanbaru</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/RoditriPekanbaru</BasePath>
+      <RelativePath>uploads/mobil/54b0e9d8-6833-467b-a208-46339381dfd0_toyota-alphard-2.webp</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>px9pn9llze</Fingerprint>
+      <Integrity>jckRGg+HNxpCakfodTBk63ZS8OWMNNJi+wRIT+YGTsE=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\mobil\54b0e9d8-6833-467b-a208-46339381dfd0_toyota-alphard-2.webp'))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\mobil\73d4cf61-3200-46c8-af34-eb671f9e4796_images (1).jpg'))">
       <SourceType>Package</SourceType>
       <SourceId>RoditriPekanbaru</SourceId>
@@ -1260,6 +1296,24 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\mobil\74296a80-b1ef-416e-a231-aff47adc62ba_toyota-alphard-2.webp'))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\mobil\7ac2156c-f7b7-4bcc-a892-513e73903d48_honda-city-e-at-2020-hitam-LP63M136P7-carro-008.webp'))">
+      <SourceType>Package</SourceType>
+      <SourceId>RoditriPekanbaru</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/RoditriPekanbaru</BasePath>
+      <RelativePath>uploads/mobil/7ac2156c-f7b7-4bcc-a892-513e73903d48_honda-city-e-at-2020-hitam-LP63M136P7-carro-008.webp</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>eqsga6sua3</Fingerprint>
+      <Integrity>iqjMJOgUlBbhl44TxHeVx/xfyzmigNwyVCz6iO9Zapo=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\mobil\7ac2156c-f7b7-4bcc-a892-513e73903d48_honda-city-e-at-2020-hitam-LP63M136P7-carro-008.webp'))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\mobil\7ae9024f-3201-4a9b-8afb-b79a77269cfc_images (1).jpg'))">
       <SourceType>Package</SourceType>
       <SourceId>RoditriPekanbaru</SourceId>
@@ -1277,6 +1331,24 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\mobil\7ae9024f-3201-4a9b-8afb-b79a77269cfc_images (1).jpg'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\mobil\7c48f4c8-8043-488c-a149-388b1c333e85_images (1).jpg'))">
+      <SourceType>Package</SourceType>
+      <SourceId>RoditriPekanbaru</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/RoditriPekanbaru</BasePath>
+      <RelativePath>uploads/mobil/7c48f4c8-8043-488c-a149-388b1c333e85_images (1).jpg</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>jx40eaz6aj</Fingerprint>
+      <Integrity>9/6r1xn1ViURFqLKESQ9V7nlytO0/+dyQH/Vy5Amdes=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\mobil\7c48f4c8-8043-488c-a149-388b1c333e85_images (1).jpg'))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\mobil\9e823ebf-0ee8-473d-9d8a-da5722201f17_screencapture-127-0-0-1-8000-admin-categories-create-2025-05-19-19_54_34.png'))">
       <SourceType>Package</SourceType>
@@ -1350,6 +1422,60 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\mobil\c8f4e8ad-6596-4931-ac1c-9755e7c557f4_toyota-avanza-1.5-veloz-gr-sport-at-2021-silver-59Q1MLY3PQ-carro-013.webp'))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\mobil\dc837b7f-7ddf-43fa-adcc-8595ebb1702e_toyota-avanza-1.5-veloz-gr-sport-at-2021-silver-59Q1MLY3PQ-carro-013.webp'))">
+      <SourceType>Package</SourceType>
+      <SourceId>RoditriPekanbaru</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/RoditriPekanbaru</BasePath>
+      <RelativePath>uploads/mobil/dc837b7f-7ddf-43fa-adcc-8595ebb1702e_toyota-avanza-1.5-veloz-gr-sport-at-2021-silver-59Q1MLY3PQ-carro-013.webp</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>lkniswji7p</Fingerprint>
+      <Integrity>K+yWl231hKmn3/9KcKu1eftsv/Xg1Ozu8VOJ6ERuZSo=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\mobil\dc837b7f-7ddf-43fa-adcc-8595ebb1702e_toyota-avanza-1.5-veloz-gr-sport-at-2021-silver-59Q1MLY3PQ-carro-013.webp'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\mobil\e5e6a740-b7b7-4d90-b87a-cb712cf819cd_images (1).jpg'))">
+      <SourceType>Package</SourceType>
+      <SourceId>RoditriPekanbaru</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/RoditriPekanbaru</BasePath>
+      <RelativePath>uploads/mobil/e5e6a740-b7b7-4d90-b87a-cb712cf819cd_images (1).jpg</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>jx40eaz6aj</Fingerprint>
+      <Integrity>9/6r1xn1ViURFqLKESQ9V7nlytO0/+dyQH/Vy5Amdes=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\mobil\e5e6a740-b7b7-4d90-b87a-cb712cf819cd_images (1).jpg'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\mobil\e73896a6-ea48-4dbe-9c55-1998b768ce89_Cobit Studi Kasus.jpg'))">
+      <SourceType>Package</SourceType>
+      <SourceId>RoditriPekanbaru</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/RoditriPekanbaru</BasePath>
+      <RelativePath>uploads/mobil/e73896a6-ea48-4dbe-9c55-1998b768ce89_Cobit Studi Kasus.jpg</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>putcdjv59a</Fingerprint>
+      <Integrity>31SkxB8f3SHirmECph+jz7J8ZbxSQv61vA8/iZExhi4=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\mobil\e73896a6-ea48-4dbe-9c55-1998b768ce89_Cobit Studi Kasus.jpg'))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\mobil\e856d07a-7aad-44da-9633-4670ea218b6b_Mind Map.png'))">
       <SourceType>Package</SourceType>
       <SourceId>RoditriPekanbaru</SourceId>
@@ -1385,6 +1511,24 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\mobil\ebe18add-f9b2-47f4-b31a-e4fd3a42a094_Mind Map.png'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\mobil\f881d0dd-d53a-4ecb-9f89-ba7c32e7c241_honda-city-e-at-2020-hitam-LP63M136P7-carro-008.webp'))">
+      <SourceType>Package</SourceType>
+      <SourceId>RoditriPekanbaru</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/RoditriPekanbaru</BasePath>
+      <RelativePath>uploads/mobil/f881d0dd-d53a-4ecb-9f89-ba7c32e7c241_honda-city-e-at-2020-hitam-LP63M136P7-carro-008.webp</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>eqsga6sua3</Fingerprint>
+      <Integrity>iqjMJOgUlBbhl44TxHeVx/xfyzmigNwyVCz6iO9Zapo=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\mobil\f881d0dd-d53a-4ecb-9f89-ba7c32e7c241_honda-city-e-at-2020-hitam-LP63M136P7-carro-008.webp'))</OriginalItemSpec>
     </StaticWebAsset>
   </ItemGroup>
 </Project>
