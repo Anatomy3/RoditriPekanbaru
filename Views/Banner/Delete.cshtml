@@ -1,0 +1,151 @@
+﻿@model RoditriPekanbaru.Models.Banner
+@{
+    ViewData["Title"] = "Hapus Banner";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2><i class="fas fa-trash me-2 text-danger"></i>Hapus Banner</h2>
+    <a asp-action="Index" class="btn btn-secondary">
+        <i class="fas fa-arrow-left me-1"></i>Kembali
+    </a>
+</div>
+
+<div class="alert alert-warning">
+    <i class="fas fa-exclamation-triangle me-2"></i>
+    <strong>Peringatan!</strong> Anda akan menghapus banner ini secara permanen. Tindakan ini tidak dapat dibatalkan.
+</div>
+
+<div class="row">
+    <div class="col-lg-8">
+        <div class="card">
+            <div class="card-header bg-danger text-white">
+                <h5 class="card-title mb-0">Konfirmasi Penghapusan</h5>
+            </div>
+            <div class="card-body">
+                <h6 class="mb-3">Apakah Anda yakin ingin menghapus banner berikut?</h6>
+
+                <div class="row mb-3">
+                    <div class="col-sm-3"><strong>Nama Banner:</strong></div>
+                    <div class="col-sm-9">@Model.NamaBanner</div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-sm-3"><strong>Link Tujuan:</strong></div>
+                    <div class="col-sm-9">
+                        @if (!string.IsNullOrEmpty(Model.LinkTujuan))
+                        {
+                            @Model.LinkTujuan
+                        }
+                        else
+                        {
+                            <span class="text-muted">Tidak ada link</span>
+                        }
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-sm-3"><strong>Urutan:</strong></div>
+                    <div class="col-sm-9">
+                        <span class="badge bg-secondary">@Model.Urutan</span>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-sm-3"><strong>Status:</strong></div>
+                    <div class="col-sm-9">
+                        <span class="badge bg-@(Model.IsActive ? "success" : "secondary")">
+                            @(Model.IsActive ? "Aktif" : "Non-Aktif")
+                        </span>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-sm-3"><strong>Periode:</strong></div>
+                    <div class="col-sm-9">
+                        @if (Model.TanggalMulai.HasValue && Model.TanggalBerakhir.HasValue)
+                        {
+                            <span>@Model.TanggalMulai.Value.ToString("dd/MM/yyyy") - @Model.TanggalBerakhir.Value.ToString("dd/MM/yyyy")</span>
+                        }
+                        else
+                        {
+                            <span class="text-muted">Tidak terbatas</span>
+                        }
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-sm-3"><strong>Dibuat Oleh:</strong></div>
+                    <div class="col-sm-9">@Model.DibuatOleh</div>
+                </div>
+
+                <div class="row mb-4">
+                    <div class="col-sm-3"><strong>Tanggal Dibuat:</strong></div>
+                    <div class="col-sm-9">@Model.TanggalDibuat.ToString("dd/MM/yyyy HH:mm")</div>
+                </div>
+
+                <form asp-action="Delete" method="post">
+                    <input asp-for="BannerId" type="hidden" />
+
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <a asp-action="Index" class="btn btn-secondary me-md-2">
+                            <i class="fas fa-times me-1"></i>Batal
+                        </a>
+                        <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah Anda benar-benar yakin ingin menghapus banner ini?')">
+                            <i class="fas fa-trash me-1"></i>Ya, Hapus Banner
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-4">
+        @if (!string.IsNullOrEmpty(Model.GambarBanner))
+        {
+            <div class="card mb-3">
+                <div class="card-header">
+                    <h6 class="card-title mb-0">Gambar yang akan dihapus</h6>
+                </div>
+                <div class="card-body">
+                    <img src="@Model.GambarBanner" alt="@Model.NamaBanner" class="img-fluid rounded shadow-sm">
+                </div>
+            </div>
+        }
+
+        <div class="card">
+            <div class="card-header">
+                <h6 class="card-title mb-0">Informasi Banner</h6>
+            </div>
+            <div class="card-body">
+                <div class="row mb-2">
+                    <div class="col-5"><strong>Nama:</strong></div>
+                    <div class="col-7">@Model.NamaBanner</div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-5"><strong>Urutan:</strong></div>
+                    <div class="col-7">
+                        <span class="badge bg-secondary">@Model.Urutan</span>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-5"><strong>Status:</strong></div>
+                    <div class="col-7">
+                        <span class="badge bg-@(Model.IsActive ? "success" : "secondary")">
+                            @(Model.IsActive ? "Aktif" : "Non-Aktif")
+                        </span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-5"><strong>Dibuat:</strong></div>
+                    <div class="col-7">@Model.TanggalDibuat.ToString("dd/MM/yyyy")</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="alert alert-info mt-3">
+            <i class="fas fa-info-circle me-2"></i>
+            <small>File gambar juga akan dihapus dari server jika banner ini dihapus.</small>
+        </div>
+    </div>
+</div>

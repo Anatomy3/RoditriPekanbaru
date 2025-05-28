@@ -20,6 +20,17 @@ namespace RoditriPekanbaru.Controllers
         {
             try
             {
+                // Get active banners
+                var banners = await _context.Banners
+                    .Where(b => b.IsActive &&
+                               (b.TanggalMulai == null || b.TanggalMulai <= DateTime.Now) &&
+                               (b.TanggalBerakhir == null || b.TanggalBerakhir >= DateTime.Now))
+                    .OrderBy(b => b.Urutan)
+                    .ThenByDescending(b => b.TanggalDibuat)
+                    .ToListAsync();
+
+                ViewBag.Banners = banners;
+
                 // Get all available brands from database
                 var brands = await _context.Mobils
                     .Where(m => m.IsAvailable)
@@ -98,6 +109,8 @@ namespace RoditriPekanbaru.Controllers
             catch (Exception)
             {
                 // Return empty view model if there's an error
+                ViewBag.Banners = new List<Banner>();
+
                 var emptyViewModel = new LandingViewModel
                 {
                     Brands = new List<string>(),

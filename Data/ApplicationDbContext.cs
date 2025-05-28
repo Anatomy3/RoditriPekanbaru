@@ -14,6 +14,7 @@ namespace RoditriPekanbaru.Data
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Mobil> Mobils { get; set; }
         public DbSet<TransaksiPenjualan> TransaksiPenjualans { get; set; }
+        public DbSet<Banner> Banners { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -46,6 +47,36 @@ namespace RoditriPekanbaru.Data
                     Level = "User",
                     IsActive = true,
                     CreatedDate = new DateTime(2024, 1, 1)
+                }
+            );
+
+            // Seed Banner data
+            modelBuilder.Entity<Banner>().HasData(
+                new Banner
+                {
+                    BannerId = 1,
+                    NamaBanner = "Banner Promo Tanpa Drama",
+                    GambarBanner = "/images/banner1.jpg",
+                    LinkTujuan = "#jual-mobil",
+                    Urutan = 1,
+                    IsActive = true,
+                    TanggalMulai = DateTime.Now,
+                    TanggalBerakhir = DateTime.Now.AddMonths(3),
+                    TanggalDibuat = new DateTime(2024, 1, 1),
+                    DibuatOleh = "Administrator"
+                },
+                new Banner
+                {
+                    BannerId = 2,
+                    NamaBanner = "Banner Promo Spesial",
+                    GambarBanner = "/images/banner2.jpg",
+                    LinkTujuan = "#promo",
+                    Urutan = 2,
+                    IsActive = true,
+                    TanggalMulai = DateTime.Now,
+                    TanggalBerakhir = DateTime.Now.AddMonths(2),
+                    TanggalDibuat = new DateTime(2024, 1, 5),
+                    DibuatOleh = "Administrator"
                 }
             );
 

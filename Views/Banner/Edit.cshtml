@@ -1,0 +1,202 @@
+﻿@model RoditriPekanbaru.Models.Banner
+@{
+    ViewData["Title"] = "Edit Banner";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2><i class="fas fa-edit me-2"></i>Edit Banner</h2>
+    <a asp-action="Index" class="btn btn-secondary">
+        <i class="fas fa-arrow-left me-1"></i>Kembali
+    </a>
+</div>
+
+<div class="row">
+    <div class="col-lg-8">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title mb-0">Form Edit Banner</h5>
+            </div>
+            <div class="card-body">
+                <form asp-action="Edit" method="post" enctype="multipart/form-data">
+                    <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+
+                    <input asp-for="BannerId" type="hidden" />
+                    <input asp-for="GambarBanner" type="hidden" />
+                    <input asp-for="TanggalDibuat" type="hidden" />
+                    <input asp-for="DibuatOleh" type="hidden" />
+
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="mb-3">
+                                <label asp-for="NamaBanner" class="form-label"></label>
+                                <input asp-for="NamaBanner" class="form-control" />
+                                <span asp-validation-for="NamaBanner" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="mb-3">
+                                <label asp-for="Urutan" class="form-label"></label>
+                                <input asp-for="Urutan" class="form-control" type="number" min="1" />
+                                <span asp-validation-for="Urutan" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="gambarFile" class="form-label">Gambar Banner (Kosongkan jika tidak ingin mengubah)</label>
+                        <input type="file" class="form-control" id="gambarFile" name="gambarFile"
+                               accept="image/*" onchange="previewImage(this)">
+                        <div class="form-text">Format: JPG, PNG, GIF, WEBP. Maksimal 5MB. Ukuran disarankan: 1200x400px</div>
+                        @if (!string.IsNullOrEmpty(Model.GambarBanner))
+                        {
+                            <div class="mt-2">
+                                <small class="text-muted">Gambar saat ini:</small><br>
+                                <img src="@Model.GambarBanner" alt="Current" class="img-thumbnail" style="max-height: 100px;">
+                            </div>
+                        }
+                    </div>
+
+                    <!-- Image Preview -->
+                    <div id="imagePreview" class="mb-3" style="display: none;">
+                        <label class="form-label">Preview Gambar Baru:</label>
+                        <div class="border rounded p-2">
+                            <img id="previewImg" class="img-fluid" style="max-height: 200px;" />
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="LinkTujuan" class="form-label"></label>
+                        <input asp-for="LinkTujuan" class="form-control" />
+                        <div class="form-text">Link yang akan dibuka ketika banner diklik (opsional)</div>
+                        <span asp-validation-for="LinkTujuan" class="text-danger"></span>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label asp-for="TanggalMulai" class="form-label"></label>
+                                <input asp-for="TanggalMulai" class="form-control" type="datetime-local" />
+                                <span asp-validation-for="TanggalMulai" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label asp-for="TanggalBerakhir" class="form-label"></label>
+                                <input asp-for="TanggalBerakhir" class="form-control" type="datetime-local" />
+                                <span asp-validation-for="TanggalBerakhir" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <div class="form-check">
+                            <input asp-for="IsActive" class="form-check-input" />
+                            <label asp-for="IsActive" class="form-check-label">
+                                Banner aktif dan ditampilkan di halaman utama
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <a asp-action="Index" class="btn btn-secondary me-md-2">
+                            <i class="fas fa-times me-1"></i>Batal
+                        </a>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-save me-1"></i>Update Banner
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-4">
+        <div class="card">
+            <div class="card-header">
+                <h6 class="card-title mb-0">Banner Saat Ini</h6>
+            </div>
+            <div class="card-body">
+                @if (!string.IsNullOrEmpty(Model.GambarBanner))
+                {
+                    <img src="@Model.GambarBanner" alt="@Model.NamaBanner"
+                         class="img-fluid rounded shadow-sm">
+                    <div class="mt-2">
+                        <small class="text-muted">
+                            <i class="fas fa-info-circle me-1"></i>
+                            Gambar akan tetap sama jika tidak upload gambar baru
+                        </small>
+                    </div>
+                }
+                else
+                {
+                    <div class="text-center py-4">
+                        <i class="fas fa-image fa-3x text-muted mb-2"></i>
+                        <p class="text-muted">Belum ada gambar</p>
+                    </div>
+                }
+            </div>
+        </div>
+
+        <div class="card mt-3">
+            <div class="card-header">
+                <h6 class="card-title mb-0">Informasi Banner</h6>
+            </div>
+            <div class="card-body">
+                <div class="row mb-2">
+                    <div class="col-5"><strong>Dibuat:</strong></div>
+                    <div class="col-7">@Model.TanggalDibuat.ToString("dd/MM/yyyy")</div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-5"><strong>Oleh:</strong></div>
+                    <div class="col-7">@Model.DibuatOleh</div>
+                </div>
+                <div class="row">
+                    <div class="col-5"><strong>Status:</strong></div>
+                    <div class="col-7">
+                        <span class="badge bg-@(Model.IsActive ? "success" : "secondary")">
+                            @(Model.IsActive ? "Aktif" : "Non-Aktif")
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Image preview
+    function previewImage(input) {
+        const preview = document.getElementById('imagePreview');
+        const previewImg = document.getElementById('previewImg');
+
+        if (input.files && input.files[0]) {
+            const file = input.files[0];
+
+            // Check file size (5MB = 5 * 1024 * 1024 bytes)
+            if (file.size > 5 * 1024 * 1024) {
+                alert('Ukuran file terlalu besar! Maksimal 5MB.');
+                input.value = '';
+                preview.style.display = 'none';
+                return;
+            }
+
+            const reader = new FileReader();
+
+            reader.onload = function(e) {
+                previewImg.src = e.target.result;
+                preview.style.display = 'block';
+            }
+
+            reader.readAsDataURL(file);
+        } else {
+            preview.style.display = 'none';
+        }
+    }
+</script>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

@@ -1,0 +1,228 @@
+﻿@model IEnumerable<RoditriPekanbaru.Models.Banner>
+@{
+    ViewData["Title"] = "Manajemen Banner";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2><i class="fas fa-images me-2"></i>Manajemen Banner</h2>
+    <a asp-action="Create" class="btn btn-primary">
+        <i class="fas fa-plus me-1"></i>Tambah Banner
+    </a>
+</div>
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <i class="fas fa-check-circle me-2"></i>@TempData["SuccessMessage"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+}
+
+<div class="card">
+    <div class="card-body">
+        @if (Model.Any())
+        {
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead class="table-dark">
+                        <tr>
+                            <th width="5%">No</th>
+                            <th width="15%">Preview</th>
+                            <th width="25%">Nama Banner</th>
+                            <th width="15%">Link Tujuan</th>
+                            <th width="10%">Urutan</th>
+                            <th width="10%">Status</th>
+                            <th width="10%">Periode</th>
+                            <th width="10%">Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            int no = 1;
+                        }
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@no</td>
+                                <td>
+                                    @if (!string.IsNullOrEmpty(item.GambarBanner))
+                                    {
+                                        <img src="@item.GambarBanner" alt="@item.NamaBanner"
+                                             class="img-thumbnail" style="width: 100px; height: 40px; object-fit: cover;">
+                                    }
+                                    else
+                                    {
+                                        <div class="bg-light d-flex align-items-center justify-content-center"
+                                             style="width: 100px; height: 40px; border-radius: 4px;">
+                                            <i class="fas fa-image text-muted"></i>
+                                        </div>
+                                    }
+                                </td>
+                                <td>
+                                    <strong>@item.NamaBanner</strong>
+                                    <br><small class="text-muted">Dibuat: @item.TanggalDibuat.ToString("dd/MM/yyyy")</small>
+                                </td>
+                                <td>
+                                    @if (!string.IsNullOrEmpty(item.LinkTujuan))
+                                    {
+                                        <small class="text-primary"><i class="fas fa-link"></i> @item.LinkTujuan</small>
+                                    }
+                                    else
+                                    {
+                                        <small class="text-muted">Tidak ada link</small>
+                                    }
+                                </td>
+                                <td>
+                                    <span class="badge bg-secondary">@item.Urutan</span>
+                                </td>
+                                <td>
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input status-toggle" type="checkbox"
+                                        @(item.IsActive ? "checked" : "")
+                                               data-id="@item.BannerId">
+                                        <label class="form-check-label">
+                                            <span class="badge bg-@(item.IsActive ? "success" : "secondary")">
+                                                @(item.IsActive ? "Aktif" : "Non-Aktif")
+                                            </span>
+                                        </label>
+                                    </div>
+                                </td>
+                                <td>
+                                    @if (item.TanggalMulai.HasValue && item.TanggalBerakhir.HasValue)
+                                    {
+                                        <small>
+                                            @item.TanggalMulai.Value.ToString("dd/MM/yyyy")<br>
+                                            s/d @item.TanggalBerakhir.Value.ToString("dd/MM/yyyy")
+                                        </small>
+                                    }
+                                    else
+                                    {
+                                        <small class="text-muted">Tidak terbatas</small>
+                                    }
+                                </td>
+                                <td>
+                                    <div class="btn-group btn-group-sm" role="group">
+                                        <a asp-action="Details" asp-route-id="@item.BannerId"
+                                           class="btn btn-outline-info" title="Detail">
+                                            <i class="fas fa-eye"></i>
+                                        </a>
+                                        <a asp-action="Edit" asp-route-id="@item.BannerId"
+                                           class="btn btn-outline-warning" title="Edit">
+                                            <i class="fas fa-edit"></i>
+                                        </a>
+                                        <a asp-action="Delete" asp-route-id="@item.BannerId"
+                                           class="btn btn-outline-danger" title="Hapus">
+                                            <i class="fas fa-trash"></i>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                            no++;
+                        }
+                    </tbody>
+                </table>
+            </div>
+        }
+        else
+        {
+            <div class="text-center py-5">
+                <i class="fas fa-images fa-4x text-muted mb-3"></i>
+                <h5 class="text-muted">Belum ada banner</h5>
+                <p class="text-muted">Mulai dengan membuat banner pertama untuk halaman utama</p>
+                <a asp-action="Create" class="btn btn-primary">
+                    <i class="fas fa-plus me-1"></i>Tambah Banner Pertama
+                </a>
+            </div>
+        }
+    </div>
+</div>
+
+<style>
+    .status-toggle {
+        cursor: pointer;
+    }
+
+    .btn-group-sm .btn {
+        padding: 0.25rem 0.5rem;
+    }
+
+    .table th {
+        border-top: none;
+        font-weight: 600;
+    }
+
+    .card {
+        box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+        border: 1px solid rgba(0, 0, 0, 0.125);
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Handle status toggle
+        document.querySelectorAll('.status-toggle').forEach(function(toggle) {
+            toggle.addEventListener('change', function() {
+                const bannerId = this.dataset.id;
+                const isActive = this.checked;
+
+                fetch('@Url.Action("ToggleStatus", "Banner")', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'RequestVerificationToken': document.querySelector('input[name="__RequestVerificationToken"]')?.value || ''
+                    },
+                    body: JSON.stringify({ id: bannerId })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        // Update badge
+                        const badge = this.parentElement.querySelector('.badge');
+                        if (data.isActive) {
+                            badge.className = 'badge bg-success';
+                            badge.textContent = 'Aktif';
+                        } else {
+                            badge.className = 'badge bg-secondary';
+                            badge.textContent = 'Non-Aktif';
+                        }
+
+                        // Show toast notification
+                        showToast(data.message, 'success');
+                    } else {
+                        // Revert toggle if failed
+                        this.checked = !isActive;
+                        showToast(data.message || 'Gagal mengubah status banner', 'error');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    // Revert toggle if failed
+                    this.checked = !isActive;
+                    showToast('Terjadi kesalahan saat mengubah status', 'error');
+                });
+            });
+        });
+    });
+
+    function showToast(message, type) {
+        // Simple toast notification
+        const toast = document.createElement('div');
+        toast.className = `alert alert-${type === 'success' ? 'success' : 'danger'} position-fixed`;
+        toast.style.cssText = 'top: 20px; right: 20px; z-index: 9999; min-width: 300px;';
+        toast.innerHTML = `
+            <i class="fas fa-${type === 'success' ? 'check-circle' : 'exclamation-circle'} me-2"></i>
+            ${message}
+            <button type="button" class="btn-close" onclick="this.parentElement.remove()"></button>
+        `;
+
+        document.body.appendChild(toast);
+
+        // Auto remove after 3 seconds
+        setTimeout(() => {
+            if (toast.parentElement) {
+                toast.remove();
+            }
+        }, 3000);
+    }
+</script>

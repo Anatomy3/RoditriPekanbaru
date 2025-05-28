@@ -1,0 +1,201 @@
+﻿@model RoditriPekanbaru.Models.Banner
+@{
+    ViewData["Title"] = "Tambah Banner";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2><i class="fas fa-plus me-2"></i>Tambah Banner</h2>
+    <a asp-action="Index" class="btn btn-secondary">
+        <i class="fas fa-arrow-left me-1"></i>Kembali
+    </a>
+</div>
+
+<div class="row">
+    <div class="col-lg-8">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title mb-0"><i class="fas fa-edit me-2"></i>Form Banner</h5>
+            </div>
+            <div class="card-body">
+                <form asp-action="Create" method="post" enctype="multipart/form-data">
+                    <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="mb-3">
+                                <label asp-for="NamaBanner" class="form-label"></label>
+                                <input asp-for="NamaBanner" class="form-control" placeholder="Contoh: Banner Promo Tanpa Drama" />
+                                <span asp-validation-for="NamaBanner" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="mb-3">
+                                <label asp-for="Urutan" class="form-label"></label>
+                                <input asp-for="Urutan" class="form-control" type="number" min="1" />
+                                <span asp-validation-for="Urutan" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="gambarFile" class="form-label">Gambar Banner <span class="text-danger">*</span></label>
+                        <input type="file" class="form-control" id="gambarFile" name="gambarFile"
+                               accept="image/*" onchange="previewImage(this)" required>
+                        <div class="form-text">
+                            <strong>Format:</strong> JPG, PNG, GIF, WEBP. <strong>Maksimal:</strong> 5MB.
+                            <strong>Ukuran:</strong> Bebas - akan otomatis disesuaikan
+                        </div>
+                    </div>
+
+                    <!-- Image Preview -->
+                    <div id="imagePreview" class="mb-3" style="display: none;">
+                        <label class="form-label">Preview Gambar:</label>
+                        <div class="border rounded p-2">
+                            <img id="previewImg" class="img-fluid banner-preview" style="max-height: 300px; width: 100%; object-fit: cover;" />
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="LinkTujuan" class="form-label"></label>
+                        <input asp-for="LinkTujuan" class="form-control" placeholder="Contoh: #jual-mobil atau /promo atau https://example.com" />
+                        <div class="form-text">Link yang akan dibuka ketika banner diklik (opsional)</div>
+                        <span asp-validation-for="LinkTujuan" class="text-danger"></span>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label asp-for="TanggalMulai" class="form-label"></label>
+                                <input asp-for="TanggalMulai" class="form-control" type="datetime-local" />
+                                <span asp-validation-for="TanggalMulai" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label asp-for="TanggalBerakhir" class="form-label"></label>
+                                <input asp-for="TanggalBerakhir" class="form-control" type="datetime-local" />
+                                <span asp-validation-for="TanggalBerakhir" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <div class="form-check">
+                            <input asp-for="IsActive" class="form-check-input" />
+                            <label asp-for="IsActive" class="form-check-label">
+                                Banner aktif dan ditampilkan di halaman utama
+                            </label>
+                        </div>
+                    </div>
+
+                    <input asp-for="DibuatOleh" type="hidden" />
+
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <a asp-action="Index" class="btn btn-secondary me-md-2">
+                            <i class="fas fa-times me-1"></i>Batal
+                        </a>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-save me-1"></i>Simpan Banner
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-4">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title mb-0"><i class="fas fa-info-circle me-2"></i>Panduan Banner</h5>
+            </div>
+            <div class="card-body">
+                <h6>Spesifikasi Banner:</h6>
+                <ul class="list-unstyled">
+                    <li><i class="fas fa-check text-success me-2"></i><strong>Ukuran:</strong> Bebas (auto-resize)</li>
+                    <li><i class="fas fa-check text-success me-2"></i><strong>Format:</strong> JPG, PNG, WEBP</li>
+                    <li><i class="fas fa-check text-success me-2"></i><strong>Maksimal:</strong> 5MB</li>
+                    <li><i class="fas fa-check text-success me-2"></i><strong>Orientasi:</strong> Landscape lebih baik</li>
+                </ul>
+
+                <h6 class="mt-3">Tips Desain:</h6>
+                <ul class="list-unstyled">
+                    <li><i class="fas fa-lightbulb text-warning me-2"></i>Text harus jelas terbaca</li>
+                    <li><i class="fas fa-lightbulb text-warning me-2"></i>Gunakan warna kontras</li>
+                    <li><i class="fas fa-lightbulb text-warning me-2"></i>Hindari terlalu banyak text</li>
+                    <li><i class="fas fa-lightbulb text-warning me-2"></i>Fokus pada 1 pesan utama</li>
+                </ul>
+
+                <div class="alert alert-info mt-3">
+                    <i class="fas fa-info-circle me-2"></i>
+                    <small>Banner akan ditampilkan sebagai carousel di halaman utama website</small>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sample Banner Sizes -->
+        <div class="card mt-3">
+            <div class="card-header">
+                <h6 class="card-title mb-0">Contoh Ukuran Banner</h6>
+            </div>
+            <div class="card-body">
+                <div class="bg-light border rounded p-3 text-center">
+                    <div style="background: linear-gradient(45deg, #007bff, #0056b3); height: 80px; border-radius: 5px; display: flex; align-items: center; justify-content: center; color: white; font-size: 12px;">
+                        1200px x 400px<br>
+                        Banner Size
+                    </div>
+                    <small class="text-muted mt-2 d-block">Rasio 3:1</small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .banner-preview {
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .card {
+        box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+        border: 1px solid rgba(0, 0, 0, 0.125);
+    }
+</style>
+
+<script>
+    // Image preview
+    function previewImage(input) {
+        const preview = document.getElementById('imagePreview');
+        const previewImg = document.getElementById('previewImg');
+
+        if (input.files && input.files[0]) {
+            const file = input.files[0];
+
+            // Check file size (5MB = 5 * 1024 * 1024 bytes)
+            if (file.size > 5 * 1024 * 1024) {
+                alert('Ukuran file terlalu besar! Maksimal 5MB.');
+                input.value = '';
+                preview.style.display = 'none';
+                return;
+            }
+
+            const reader = new FileReader();
+
+            reader.onload = function(e) {
+                previewImg.src = e.target.result;
+                preview.style.display = 'block';
+            }
+
+            reader.readAsDataURL(file);
+        } else {
+            preview.style.display = 'none';
+        }
+    }
+</script>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

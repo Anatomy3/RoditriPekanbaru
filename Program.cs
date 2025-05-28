@@ -70,7 +70,7 @@ app.MapControllerRoute(
     name: "admin",
     pattern: "admin/{controller=Home}/{action=Index}/{id?}");
 
-// Initialize database with seed data
+// Initialize database with seed data ONLY if database doesn't exist
 using (var scope = app.Services.CreateScope())
 {
     var services = scope.ServiceProvider;
@@ -78,22 +78,11 @@ using (var scope = app.Services.CreateScope())
     {
         var context = services.GetRequiredService<ApplicationDbContext>();
 
-        // Ensure database is created
+        // Only create database if it doesn't exist (preserves existing data)
         context.Database.EnsureCreated();
 
-        // Log database initialization
         var logger = services.GetRequiredService<ILogger<Program>>();
         logger.LogInformation("Database initialized successfully");
-
-        // Check if seed data exists
-        if (!context.Admins.Any())
-        {
-            logger.LogInformation("No seed data found, database will be seeded on first access");
-        }
-        else
-        {
-            logger.LogInformation("Seed data already exists, skipping initialization");
-        }
     }
     catch (Exception ex)
     {

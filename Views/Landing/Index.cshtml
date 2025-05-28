@@ -1,231 +1,1139 @@
 ﻿@model RoditriPekanbaru.ViewModels.LandingViewModel
 @{
-    ViewData["Title"] = "Beranda";
-    Layout = "~/Views/Shared/_LandingLayout.cshtml";
+    ViewData["Title"] = "RodiTri Pekanbaru - Dealer Mobil Bekas Terpercaya";
+    Layout = "~/Views/Shared/_PublicLayout.cshtml";
 }
 
-<!-- Hero Banner -->
-<section class="hero-banner">
+<style>
+    /* Banner Image Styles - More Spacing */
+    .banner-image {
+        width: 100%;
+        height: 380px;
+        object-fit: cover;
+        object-position: center;
+        border-radius: 10px;
+    }
+
+    .carousel-item {
+        padding: 0;
+    }
+
+    .carousel-indicators [data-bs-target] {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        margin: 0 3px;
+    }
+
+    #bannerCarousel {
+        margin: 20px auto 60px auto;
+    }
+
+    /* Banner container spacing */
+    .banner-container {
+        padding: 20px 15px;
+    }
+
+    /* Mobile Responsive */
+    .mobile-banner {
+        height: 280px;
+    }
+
+    .small-mobile-banner {
+        height: 220px;
+    }
+
+    body {
+        background-color: #f8f9fa;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* Hero Section */
+    .hero-section {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 80px 0;
+        text-align: center;
+    }
+
+        .hero-section h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .hero-section p {
+            font-size: 1.2rem;
+            margin-bottom: 0;
+        }
+
+    /* Search Container */
+    .search-container {
+        background: white;
+        border-radius: 15px;
+        padding: 30px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        margin-top: -50px;
+        position: relative;
+        z-index: 10;
+    }
+
+    /* Filter Pills */
+    .filter-pills {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-bottom: 20px;
+    }
+
+    .filter-pill {
+        background: #f8f9fa;
+        border: 1px solid #e9ecef;
+        border-radius: 25px;
+        padding: 8px 16px;
+        font-size: 14px;
+        color: #6c757d;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        display: inline-block;
+    }
+
+        .filter-pill:hover {
+            background: #007bff;
+            color: white;
+            border-color: #007bff;
+            text-decoration: none;
+        }
+
+        .filter-pill.active {
+            background: #007bff;
+            color: white;
+            border-color: #007bff;
+        }
+
+    /* Advanced Filters */
+    .advanced-filters {
+        background: #f8f9fa;
+        padding: 15px;
+        border-radius: 8px;
+        margin-top: 15px;
+    }
+
+    /* Results Header */
+    .results-header {
+        display: none;
+    }
+
+    .location-badge {
+        background: #e74c3c;
+        color: white;
+        padding: 5px 12px;
+        border-radius: 20px;
+        font-size: 14px;
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        margin-bottom: 15px;
+    }
+
+    .results-info {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 0;
+    }
+
+        .results-info h5 {
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+    /* Car Grid */
+    .car-grid {
+        margin-top: 30px;
+    }
+
+    .car-card {
+        background: white;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        margin-bottom: 20px;
+        position: relative;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+        .car-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+    /* Car Image Container */
+    .car-image-container {
+        position: relative;
+        width: 100%;
+        height: 200px;
+        overflow: hidden;
+    }
+
+    .car-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .no-image-placeholder {
+        width: 100%;
+        height: 200px;
+        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #6c757d;
+        font-size: 14px;
+        text-align: center;
+    }
+
+    /* Badges */
+    .flash-sale-badge {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        background: linear-gradient(45deg, #ff6b35, #ff8e53);
+        color: white;
+        padding: 5px 10px;
+        border-radius: 6px;
+        font-size: 12px;
+        font-weight: bold;
+        text-transform: uppercase;
+        z-index: 5;
+    }
+
+    .certified-badge {
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+        background: #28a745;
+        color: white;
+        padding: 4px 8px;
+        border-radius: 4px;
+        font-size: 11px;
+        font-weight: bold;
+    }
+
+    /* Carousel Dots */
+    .carousel-dots {
+        position: absolute;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 5px;
+        z-index: 5;
+    }
+
+    .carousel-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: rgba(255,255,255,0.5);
+        cursor: pointer;
+        transition: background 0.3s ease;
+    }
+
+        .carousel-dot.active {
+            background: white;
+        }
+
+    /* Car Info */
+    .car-info {
+        padding: 20px;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* Price Section */
+    .price-section {
+        margin-bottom: 15px;
+    }
+
+    .car-price {
+        color: #dc3545;
+        font-size: 20px;
+        font-weight: bold;
+        margin-bottom: 5px;
+        display: block;
+    }
+
+    .price-details {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+
+    .car-original-price {
+        color: #6c757d;
+        font-size: 14px;
+        text-decoration: line-through;
+    }
+
+    .car-discount {
+        background: #ffeaa7;
+        color: #e17055;
+        padding: 2px 6px;
+        border-radius: 4px;
+        font-size: 12px;
+        font-weight: bold;
+    }
+
+    /* Installment */
+    .car-installment {
+        color: #6c757d;
+        font-size: 14px;
+        margin-bottom: 15px;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+    }
+
+    /* Car Title */
+    .car-title {
+        font-size: 16px;
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 15px;
+        line-height: 1.3;
+        flex-grow: 1;
+    }
+
+    /* Car Specs */
+    .car-specs {
+        display: flex;
+        gap: 15px;
+        font-size: 13px;
+        color: #666;
+        margin-bottom: 10px;
+        flex-wrap: wrap;
+    }
+
+    .car-spec-item {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+    }
+
+    /* Car Location */
+    .car-location {
+        color: #6c757d;
+        font-size: 13px;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        margin-top: auto;
+    }
+
+    /* Pagination */
+    .pagination-wrapper {
+        display: flex;
+        justify-content: center;
+        margin-top: 40px;
+        padding: 20px 0;
+    }
+
+    .pagination-custom {
+        display: flex;
+        gap: 5px;
+    }
+
+    .page-link-custom {
+        padding: 10px 15px;
+        border: 1px solid #dee2e6;
+        color: #007bff;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: all 0.3s ease;
+        background: white;
+    }
+
+        .page-link-custom:hover {
+            background: #007bff;
+            color: white;
+            text-decoration: none;
+        }
+
+        .page-link-custom.active {
+            background: #007bff;
+            color: white;
+            border-color: #007bff;
+        }
+
+    /* WhatsApp Float */
+    .whatsapp-float {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        z-index: 1000;
+    }
+
+        .whatsapp-float .btn {
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            border: none;
+            background-color: #25d366;
+        }
+
+    /* Empty State */
+    .empty-state {
+        text-align: center;
+        padding: 60px 20px;
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+
+        .empty-state i {
+            color: #6c757d;
+            margin-bottom: 1rem;
+        }
+
+        .empty-state h4 {
+            color: #6c757d;
+            margin-bottom: 0.5rem;
+        }
+
+        .empty-state p {
+            color: #6c757d;
+            margin-bottom: 1rem;
+        }
+
+    /* Responsive Design */
+    .responsive-mobile {
+        display: block;
+    }
+
+    .responsive-desktop {
+        display: none;
+    }
+
+    /* Mobile Styles */
+    .mobile-hero {
+        padding: 60px 0;
+    }
+
+    .mobile-search {
+        margin: -30px 15px 0;
+        padding: 20px;
+    }
+
+    .mobile-filters {
+        justify-content: center;
+    }
+
+    .mobile-results {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+
+    .mobile-specs {
+        justify-content: center;
+    }
+
+    /* Desktop Styles */
+    .desktop-view {
+        display: block;
+    }
+
+    .mobile-view {
+        display: none;
+    }
+
+    /* Media Queries with Proper Syntax */
+    .media-query-mobile {
+        display: none;
+    }
+
+    .media-query-tablet {
+        display: none;
+    }
+
+    .media-query-desktop {
+        display: block;
+    }
+
+    /* Screen Size Adaptations */
+    .small-screen {
+        padding: 10px;
+    }
+
+    .medium-screen {
+        padding: 20px;
+    }
+
+    .large-screen {
+        padding: 30px;
+    }
+</style>
+
+<!-- Banner Section -->
+@if (ViewBag.Banners != null && ((List<RoditriPekanbaru.Models.Banner>)ViewBag.Banners).Any())
+{
     <div class="container">
-        <div class="row align-items-center">
-            <div class="col-lg-6">
-                <h1 class="display-4 fw-bold mb-4">Temukan Mobil Impian Anda</h1>
-                <p class="lead mb-4">Dapatkan mobil bekas berkualitas dengan harga terbaik di RodiTri Pekanbaru. Proses mudah, harga transparan, dan garansi terpercaya.</p>
-                <div class="d-flex gap-3">
-                    <a href="#cars-section" class="btn btn-light btn-lg">
-                        <i class="fas fa-car"></i> Lihat Koleksi Mobil
-                    </a>
-                    <a href="tel:+6281234567890" class="btn btn-outline-light btn-lg">
-                        <i class="fas fa-phone"></i> Hubungi Kami
-                    </a>
-                </div>
+        <div id="bannerCarousel" class="carousel slide mb-4" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                @for (int i = 0; i < ((List<RoditriPekanbaru.Models.Banner>)ViewBag.Banners).Count; i++)
+                {
+                    <button type="button" data-bs-target="#bannerCarousel" data-bs-slide-to="@i"
+                            class="@(i == 0 ? "active" : "")" aria-current="@(i == 0 ? "true" : "false")"
+                            aria-label="Slide @(i + 1)"></button>
+                }
             </div>
-            <div class="col-lg-6 text-center">
-                <i class="fas fa-car-side" style="font-size: 10rem; opacity: 0.7;"></i>
+            <div class="carousel-inner">
+                @{
+                    int index = 0;
+                }
+                @foreach (var banner in (List<RoditriPekanbaru.Models.Banner>)ViewBag.Banners)
+                {
+                    <div class="carousel-item @(index == 0 ? "active" : "")">
+                        @if (!string.IsNullOrEmpty(banner.LinkTujuan))
+                        {
+                            <a href="@banner.LinkTujuan">
+                                <img src="@banner.GambarBanner" class="d-block w-100 banner-image" alt="@banner.NamaBanner">
+                            </a>
+                        }
+                        else
+                        {
+                            <img src="@banner.GambarBanner" class="d-block w-100 banner-image" alt="@banner.NamaBanner">
+                        }
+                    </div>
+                    index++;
+                }
             </div>
+            @if (((List<RoditriPekanbaru.Models.Banner>)ViewBag.Banners).Count > 1)
+            {
+                <button class="carousel-control-prev" type="button" data-bs-target="#bannerCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#bannerCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            }
         </div>
     </div>
-</section>
+}
 
+<!-- Search Container -->
+<div class="container">
+    <div class="search-container">
+        <form method="get" asp-action="Index">
+            <!-- Main Search Bar -->
+            <div class="row mb-3">
+                <div class="col-md-8">
+                    <div class="input-group input-group-lg">
+                        <span class="input-group-text"><i class="fas fa-search"></i></span>
+                        <input type="text" class="form-control"
+                               name="search" value="@Model.SearchTerm"
+                               placeholder="Mobil apa yang sedang kamu cari">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <button type="submit" class="btn btn-primary btn-lg w-100">
+                        <i class="fas fa-search me-2"></i>Cari Mobil
+                    </button>
+                </div>
+            </div>
 
-<!-- Filter Section -->
-<section class="py-4" id="cars-section">
-    <div class="container">
-        <div class="text-center mb-4">
-            <h2 class="fw-bold">Mobil Pilihan</h2>
-            <p class="text-muted">Temukan mobil bekas berkualitas dengan berbagai pilihan merek dan model</p>
-        </div>
+            <!-- Filter Pills -->
+            <div class="filter-pills">
+                <a href="@Url.Action("Index")" class="filter-pill @(string.IsNullOrEmpty(Model.SelectedMerek) ? "active" : "")">
+                    Promo
+                </a>
+                <button type="button" class="filter-pill" data-bs-toggle="modal" data-bs-target="#brandModal">
+                    Brand & Model
+                </button>
+                <button type="button" class="filter-pill" data-bs-toggle="modal" data-bs-target="#distanceModal">
+                    Jarak Tempuh
+                </button>
+                <button type="button" class="filter-pill" data-bs-toggle="modal" data-bs-target="#installmentModal">
+                    Cicilan
+                </button>
+                <button type="button" class="filter-pill" data-bs-toggle="modal" data-bs-target="#priceModal">
+                    Harga
+                </button>
+                <button type="button" class="filter-pill" data-bs-toggle="modal" data-bs-target="#yearModal">
+                    Tahun
+                </button>
+                <span class="filter-pill">Tampilan 360</span>
+                <button type="button" class="filter-pill" data-bs-toggle="modal" data-bs-target="#availabilityModal">
+                    Ketersediaan
+                </button>
+                <span class="filter-pill">Filter Lainnya</span>
+            </div>
 
-        <div class="filter-section">
-            <form method="get" asp-action="Index">
-                <div class="row g-3">
-                    <div class="col-md-2">
-                        <label class="form-label"><i class="fas fa-car me-1"></i>Merek</label>
-                        <select name="merek" class="form-select">
-                            <option value="">Semua Merek</option>
-                            @if (Model?.Brands != null)
+            <!-- Advanced Filters -->
+            <div class="advanced-filters">
+                <div class="row g-2">
+                    <div class="col-md-3">
+                        <select class="form-select" name="merek">
+                            <option value="">Brand & Model</option>
+                            @if (Model.Brands != null)
                             {
                                 @foreach (var brand in Model.Brands)
                                 {
-                                    <option value="@brand" selected="@(brand == Model.SelectedMerek)">@brand</option>
+                                    <option value="@brand" selected="@(Model.SelectedMerek == brand)">@brand</option>
                                 }
                             }
                         </select>
                     </div>
                     <div class="col-md-2">
-                        <label class="form-label"><i class="fas fa-money-bill me-1"></i>Harga Min</label>
-                        <input type="number" name="minHarga" class="form-control" placeholder="0" value="@(Model?.MinHarga)" step="1000000">
+                        <input type="number" class="form-control" name="minHarga" value="@Model.MinHarga" placeholder="Harga Min" step="1000000">
                     </div>
                     <div class="col-md-2">
-                        <label class="form-label"><i class="fas fa-money-bill me-1"></i>Harga Max</label>
-                        <input type="number" name="maxHarga" class="form-control" placeholder="999999999" value="@(Model?.MaxHarga)" step="1000000">
+                        <input type="number" class="form-control" name="maxHarga" value="@Model.MaxHarga" placeholder="Harga Max" step="1000000">
                     </div>
                     <div class="col-md-2">
-                        <label class="form-label"><i class="fas fa-calendar me-1"></i>Tahun Min</label>
-                        <input type="number" name="tahunMin" class="form-control" placeholder="2000" value="@(Model?.TahunMin)" min="1990" max="2030">
+                        <input type="number" class="form-control" name="tahunMin" value="@Model.TahunMin" placeholder="Tahun Min" min="1990" max="2025">
                     </div>
                     <div class="col-md-2">
-                        <label class="form-label"><i class="fas fa-calendar me-1"></i>Tahun Max</label>
-                        <input type="number" name="tahunMax" class="form-control" placeholder="2024" value="@(Model?.TahunMax)" min="1990" max="2030">
+                        <input type="number" class="form-control" name="tahunMax" value="@Model.TahunMax" placeholder="Tahun Max" min="1990" max="2025">
                     </div>
-                    <div class="col-md-2 d-flex align-items-end">
-                        <div class="d-grid w-100 gap-2">
-                            <button type="submit" class="btn btn-primary">
-                                <i class="fas fa-filter"></i> Filter
-                            </button>
-                            <a href="@Url.Action("Index")" class="btn btn-outline-secondary btn-sm">
-                                <i class="fas fa-times"></i> Reset
-                            </a>
-                        </div>
+                    <div class="col-md-1">
+                        <button type="submit" class="btn btn-outline-primary w-100">
+                            <i class="fas fa-filter"></i>
+                        </button>
                     </div>
                 </div>
-            </form>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Results Section -->
+<div class="container mt-4">
+    <!-- Results Header -->
+    <div class="results-header">
+        <div class="location-badge">
+            <i class="fas fa-map-marker-alt"></i>
+            Semua Lokasi
         </div>
 
-        <div class="d-flex justify-content-between align-items-center mb-3">
-            <span class="text-muted">Menampilkan @(Model?.Cars?.Count ?? 0) dari @(Model?.TotalCars ?? 0) mobil</span>
-            <div class="btn-group btn-group-sm" role="group">
-                <input type="radio" class="btn-check" name="btnradio" id="grid-view" autocomplete="off" checked>
-                <label class="btn btn-outline-primary" for="grid-view"><i class="fas fa-th"></i></label>
-                <input type="radio" class="btn-check" name="btnradio" id="list-view" autocomplete="off">
-                <label class="btn btn-outline-primary" for="list-view"><i class="fas fa-list"></i></label>
+        <div class="results-info">
+            <div>
+                <h5>@(Model?.TotalCars ?? 0) Mobil Ditemukan</h5>
+                <small class="text-muted">Halaman @(Model?.CurrentPage ?? 1) dari @(Model?.TotalPages ?? 1)</small>
+            </div>
+            <div class="sort-dropdown">
+                <select class="form-select" onchange="sortResults(this.value)">
+                    <option value="terbaru">Urutkan: Terbaru</option>
+                    <option value="harga-rendah">Harga: Rendah ke Tinggi</option>
+                    <option value="harga-tinggi">Harga: Tinggi ke Rendah</option>
+                    <option value="tahun-baru">Tahun: Terbaru</option>
+                    <option value="tahun-lama">Tahun: Terlama</option>
+                </select>
             </div>
         </div>
     </div>
-</section>
 
-<!-- Car Listings -->
-<section class="pb-5">
-    <div class="container">
-        @if (Model.Cars.Any())
-        {
-            <div class="row" id="car-grid">
+    <!-- Car Grid -->
+    <div class="car-grid">
+        <div class="row">
+            @if (Model?.Cars != null && Model.Cars.Any())
+            {
                 @foreach (var car in Model.Cars)
                 {
                     <div class="col-lg-4 col-md-6 mb-4">
-                        <div class="car-card h-100">
-                            @* Flash Sale Badge *@
-                            @if (car.Harga < 300000000)
-                            {
-                                <div class="flash-sale">
-                                    <i class="fas fa-fire me-1"></i>FLASH SALE
-                                </div>
-                            }
-
-                            @if (!string.IsNullOrEmpty(car.GambarMobil))
-                            {
-                                <img src="@car.GambarMobil" alt="@car.NamaMobil" class="car-image">
-                            }
-                            else
-                            {
-                                <div class="car-image bg-gradient d-flex align-items-center justify-content-center" style="background: linear-gradient(135deg, #f8f9fa, #e9ecef);">
-                                    <i class="fas fa-car fa-4x text-muted"></i>
-                                </div>
-                            }
-
-                            <div class="p-3 d-flex flex-column">
-                                <div class="price-tag mb-2">@car.Harga.ToString("C0", new System.Globalization.CultureInfo("id-ID"))</div>
-                                <h5 class="card-title mb-2">@car.NamaMobil</h5>
-
-                                <div class="row text-muted small mb-3">
-                                    <div class="col-6">
-                                        <i class="fas fa-calendar text-primary"></i> @car.Tahun
-                                    </div>
-                                    <div class="col-6">
-                                        <i class="fas fa-palette text-primary"></i> @car.Warna
-                                    </div>
-                                </div>
-
-                                @if (!string.IsNullOrEmpty(car.Kondisi))
+                        <div class="car-card">
+                            <div class="car-image-container">
+                                @if (!string.IsNullOrEmpty(car.GambarMobil))
                                 {
-                                    <p class="text-muted small mb-3 flex-grow-1">@car.Kondisi</p>
+                                    <img src="@car.GambarMobil" alt="@car.NamaMobil" class="car-image">
+                                }
+                                else
+                                {
+                                    <div class="no-image-placeholder">
+                                        <div>
+                                            <i class="fas fa-car fa-2x"></i><br>
+                                            Foto akan segera tersedia
+                                        </div>
+                                    </div>
                                 }
 
-                                <div class="mt-auto">
-                                    <div class="d-grid gap-2">
-                                        <a href="@Url.Action("CarDetails", new { id = car.MobilId })" class="btn btn-primary">
-                                            <i class="fas fa-eye"></i> Lihat Detail
-                                        </a>
-                                        <a href="https://wa.me/6281234567890?text=Halo, saya tertarik dengan mobil @car.NamaMobil"
-                                           class="btn btn-success btn-sm" target="_blank">
-                                            <i class="fab fa-whatsapp"></i> Chat WhatsApp
-                                        </a>
-                                    </div>
+                                <!-- Flash Sale Badge -->
+                                <div class="flash-sale-badge">
+                                    FLASH SALE
+                                </div>
+
+                                <!-- Carousel Dots -->
+                                <div class="carousel-dots">
+                                    <span class="carousel-dot active"></span>
+                                    <span class="carousel-dot"></span>
+                                    <span class="carousel-dot"></span>
+                                    <span class="carousel-dot"></span>
+                                </div>
+
+                                <!-- Certified Badge -->
+                                <div class="certified-badge">
+                                    RodiTri Certified
                                 </div>
                             </div>
+
+                            <div class="car-info">
+                                <!-- Price Section -->
+                                <div class="price-section">
+                                    <span class="car-price">@car.Harga.ToString("C0", new System.Globalization.CultureInfo("id-ID"))</span>
+                                    <div class="price-details">
+                                        <span class="car-original-price">@((car.Harga * 1.15m).ToString("C0", new System.Globalization.CultureInfo("id-ID")))</span>
+                                        <span class="car-discount">-Rp20Jt</span>
+                                    </div>
+                                </div>
+
+                                <!-- Installment -->
+                                <div class="car-installment">
+                                    <span>Cicilan @((car.Harga / 60).ToString("C0", new System.Globalization.CultureInfo("id-ID")))/bulan</span>
+                                    <i class="fas fa-info-circle" title="Simulasi cicilan 5 tahun"></i>
+                                </div>
+
+                                <!-- Car Title -->
+                                <h6 class="car-title">@car.NamaMobil</h6>
+
+                                <!-- Car Specs -->
+                                <div class="car-specs">
+                                    <div class="car-spec-item">
+                                        <i class="fas fa-calendar-alt"></i>
+                                        <span>@car.Tahun</span>
+                                    </div>
+                                    <div class="car-spec-item">
+                                        <i class="fas fa-cog"></i>
+                                        <span>Otomatis</span>
+                                    </div>
+                                    <div class="car-spec-item">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                        <span>Pekanbaru</span>
+                                    </div>
+                                </div>
+
+                                <!-- Location and Mileage -->
+                                <div class="car-location">
+                                    <i class="fas fa-tachometer-alt"></i>
+                                    <span>@(new Random().Next(15000, 85000).ToString("N0")) km</span>
+                                    <span>| RodiTri Certified</span>
+                                </div>
+                            </div>
+
+                            <!-- Click Link -->
+                            <a href="@Url.Action("CarDetails", new { id = car.MobilId })" class="stretched-link"></a>
                         </div>
                     </div>
                 }
-            </div>
-
-            <!-- Pagination -->
-            @if ((Model?.TotalPages ?? 1) > 1)
-            {
-                <nav aria-label="Car pagination" class="mt-4">
-                    <ul class="pagination justify-content-center">
-                        @if (Model?.HasPreviousPage == true)
-                        {
-                            <li class="page-item">
-                                <a class="page-link" href="@Url.Action("Index", new {
-                                    page = Model.PreviousPage,
-                                    merek = Model.SelectedMerek,
-                                    search = Model.SearchTerm,
-                                    minHarga = Model.MinHarga,
-                                    maxHarga = Model.MaxHarga,
-                                    tahunMin = Model.TahunMin,
-                                    tahunMax = Model.TahunMax
-                                })">
-                                    <i class="fas fa-chevron-left"></i> Previous
-                                </a>
-                            </li>
-                        }
-
-                        @for (int i = Math.Max(1, (Model?.CurrentPage ?? 1) - 2); i <= Math.Min(Model?.TotalPages ?? 1, (Model?.CurrentPage ?? 1) + 2); i++)
-                        {
-                            <li class="page-item @(i == (Model?.CurrentPage ?? 1) ? "active" : "")">
-                                <a class="page-link" href="@Url.Action("Index", new {
-                                    page = i,
-                                    merek = Model?.SelectedMerek,
-                                    search = Model?.SearchTerm,
-                                    minHarga = Model?.MinHarga,
-                                    maxHarga = Model?.MaxHarga,
-                                    tahunMin = Model?.TahunMin,
-                                    tahunMax = Model?.TahunMax
-                                })">@i</a>
-                            </li>
-                        }
-
-                        @if (Model?.HasNextPage == true)
-                        {
-                            <li class="page-item">
-                                <a class="page-link" href="@Url.Action("Index", new {
-                                    page = Model.NextPage,
-                                    merek = Model?.SelectedMerek,
-                                    search = Model?.SearchTerm,
-                                    minHarga = Model?.MinHarga,
-                                    maxHarga = Model?.MaxHarga,
-                                    tahunMin = Model?.TahunMin,
-                                    tahunMax = Model?.TahunMax
-                                })">
-                                    Next <i class="fas fa-chevron-right"></i>
-                                </a>
-                            </li>
-                        }
-                    </ul>
-                </nav>
             }
-        }
-        else
-        {
-            <div class="text-center py-5">
-                <i class="fas fa-car fa-4x text-muted mb-4"></i>
-                <h4 class="text-muted">Tidak ada mobil ditemukan</h4>
-                <p class="text-muted">Coba ubah filter pencarian Anda atau lihat semua mobil</p>
-                <a href="@Url.Action("Index")" class="btn btn-primary">
-                    <i class="fas fa-refresh"></i> Lihat Semua Mobil
-                </a>
-            </div>
-        }
+            else
+            {
+                <div class="col-12">
+                    <div class="empty-state">
+                        <i class="fas fa-car fa-4x"></i>
+                        <h4>Tidak ada mobil yang ditemukan</h4>
+                        <p>Coba ubah filter pencarian Anda atau lihat semua mobil yang tersedia</p>
+                        <a href="@Url.Action("Index")" class="btn btn-primary mt-3">Lihat Semua Mobil</a>
+                    </div>
+                </div>
+            }
+        </div>
     </div>
-</section>
 
+    <!-- Pagination -->
+    @if ((Model?.TotalPages ?? 0) > 1)
+    {
+        <div class="pagination-wrapper">
+            <div class="pagination-custom">
+                @if (Model.HasPreviousPage)
+                {
+                    <a href="@Url.Action("Index", new {
+                        page = Model.PreviousPage,
+                        merek = Model.SelectedMerek,
+                        search = Model.SearchTerm,
+                        minHarga = Model.MinHarga,
+                        maxHarga = Model.MaxHarga,
+                        tahunMin = Model.TahunMin,
+                        tahunMax = Model.TahunMax
+                    })" class="page-link-custom">
+                        <i class="fas fa-chevron-left"></i>
+                    </a>
+                }
+
+                @for (int i = Math.Max(1, Model.CurrentPage - 2); i <= Math.Min(Model.TotalPages, Model.CurrentPage + 2); i++)
+                {
+                    <a href="@Url.Action("Index", new {
+                        page = i,
+                        merek = Model.SelectedMerek,
+                        search = Model.SearchTerm,
+                        minHarga = Model.MinHarga,
+                        maxHarga = Model.MaxHarga,
+                        tahunMin = Model.TahunMin,
+                        tahunMax = Model.TahunMax
+                    })" class="page-link-custom @(i == Model.CurrentPage ? "active" : "")">
+                        @i
+                    </a>
+                }
+
+                @if (Model.HasNextPage)
+                {
+                    <a href="@Url.Action("Index", new {
+                        page = Model.NextPage,
+                        merek = Model.SelectedMerek,
+                        search = Model.SearchTerm,
+                        minHarga = Model.MinHarga,
+                        maxHarga = Model.MaxHarga,
+                        tahunMin = Model.TahunMin,
+                        tahunMax = Model.TahunMax
+                    })" class="page-link-custom">
+                        <i class="fas fa-chevron-right"></i>
+                    </a>
+                }
+            </div>
+        </div>
+    }
+</div>
+
+<!-- Filter Modals -->
+<!-- Brand & Model Modal -->
+<div class="modal fade" id="brandModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content filter-modal">
+            <div class="modal-header">
+                <h5 class="modal-title">All Brand And Model</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                @if (Model.Brands != null)
+                {
+                    @foreach (var brand in Model.Brands)
+                    {
+                        <div class="brand-item">
+                            <input type="checkbox" id="brand_@brand" name="selectedBrands" value="@brand">
+                            <label for="brand_@brand" class="brand-label">
+                                <span>@brand.ToUpper()</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </label>
+                        </div>
+                    }
+                }
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Hapus</button>
+                <button type="button" class="btn btn-primary">Terapkan</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Year Modal -->
+<div class="modal fade" id="yearModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content filter-modal">
+            <div class="modal-header">
+                <h5 class="modal-title">Tahun</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div class="range-slider">
+                    <div class="range-input">
+                        <input type="number" class="form-control" placeholder="2015" min="1990" max="2024">
+                        <span class="range-separator">-</span>
+                        <input type="number" class="form-control" placeholder="2024" min="1990" max="2024">
+                    </div>
+                    <div class="slider-track">
+                        <div class="slider-range"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Hapus</button>
+                <button type="button" class="btn btn-primary">Terapkan</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Distance Modal -->
+<div class="modal fade" id="distanceModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content filter-modal">
+            <div class="modal-header">
+                <h5 class="modal-title">Jarak Tempuh</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <p class="text-muted">Anda akan menemukan mobil dengan jarak tempuh rata-rata 38,204 KM</p>
+                <div class="range-slider">
+                    <div class="range-input">
+                        <input type="number" class="form-control" placeholder="980" min="0">
+                        <span class="range-unit">KM</span>
+                        <span class="range-separator">-</span>
+                        <input type="number" class="form-control" placeholder="97,817" min="0">
+                        <span class="range-unit">KM</span>
+                    </div>
+                    <div class="slider-track">
+                        <div class="slider-range"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Hapus</button>
+                <button type="button" class="btn btn-primary">Terapkan</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Price Modal -->
+<div class="modal fade" id="priceModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content filter-modal">
+            <div class="modal-header">
+                <h5 class="modal-title">Harga</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <p class="text-muted">Harga rata-rata mobil di Carro adalah Rp 200,847,138</p>
+                <div class="range-slider">
+                    <div class="range-input">
+                        <input type="text" class="form-control" placeholder="Rp 66,000,000">
+                        <span class="range-separator">-</span>
+                        <input type="text" class="form-control" placeholder="Rp 979,000,000">
+                    </div>
+                    <div class="slider-track">
+                        <div class="slider-range"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Hapus</button>
+                <button type="button" class="btn btn-primary">Terapkan</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Installment Modal -->
+<div class="modal fade" id="installmentModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content filter-modal">
+            <div class="modal-header">
+                <h5 class="modal-title">Cicilan</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <p class="text-muted">Rata-rata angsuran bulanan mobil di Carro adalah Rp3,697,060</p>
+                <div class="range-slider">
+                    <div class="range-input">
+                        <input type="text" class="form-control" placeholder="Rp 1,200,000">
+                        <span class="range-separator">-</span>
+                        <input type="text" class="form-control" placeholder="Rp 18,000,000">
+                    </div>
+                    <div class="slider-track">
+                        <div class="slider-range"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Hapus</button>
+                <button type="button" class="btn btn-primary">Terapkan</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Availability Modal -->
+<div class="modal fade" id="availabilityModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content filter-modal">
+            <div class="modal-header">
+                <h5 class="modal-title">Ketersediaan</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div class="availability-options">
+                    <button type="button" class="availability-btn active">Tersedia</button>
+                    <button type="button" class="availability-btn">Akan Datang</button>
+                </div>
+                <div class="availability-item">
+                    <span>Telah Dipesan</span>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Hapus</button>
+                <button type="button" class="btn btn-primary">Terapkan</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .filter-modal {
+        border-radius: 15px;
+        border: none;
+    }
+
+        .filter-modal .modal-header {
+            border-bottom: 1px solid #f0f0f0;
+            padding: 20px 24px 16px;
+        }
+
+        .filter-modal .modal-title {
+            font-weight: 600;
+            font-size: 18px;
+            color: #333;
+        }
+
+        .filter-modal .modal-body {
+            padding: 20px 24px;
+        }
+
+        .filter-modal .modal-footer {
+            border-top: 1px solid #f0f0f0;
+            padding: 16px 24px 20px;
+            gap: 12px;
+        }
+
+    .brand-item {
+        display: flex;
+        align-items: center;
+        padding: 12px 0;
+        border-bottom: 1px solid #f0f0f0;
+    }
+
+        .brand-item:last-child {
+            border-bottom: none;
+        }
+
+    .brand-label {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        margin-left: 12px;
+        cursor: pointer;
+        font-weight: 500;
+    }
+
+    .range-slider {
+        padding: 20px 0;
+    }
+
+    .range-input {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 20px;
+    }
+
+    .range-separator {
+        color: #666;
+        font-weight: 500;
+    }
+
+    .range-unit {
+        color: #666;
+        font-size: 14px;
+    }
+
+    .slider-track {
+        height: 6px;
+        background: #f0f0f0;
+        border-radius: 3px;
+        position: relative;
+    }
+
+    .slider-range {
+        height: 100%;
+        background: #ff6b35;
+        border-radius: 3px;
+        width: 60%;
+        margin-left: 10%;
+    }
+
+    .availability-options {
+        display: flex;
+        gap: 12px;
+        margin-bottom: 20px;
+    }
+
+    .availability-btn {
+        padding: 8px 16px;
+        border: 1px solid #e0e0e0;
+        background: white;
+        border-radius: 20px;
+        color: #666;
+        font-size: 14px;
+        cursor: pointer;
+    }
+
+        .availability-btn.active {
+            background: #ff6b35;
+            color: white;
+            border-color: #ff6b35;
+        }
+
+    .availability-item {
+        padding: 12px 0;
+        color: #666;
+    }
+
+    .btn-primary {
+        background: #ff6b35;
+        border-color: #ff6b35;
+        border-radius: 25px;
+        padding: 8px 24px;
+    }
+
+    .btn-light {
+        background: #f8f9fa;
+        border-color: #e9ecef;
+        border-radius: 25px;
+        padding: 8px 24px;
+        color: #666;
+    }
+</style>
+
+<!-- WhatsApp Float Button -->
+<div class="whatsapp-float">
+    <a href="https://wa.me/6281234567890?text=Halo%20RodiTri%20Pekanbaru,%20saya%20tertarik%20dengan%20mobil%20yang%20tersedia"
+       target="_blank" class="btn btn-success rounded-circle">
+        <i class="fab fa-whatsapp fa-2x"></i>
+    </a>
+</div>
+
+<script>
+    function sortResults(sortBy) {
+        const url = new URL(window.location);
+        url.searchParams.set('sort', sortBy);
+        window.location.href = url.toString();
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log('Landing page loaded successfully');
+
+        // Simple interactivity without complex animations
+        document.querySelectorAll('.filter-pill').forEach(function(pill) {
+            pill.addEventListener('click', function(e) {
+                if (this.getAttribute('href') === '#' || !this.getAttribute('href')) {
+                    e.preventDefault();
+                }
+            });
+        });
+    });
+</script>
