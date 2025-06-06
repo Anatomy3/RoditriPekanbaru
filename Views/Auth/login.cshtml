@@ -4,90 +4,452 @@
     Layout = "~/Views/Shared/_LandingLayout.cshtml";
 }
 
-<div class="container py-5">
-    <div class="row justify-content-center">
-        <div class="col-md-6 col-lg-5">
-            <div class="card shadow-lg">
-                <div class="card-body p-5">
-                    <div class="text-center mb-4">
-                        <div class="mb-3">
-                            <i class="fas fa-user-circle fa-4x text-primary"></i>
+<style>
+    :root {
+        --roditri-primary: #ff5722;
+        --roditri-primary-dark: #e64a19;
+        --roditri-primary-light: #ff8a65;
+        --roditri-secondary: #2c3e50;
+        --roditri-success: #28a745;
+    }
+
+    body {
+        background: linear-gradient(135deg, #ff5722 0%, #ff8a65 50%, #ffab91 100%);
+        min-height: 100vh;
+    }
+
+    .login-container {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        padding: 2rem 0;
+    }
+
+        .login-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 80%, rgba(255, 87, 34, 0.3) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(255, 138, 101, 0.2) 0%, transparent 50%), radial-gradient(circle at 40% 40%, rgba(255, 171, 145, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+    .card {
+        background: rgba(255, 255, 255, 0.95) !important;
+        backdrop-filter: blur(20px);
+        border: none !important;
+        border-radius: 20px !important;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(255, 255, 255, 0.1) !important;
+        position: relative;
+        z-index: 1;
+        max-width: 450px;
+        width: 100%;
+    }
+
+    .brand-section {
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+
+    .brand-icon {
+        background: linear-gradient(135deg, var(--roditri-primary), var(--roditri-primary-light));
+        color: white;
+        width: 80px;
+        height: 80px;
+        border-radius: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 1.5rem;
+        font-size: 2.2rem;
+        box-shadow: 0 10px 30px rgba(255, 87, 34, 0.3);
+        transform: rotate(-3deg);
+        transition: transform 0.3s ease;
+    }
+
+        .brand-icon:hover {
+            transform: rotate(0deg) scale(1.05);
+        }
+
+    .text-primary {
+        color: var(--roditri-primary) !important;
+    }
+
+    .brand-title {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: var(--roditri-secondary);
+        margin-bottom: 0.5rem;
+    }
+
+    .brand-subtitle {
+        color: #6c757d;
+        font-size: 1rem;
+    }
+
+    .form-label {
+        color: var(--roditri-secondary) !important;
+        font-weight: 600;
+        margin-bottom: 0.75rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+        .form-label i {
+            color: var(--roditri-primary);
+            width: 18px;
+        }
+
+    .form-control {
+        border: 2px solid #e9ecef;
+        border-radius: 12px;
+        padding: 1rem 1.25rem;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+        background: rgba(248, 249, 250, 0.8);
+    }
+
+        .form-control:focus {
+            border-color: var(--roditri-primary) !important;
+            box-shadow: 0 0 0 3px rgba(255, 87, 34, 0.1) !important;
+            background: white;
+            outline: none;
+        }
+
+    .input-group .form-control {
+        border-right: none;
+    }
+
+    .btn-outline-secondary {
+        border-left: none !important;
+        border-color: #e9ecef !important;
+        color: #6c757d;
+        border-radius: 0 12px 12px 0 !important;
+        transition: all 0.3s ease;
+    }
+
+        .btn-outline-secondary:hover {
+            background-color: var(--roditri-primary) !important;
+            border-color: var(--roditri-primary) !important;
+            color: white !important;
+        }
+
+    .btn-primary {
+        background: linear-gradient(135deg, var(--roditri-primary), var(--roditri-primary-light)) !important;
+        border: none !important;
+        border-radius: 12px;
+        padding: 1rem 2rem;
+        font-size: 1.1rem;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(255, 87, 34, 0.3) !important;
+            background: linear-gradient(135deg, var(--roditri-primary-dark), var(--roditri-primary)) !important;
+        }
+
+        .btn-primary:active {
+            transform: translateY(0);
+        }
+
+    .form-check-input {
+        width: 1.2rem;
+        height: 1.2rem;
+        border: 2px solid #dee2e6;
+        border-radius: 4px;
+    }
+
+        .form-check-input:checked {
+            background-color: var(--roditri-primary) !important;
+            border-color: var(--roditri-primary) !important;
+        }
+
+        .form-check-input:focus {
+            box-shadow: 0 0 0 0.25rem rgba(255, 87, 34, 0.25) !important;
+        }
+
+    .form-check-label {
+        color: #6c757d;
+        font-size: 0.95rem;
+        margin-left: 0.5rem;
+    }
+
+    .forgot-password {
+        text-align: center;
+        margin: 1.5rem 0;
+    }
+
+        .forgot-password a {
+            color: var(--roditri-primary) !important;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+            .forgot-password a:hover {
+                color: var(--roditri-primary-dark) !important;
+                text-decoration: underline;
+            }
+
+    .divider {
+        position: relative;
+        text-align: center;
+        margin: 2rem 0;
+        color: #6c757d;
+        font-size: 0.9rem;
+    }
+
+        .divider::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: #dee2e6;
+        }
+
+        .divider span {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 0 1rem;
+            position: relative;
+        }
+
+    .register-section {
+        text-align: center;
+        padding: 1.5rem;
+        background: rgba(102, 126, 234, 0.05);
+        border-radius: 12px;
+        margin-top: 1.5rem;
+    }
+
+        .register-section p {
+            margin: 0;
+            color: #6c757d;
+            font-size: 0.95rem;
+        }
+
+        .register-section a {
+            color: var(--roditri-primary) !important;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+            .register-section a:hover {
+                color: var(--roditri-primary-dark) !important;
+            }
+
+    .demo-section {
+        background: rgba(255, 87, 34, 0.08) !important;
+        border: 1px solid rgba(255, 87, 34, 0.2) !important;
+        border-left: 4px solid var(--roditri-primary) !important;
+        border-radius: 12px;
+        margin-top: 2rem;
+    }
+
+        .demo-section .fw-bold {
+            color: var(--roditri-secondary) !important;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .demo-section .fa-info-circle {
+            color: var(--roditri-primary) !important;
+        }
+
+    .demo-creds {
+        font-family: 'Courier New', monospace;
+        background: rgba(255, 87, 34, 0.1);
+        padding: 0.25rem 0.5rem;
+        border-radius: 4px;
+        font-size: 0.85rem;
+        color: var(--roditri-secondary);
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: inline-block;
+    }
+
+        .demo-creds:hover {
+            background: rgba(255, 87, 34, 0.2);
+            transform: scale(1.05);
+        }
+
+    .alert-danger {
+        background: rgba(220, 53, 69, 0.1) !important;
+        border: 1px solid rgba(220, 53, 69, 0.2) !important;
+        border-left: 4px solid #dc3545 !important;
+        color: #dc3545 !important;
+        border-radius: 12px;
+    }
+
+    /* Loading state */
+    .btn-primary.loading {
+        pointer-events: none;
+        opacity: 0.8;
+    }
+
+        .btn-primary.loading::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 20px;
+            height: 20px;
+            margin: -10px 0 0 -10px;
+            border: 2px solid transparent;
+            border-top: 2px solid white;
+            border-radius: 50%;
+        }
+
+    /* Mobile responsive styles - no media queries */
+    .login-container {
+        padding: clamp(1rem, 3vw, 2rem);
+    }
+
+    .card {
+        margin: 0;
+        max-width: min(450px, 90vw);
+    }
+
+    .brand-icon {
+        width: clamp(60px, 15vw, 80px);
+        height: clamp(60px, 15vw, 80px);
+        font-size: clamp(1.8rem, 5vw, 2.2rem);
+    }
+
+    .brand-title {
+        font-size: clamp(1.5rem, 4vw, 1.8rem);
+    }
+
+    .form-control {
+        padding: clamp(0.875rem, 2.5vw, 1rem) clamp(1rem, 3vw, 1.25rem);
+        font-size: clamp(0.9rem, 2.5vw, 1rem);
+    }
+
+    .btn-primary {
+        padding: clamp(0.875rem, 2.5vw, 1rem) clamp(1.5rem, 4vw, 2rem);
+        font-size: clamp(1rem, 3vw, 1.1rem);
+    }
+</style>
+
+<div class="login-container">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-lg-5">
+                <div class="card shadow-lg">
+                    <div class="card-body p-5">
+                        <!-- Brand Section -->
+                        <div class="brand-section">
+                            <div class="brand-icon">
+                                <i class="fas fa-car"></i>
+                            </div>
+                            <h1 class="brand-title">RodiTri Pekanbaru</h1>
+                            <p class="brand-subtitle">Selamat datang kembali! Masuk ke akun Anda</p>
                         </div>
-                        <h3 class="fw-bold text-primary">Selamat Datang Kembali</h3>
-                        <p class="text-muted">Masuk ke akun Anda untuk melanjutkan</p>
-                    </div>
 
-                    <form asp-action="Login" method="post">
-                        <div asp-validation-summary="ModelOnly" class="alert alert-danger" role="alert"></div>
+                        <!-- Login Form -->
+                        <form asp-action="Login" method="post" id="loginForm">
+                            <div asp-validation-summary="ModelOnly" class="alert alert-danger" role="alert"></div>
 
-                        <div class="mb-3">
-                            <label asp-for="Username" class="form-label fw-semibold">
-                                <i class="fas fa-user me-2"></i>Username
-                            </label>
-                            <input asp-for="Username" class="form-control form-control-lg" placeholder="Masukkan username Anda" autocomplete="username">
-                            <span asp-validation-for="Username" class="text-danger small"></span>
-                        </div>
+                            <div class="mb-3">
+                                <label asp-for="Username" class="form-label fw-semibold">
+                                    <i class="fas fa-user"></i>Username
+                                </label>
+                                <input asp-for="Username" class="form-control form-control-lg" placeholder="Masukkan username Anda" autocomplete="username" required>
+                                <span asp-validation-for="Username" class="text-danger small"></span>
+                            </div>
 
-                        <div class="mb-3">
-                            <label asp-for="Password" class="form-label fw-semibold">
-                                <i class="fas fa-lock me-2"></i>Password
-                            </label>
-                            <div class="input-group">
-                                <input asp-for="Password" class="form-control form-control-lg" placeholder="Masukkan password Anda" autocomplete="current-password">
-                                <button type="button" class="btn btn-outline-secondary" onclick="togglePassword()">
-                                    <i class="fas fa-eye" id="toggleIcon"></i>
+                            <div class="mb-3">
+                                <label asp-for="Password" class="form-label fw-semibold">
+                                    <i class="fas fa-lock"></i>Password
+                                </label>
+                                <div class="input-group">
+                                    <input asp-for="Password" class="form-control form-control-lg" placeholder="Masukkan password Anda" autocomplete="current-password" required>
+                                    <button type="button" class="btn btn-outline-secondary" onclick="togglePassword()">
+                                        <i class="fas fa-eye" id="toggleIcon"></i>
+                                    </button>
+                                </div>
+                                <span asp-validation-for="Password" class="text-danger small"></span>
+                            </div>
+
+                            <div class="mb-4">
+                                <div class="form-check">
+                                    <input asp-for="RememberMe" class="form-check-input" type="checkbox">
+                                    <label asp-for="RememberMe" class="form-check-label">
+                                        Ingat saya selama 30 hari
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="d-grid mb-3">
+                                <button type="submit" class="btn btn-primary btn-lg" id="loginBtn">
+                                    <i class="fas fa-sign-in-alt me-2"></i>Masuk ke Akun
                                 </button>
                             </div>
-                            <span asp-validation-for="Password" class="text-danger small"></span>
+                        </form>
+
+                        <!-- Forgot Password -->
+                        <div class="forgot-password">
+                            <a href="#" onclick="showForgotPassword()">Lupa password?</a>
                         </div>
 
-                        <div class="mb-4">
-                            <div class="form-check">
-                                <input asp-for="RememberMe" class="form-check-input" type="checkbox">
-                                <label asp-for="RememberMe" class="form-check-label">
-                                    Ingat saya selama 30 hari
-                                </label>
-                            </div>
+                        <!-- Divider -->
+                        <div class="divider">
+                            <span>atau</span>
                         </div>
 
-                        <div class="d-grid mb-3">
-                            <button type="submit" class="btn btn-primary btn-lg">
-                                <i class="fas fa-sign-in-alt me-2"></i>Masuk
-                            </button>
+                        <!-- Register Section -->
+                        <div class="register-section">
+                            <p>
+                                Belum punya akun?
+                                <a href="@Url.Action("Register", "Auth")">Daftar sekarang</a>
+                            </p>
                         </div>
-                    </form>
 
-                    <div class="text-center mb-4">
-                        <a href="#" class="text-decoration-none text-muted small">
-                            Lupa password?
-                        </a>
-                    </div>
-
-                    <hr class="my-4">
-
-                    <div class="text-center">
-                        <p class="mb-0">
-                            Belum punya akun?
-                            <a href="@Url.Action("Register", "Auth")" class="text-decoration-none fw-bold">
-                                Daftar di sini
-                            </a>
-                        </p>
-                    </div>
-
-                    <!-- Demo Credentials -->
-                    <div class="mt-4">
-                        <div class="alert alert-info">
+                        <!-- Demo Credentials -->
+                        <div class="alert demo-section">
                             <h6 class="fw-bold">
-                                <i class="fas fa-info-circle me-2"></i>Demo Credentials:
+                                <i class="fas fa-info-circle"></i>Demo Login
                             </h6>
                             <div class="row">
                                 <div class="col-6">
                                     <p class="mb-1 small"><strong>Admin:</strong></p>
-                                    <p class="mb-0 small">admin / admin123</p>
+                                    <p class="mb-0 small">
+                                        <span class="demo-creds" onclick="fillCredentials('admin', 'admin123')">admin / admin123</span>
+                                    </p>
                                 </div>
                                 <div class="col-6">
                                     <p class="mb-1 small"><strong>User:</strong></p>
-                                    <p class="mb-0 small">user / user123</p>
+                                    <p class="mb-0 small">
+                                        <span class="demo-creds" onclick="fillCredentials('user1', 'user123')">user1 / user123</span>
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -113,6 +475,34 @@
             }
         }
     }
+
+    function showForgotPassword() {
+        alert('Hubungi administrator untuk reset password:\nEmail: admin@roditripekanbaru.com\nWhatsApp: +62 812-3456-7890');
+    }
+
+    function fillCredentials(username, password) {
+        document.getElementById('Username').value = username;
+        document.getElementById('Password').value = password;
+
+        // Visual feedback
+        const inputs = document.querySelectorAll('#Username, #Password');
+        inputs.forEach(input => {
+            input.style.background = 'rgba(255, 87, 34, 0.1)';
+            setTimeout(() => {
+                input.style.background = '';
+            }, 1000);
+        });
+    }
+
+    // Document ready
+    document.addEventListener('DOMContentLoaded', function() {
+        // Form submit handler
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            const btn = document.getElementById('loginBtn');
+            btn.classList.add('loading');
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Memproses...';
+        });
+    });
 </script>
 
 @section Scripts {

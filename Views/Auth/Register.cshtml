@@ -4,100 +4,509 @@
     Layout = "~/Views/Shared/_LandingLayout.cshtml";
 }
 
-<div class="container py-5">
-    <div class="row justify-content-center">
-        <div class="col-md-6 col-lg-5">
-            <div class="card shadow-lg">
-                <div class="card-body p-5">
-                    <div class="text-center mb-4">
-                        <div class="mb-3">
-                            <i class="fas fa-user-plus fa-4x text-success"></i>
-                        </div>
-                        <h3 class="fw-bold text-success">Bergabung dengan Kami</h3>
-                        <p class="text-muted">Buat akun baru untuk mengakses fitur lengkap</p>
-                    </div>
+<style>
+    :root {
+        --roditri-primary: #ff5722;
+        --roditri-primary-dark: #e64a19;
+        --roditri-primary-light: #ff8a65;
+        --roditri-secondary: #2c3e50;
+        --roditri-success: #28a745;
+        --roditri-warning: #ffc107;
+        --roditri-danger: #dc3545;
+    }
 
-                    <form asp-action="Register" method="post">
-                        <div asp-validation-summary="ModelOnly" class="alert alert-danger" role="alert"></div>
+    body {
+        background: linear-gradient(135deg, #ff5722 0%, #ff8a65 50%, #ffab91 100%);
+        min-height: 100vh;
+    }
 
-                        <div class="mb-3">
-                            <label asp-for="NamaLengkap" class="form-label fw-semibold">
-                                <i class="fas fa-id-card me-2"></i>Nama Lengkap
-                            </label>
-                            <input asp-for="NamaLengkap" class="form-control form-control-lg" placeholder="Masukkan nama lengkap Anda" autocomplete="name">
-                            <span asp-validation-for="NamaLengkap" class="text-danger small"></span>
-                        </div>
+    .register-container {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        padding: 2rem 0;
+    }
 
-                        <div class="mb-3">
-                            <label asp-for="Username" class="form-label fw-semibold">
-                                <i class="fas fa-user me-2"></i>Username
-                            </label>
-                            <input asp-for="Username" class="form-control form-control-lg" placeholder="Pilih username unik" autocomplete="username">
-                            <div class="form-text">Username harus unik dan akan digunakan untuk login</div>
-                            <span asp-validation-for="Username" class="text-danger small"></span>
-                        </div>
+        .register-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 80%, rgba(255, 87, 34, 0.3) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(255, 138, 101, 0.2) 0%, transparent 50%), radial-gradient(circle at 40% 40%, rgba(255, 171, 145, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
 
-                        <div class="mb-3">
-                            <label asp-for="Password" class="form-label fw-semibold">
-                                <i class="fas fa-lock me-2"></i>Password
-                            </label>
-                            <div class="input-group">
-                                <input asp-for="Password" class="form-control form-control-lg" placeholder="Buat password yang kuat" autocomplete="new-password">
-                                <button type="button" class="btn btn-outline-secondary" onclick="togglePassword('Password')">
-                                    <i class="fas fa-eye" id="toggleIcon1"></i>
-                                </button>
+    .card {
+        background: rgba(255, 255, 255, 0.95) !important;
+        backdrop-filter: blur(20px);
+        border: none !important;
+        border-radius: 20px !important;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(255, 255, 255, 0.1) !important;
+        position: relative;
+        z-index: 1;
+        max-width: 480px;
+        width: 100%;
+    }
+
+    .brand-section {
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+
+    .brand-icon {
+        background: linear-gradient(135deg, var(--roditri-primary), var(--roditri-primary-light));
+        color: white;
+        width: 80px;
+        height: 80px;
+        border-radius: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 1.5rem;
+        font-size: 2.2rem;
+        box-shadow: 0 10px 30px rgba(255, 87, 34, 0.3);
+        transform: rotate(3deg);
+        transition: transform 0.3s ease;
+    }
+
+        .brand-icon:hover {
+            transform: rotate(0deg) scale(1.05);
+        }
+
+    .text-success {
+        color: var(--roditri-primary) !important;
+    }
+
+    .brand-title {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: var(--roditri-secondary);
+        margin-bottom: 0.5rem;
+    }
+
+    .brand-subtitle {
+        color: #6c757d;
+        font-size: 1rem;
+    }
+
+    .form-label {
+        color: var(--roditri-secondary) !important;
+        font-weight: 600;
+        margin-bottom: 0.75rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+        .form-label i {
+            color: var(--roditri-primary);
+            width: 18px;
+        }
+
+    .form-control {
+        border: 2px solid #e9ecef;
+        border-radius: 12px;
+        padding: 1rem 1.25rem;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+        background: rgba(248, 249, 250, 0.8);
+    }
+
+        .form-control:focus {
+            border-color: var(--roditri-primary) !important;
+            box-shadow: 0 0 0 3px rgba(255, 87, 34, 0.1) !important;
+            background: white;
+            outline: none;
+        }
+
+        .form-control.is-valid {
+            border-color: var(--roditri-success) !important;
+            padding-right: 3rem;
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%2328a745' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z'/%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            background-size: 1rem;
+        }
+
+        .form-control.is-invalid {
+            border-color: var(--roditri-danger) !important;
+            padding-right: 3rem;
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23dc3545' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            background-size: 1rem;
+        }
+
+    .input-group .form-control {
+        border-right: none;
+    }
+
+    .btn-outline-secondary {
+        border-left: none !important;
+        border-color: #e9ecef !important;
+        color: #6c757d;
+        border-radius: 0 12px 12px 0 !important;
+        transition: all 0.3s ease;
+    }
+
+        .btn-outline-secondary:hover {
+            background-color: var(--roditri-primary) !important;
+            border-color: var(--roditri-primary) !important;
+            color: white !important;
+        }
+
+    .btn-success {
+        background: linear-gradient(135deg, var(--roditri-primary), var(--roditri-primary-light)) !important;
+        border: none !important;
+        border-radius: 12px;
+        padding: 1rem 2rem;
+        font-size: 1.1rem;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
+
+        .btn-success::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .btn-success:hover::before {
+            left: 100%;
+        }
+
+        .btn-success:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(255, 87, 34, 0.3) !important;
+            background: linear-gradient(135deg, var(--roditri-primary-dark), var(--roditri-primary)) !important;
+        }
+
+        .btn-success:active {
+            transform: translateY(0);
+        }
+
+        .btn-success:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+    .form-check-input {
+        width: 1.2rem;
+        height: 1.2rem;
+        border: 2px solid #dee2e6;
+        border-radius: 4px;
+    }
+
+        .form-check-input:checked {
+            background-color: var(--roditri-primary) !important;
+            border-color: var(--roditri-primary) !important;
+        }
+
+        .form-check-input:focus {
+            box-shadow: 0 0 0 0.25rem rgba(255, 87, 34, 0.25) !important;
+        }
+
+    .terms-section {
+        background: rgba(255, 87, 34, 0.05);
+        border: 1px solid rgba(255, 87, 34, 0.1);
+        border-radius: 12px;
+        padding: 1rem;
+        margin-bottom: 1.5rem;
+    }
+
+        .terms-section .form-check-label {
+            color: #6c757d;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+
+        .terms-section a {
+            color: var(--roditri-primary) !important;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+            .terms-section a:hover {
+                color: var(--roditri-primary-dark) !important;
+                text-decoration: underline;
+            }
+
+    .divider {
+        position: relative;
+        text-align: center;
+        margin: 2rem 0;
+        color: #6c757d;
+        font-size: 0.9rem;
+    }
+
+        .divider::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: #dee2e6;
+        }
+
+        .divider span {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 0 1rem;
+            position: relative;
+        }
+
+    .login-section {
+        text-align: center;
+        padding: 1.5rem;
+        background: rgba(102, 126, 234, 0.05);
+        border-radius: 12px;
+        margin-top: 1.5rem;
+    }
+
+        .login-section p {
+            margin: 0;
+            color: #6c757d;
+            font-size: 0.95rem;
+        }
+
+        .login-section a {
+            color: var(--roditri-primary) !important;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+            .login-section a:hover {
+                color: var(--roditri-primary-dark) !important;
+            }
+
+    .benefits-section {
+        background: rgba(255, 87, 34, 0.08) !important;
+        border: 1px solid rgba(255, 87, 34, 0.2) !important;
+        border-left: 4px solid var(--roditri-primary) !important;
+        border-radius: 12px;
+        margin-top: 2rem;
+    }
+
+    .text-primary {
+        color: var(--roditri-primary) !important;
+    }
+
+    .benefits-section .fa-star {
+        color: var(--roditri-primary) !important;
+    }
+
+    .benefits-section .text-success {
+        color: var(--roditri-success) !important;
+    }
+
+    .password-strength {
+        margin-top: 0.5rem;
+    }
+
+    .progress {
+        height: 4px !important;
+        border-radius: 2px;
+        background-color: #e9ecef;
+        margin-top: 0.5rem;
+    }
+
+    .progress-bar {
+        border-radius: 2px;
+        transition: all 0.3s ease;
+    }
+
+    .strength-text {
+        font-size: 0.8rem;
+        margin-top: 0.25rem;
+        font-weight: 500;
+    }
+
+    .username-status {
+        font-size: 0.8rem;
+        margin-top: 0.25rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .username-available {
+        color: var(--roditri-success);
+    }
+
+    .username-taken {
+        color: var(--roditri-danger);
+    }
+
+    .alert-danger {
+        background: rgba(220, 53, 69, 0.1) !important;
+        border: 1px solid rgba(220, 53, 69, 0.2) !important;
+        border-left: 4px solid #dc3545 !important;
+        color: #dc3545 !important;
+        border-radius: 12px;
+    }
+
+    /* Loading state */
+    .btn-success.loading {
+        pointer-events: none;
+        opacity: 0.8;
+    }
+
+        .btn-success.loading::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 20px;
+            height: 20px;
+            margin: -10px 0 0 -10px;
+            border: 2px solid transparent;
+            border-top: 2px solid white;
+            border-radius: 50%;
+        }
+
+    /* Mobile responsive styles - no media queries */
+    .register-container {
+        padding: clamp(1rem, 3vw, 2rem);
+    }
+
+    .card {
+        margin: 0;
+        max-width: min(480px, 90vw);
+    }
+
+    .brand-icon {
+        width: clamp(60px, 15vw, 80px);
+        height: clamp(60px, 15vw, 80px);
+        font-size: clamp(1.8rem, 5vw, 2.2rem);
+    }
+
+    .brand-title {
+        font-size: clamp(1.5rem, 4vw, 1.8rem);
+    }
+
+    .form-control {
+        padding: clamp(0.875rem, 2.5vw, 1rem) clamp(1rem, 3vw, 1.25rem);
+        font-size: clamp(0.9rem, 2.5vw, 1rem);
+    }
+
+    .btn-success {
+        padding: clamp(0.875rem, 2.5vw, 1rem) clamp(1.5rem, 4vw, 2rem);
+        font-size: clamp(1rem, 3vw, 1.1rem);
+    }
+</style>
+
+<div class="register-container">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-lg-5">
+                <div class="card shadow-lg">
+                    <div class="card-body p-5">
+                        <!-- Brand Section -->
+                        <div class="brand-section">
+                            <div class="brand-icon">
+                                <i class="fas fa-user-plus"></i>
                             </div>
-                            <div class="form-text">Password minimal 6 karakter</div>
-                            <span asp-validation-for="Password" class="text-danger small"></span>
+                            <h1 class="brand-title">Bergabung dengan Kami</h1>
+                            <p class="brand-subtitle">Buat akun baru untuk mengakses fitur lengkap</p>
                         </div>
 
-                        <div class="mb-4">
-                            <label asp-for="ConfirmPassword" class="form-label fw-semibold">
-                                <i class="fas fa-lock me-2"></i>Konfirmasi Password
-                            </label>
-                            <div class="input-group">
-                                <input asp-for="ConfirmPassword" class="form-control form-control-lg" placeholder="Ulangi password Anda" autocomplete="new-password">
-                                <button type="button" class="btn btn-outline-secondary" onclick="togglePassword('ConfirmPassword')">
-                                    <i class="fas fa-eye" id="toggleIcon2"></i>
-                                </button>
-                            </div>
-                            <span asp-validation-for="ConfirmPassword" class="text-danger small"></span>
-                        </div>
+                        <!-- Register Form -->
+                        <form asp-action="Register" method="post" id="registerForm">
+                            <div asp-validation-summary="ModelOnly" class="alert alert-danger" role="alert"></div>
 
-                        <!-- Terms and Conditions -->
-                        <div class="mb-4">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="agreeTerms" required>
-                                <label class="form-check-label small" for="agreeTerms">
-                                    Saya setuju dengan
-                                    <a href="#" class="text-decoration-none">Syarat & Ketentuan</a>
-                                    dan
-                                    <a href="#" class="text-decoration-none">Kebijakan Privasi</a>
+                            <div class="mb-3">
+                                <label asp-for="NamaLengkap" class="form-label fw-semibold">
+                                    <i class="fas fa-id-card"></i>Nama Lengkap
                                 </label>
+                                <input asp-for="NamaLengkap" class="form-control form-control-lg" placeholder="Masukkan nama lengkap Anda" autocomplete="name" required id="namaLengkapInput">
+                                <span asp-validation-for="NamaLengkap" class="text-danger small"></span>
                             </div>
+
+                            <div class="mb-3">
+                                <label asp-for="Username" class="form-label fw-semibold">
+                                    <i class="fas fa-user"></i>Username
+                                </label>
+                                <input asp-for="Username" class="form-control form-control-lg" placeholder="Pilih username unik" autocomplete="username" required id="usernameInput">
+                                <div class="form-text">Username harus unik dan akan digunakan untuk login</div>
+                                <div class="username-status" id="usernameStatus"></div>
+                                <span asp-validation-for="Username" class="text-danger small"></span>
+                            </div>
+
+                            <div class="mb-3">
+                                <label asp-for="Password" class="form-label fw-semibold">
+                                    <i class="fas fa-lock"></i>Password
+                                </label>
+                                <div class="input-group">
+                                    <input asp-for="Password" class="form-control form-control-lg" placeholder="Buat password yang kuat" autocomplete="new-password" required id="passwordInput">
+                                    <button type="button" class="btn btn-outline-secondary" onclick="togglePassword('Password')">
+                                        <i class="fas fa-eye" id="toggleIcon1"></i>
+                                    </button>
+                                </div>
+                                <div class="form-text">Password minimal 6 karakter</div>
+                                <span asp-validation-for="Password" class="text-danger small"></span>
+                            </div>
+
+                            <div class="mb-4">
+                                <label asp-for="ConfirmPassword" class="form-label fw-semibold">
+                                    <i class="fas fa-lock"></i>Konfirmasi Password
+                                </label>
+                                <div class="input-group">
+                                    <input asp-for="ConfirmPassword" class="form-control form-control-lg" placeholder="Ulangi password Anda" autocomplete="new-password" required id="confirmPasswordInput">
+                                    <button type="button" class="btn btn-outline-secondary" onclick="togglePassword('ConfirmPassword')">
+                                        <i class="fas fa-eye" id="toggleIcon2"></i>
+                                    </button>
+                                </div>
+                                <span asp-validation-for="ConfirmPassword" class="text-danger small"></span>
+                            </div>
+
+                            <!-- Terms and Conditions -->
+                            <div class="terms-section">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="agreeTerms" required>
+                                    <label class="form-check-label" for="agreeTerms">
+                                        Saya setuju dengan
+                                        <a href="#" onclick="showTerms()">Syarat & Ketentuan</a>
+                                        dan
+                                        <a href="#" onclick="showPrivacy()">Kebijakan Privasi</a>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="d-grid mb-3">
+                                <button type="submit" class="btn btn-success btn-lg" id="registerBtn" disabled>
+                                    <i class="fas fa-user-plus me-2"></i>Daftar Sekarang
+                                </button>
+                            </div>
+                        </form>
+
+                        <!-- Divider -->
+                        <div class="divider">
+                            <span>atau</span>
                         </div>
 
-                        <div class="d-grid mb-3">
-                            <button type="submit" class="btn btn-success btn-lg">
-                                <i class="fas fa-user-plus me-2"></i>Daftar Sekarang
-                            </button>
+                        <!-- Login Section -->
+                        <div class="login-section">
+                            <p>
+                                Sudah punya akun?
+                                <a href="@Url.Action("Login", "Auth")">Masuk di sini</a>
+                            </p>
                         </div>
-                    </form>
 
-                    <hr class="my-4">
-
-                    <div class="text-center">
-                        <p class="mb-0">
-                            Sudah punya akun?
-                            <a href="@Url.Action("Login", "Auth")" class="text-decoration-none fw-bold">
-                                Masuk di sini
-                            </a>
-                        </p>
-                    </div>
-
-                    <!-- Benefits of Registration -->
-                    <div class="mt-4">
-                        <div class="alert alert-light border">
+                        <!-- Benefits of Registration -->
+                        <div class="alert benefits-section">
                             <h6 class="fw-bold text-primary mb-2">
                                 <i class="fas fa-star me-2"></i>Keuntungan Bergabung:
                             </h6>
@@ -116,6 +525,31 @@
 </div>
 
 <script>
+    // Form validation and interactive features
+    document.addEventListener('DOMContentLoaded', function() {
+        const passwordInput = document.getElementById('Password');
+        const passwordInput = document.getElementById(fieldId);
+        const toggleIcon = document.getElementById(fieldId === 'Password' ? 'toggleIcon1' : 'toggleIcon2');
+
+        if (passwordInput && toggleIcon) {
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                toggleIcon.className = 'fas fa-eye-slash';
+            } else {
+                passwordInput.type = 'password';
+                toggleIcon.className = 'fas fa-eye';
+            }
+        }
+    }
+
+    function showTerms() {
+        alert('Syarat & Ketentuan:\n\n1. Pengguna bertanggung jawab atas keakuratan informasi\n2. Dilarang menyalahgunakan platform\n3. RodiTri berhak memblokir akun yang melanggar\n4. Data pribadi akan dijaga kerahasiaannya\n\nUntuk informasi lengkap, hubungi: info@roditripekanbaru.com');
+    }
+
+    function showPrivacy() {
+        alert('Kebijakan Privasi:\n\n1. Data pribadi Anda aman bersama kami\n2. Informasi tidak akan dibagikan ke pihak ketiga\n3. Cookie digunakan untuk meningkatkan pengalaman\n4. Anda dapat menghapus akun kapan saja\n\nUntuk detail lengkap, hubungi: privacy@roditripekanbaru.com');
+    }
+
     function togglePassword(fieldId) {
         const passwordInput = document.getElementById(fieldId);
         const toggleIcon = document.getElementById(fieldId === 'Password' ? 'toggleIcon1' : 'toggleIcon2');
@@ -131,38 +565,167 @@
         }
     }
 
-    // Password strength indicator
+    function showTerms() {
+        alert('Syarat & Ketentuan:\n\n1. Pengguna bertanggung jawab atas keakuratan informasi\n2. Dilarang menyalahgunakan platform\n3. RodiTri berhak memblokir akun yang melanggar\n4. Data pribadi akan dijaga kerahasiaannya\n\nUntuk informasi lengkap, hubungi: info@roditripekanbaru.com');
+    }
+
+    function showPrivacy() {
+        alert('Kebijakan Privasi:\n\n1. Data pribadi Anda aman bersama kami\n2. Informasi tidak akan dibagikan ke pihak ketiga\n3. Cookie digunakan untuk meningkatkan pengalaman\n4. Anda dapat menghapus akun kapan saja\n\nUntuk detail lengkap, hubungi: privacy@roditripekanbaru.com');
+    }
+
+    // Form validation and interactive features
     document.addEventListener('DOMContentLoaded', function() {
         const passwordInput = document.getElementById('Password');
+        const confirmPasswordInput = document.getElementById('ConfirmPassword');
+        const usernameInput = document.getElementById('usernameInput');
+        const namaLengkapInput = document.getElementById('namaLengkapInput');
+        const registerBtn = document.getElementById('registerBtn');
+        const agreeTerms = document.getElementById('agreeTerms');
+
+        // Password strength indicator
         if (passwordInput) {
             passwordInput.addEventListener('input', function() {
                 const password = this.value;
 
-                // Remove existing indicator
+                // Remove existing indicators
                 const existingIndicator = this.parentNode.parentNode.querySelector('.progress');
-                if (existingIndicator) {
-                    existingIndicator.remove();
-                }
+                const existingText = this.parentNode.parentNode.querySelector('.strength-text');
+                if (existingIndicator) existingIndicator.remove();
+                if (existingText) existingText.remove();
 
                 if (password.length > 0) {
-                    const strengthIndicator = document.createElement('div');
-                    strengthIndicator.className = 'progress mt-1';
-                    strengthIndicator.style.height = '3px';
-
                     let strength = 0;
+                    let strengthText = '';
+                    let strengthColor = '';
+
                     if (password.length >= 6) strength++;
                     if (password.match(/[a-z]/) && password.match(/[A-Z]/)) strength++;
                     if (password.match(/[0-9]/)) strength++;
                     if (password.match(/[^a-zA-Z0-9]/)) strength++;
 
                     const strengthColors = ['bg-danger', 'bg-warning', 'bg-info', 'bg-success'];
+                    const strengthTexts = ['Lemah', 'Cukup', 'Baik', 'Kuat'];
+                    const strengthTextColors = ['#dc3545', '#ffc107', '#17a2b8', '#28a745'];
 
+                    const strengthIndicator = document.createElement('div');
+                    strengthIndicator.className = 'progress mt-1';
                     strengthIndicator.innerHTML = `<div class="progress-bar ${strengthColors[strength-1] || 'bg-danger'}" style="width: ${(strength/4)*100}%"></div>`;
 
+                    const strengthTextEl = document.createElement('div');
+                    strengthTextEl.className = 'strength-text';
+                    strengthTextEl.style.color = strengthTextColors[strength-1] || '#dc3545';
+                    strengthTextEl.textContent = `Kekuatan password: ${strengthTexts[strength-1] || 'Lemah'}`;
+
                     this.parentNode.parentNode.appendChild(strengthIndicator);
+                    this.parentNode.parentNode.appendChild(strengthTextEl);
+
+                    // Validate input
+                    if (strength >= 2) {
+                        this.classList.add('is-valid');
+                        this.classList.remove('is-invalid');
+                    } else {
+                        this.classList.add('is-invalid');
+                        this.classList.remove('is-valid');
+                    }
                 }
+
+                validateForm();
             });
         }
+
+        // Password confirmation
+        if (confirmPasswordInput) {
+            confirmPasswordInput.addEventListener('input', function() {
+                const password = passwordInput.value;
+                const confirmPassword = this.value;
+
+                if (confirmPassword.length > 0) {
+                    if (password === confirmPassword) {
+                        this.classList.add('is-valid');
+                        this.classList.remove('is-invalid');
+                    } else {
+                        this.classList.add('is-invalid');
+                        this.classList.remove('is-valid');
+                    }
+                }
+
+                validateForm();
+            });
+        }
+
+        // Username validation (simulated)
+        if (usernameInput) {
+            let usernameTimeout;
+            usernameInput.addEventListener('input', function() {
+                const username = this.value;
+                const statusEl = document.getElementById('usernameStatus');
+
+                if (username.length >= 3) {
+                    statusEl.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Memeriksa ketersediaan...';
+
+                    clearTimeout(usernameTimeout);
+                    usernameTimeout = setTimeout(() => {
+                        // Simulate API call
+                        const isAvailable = !['admin', 'user', 'test', 'demo'].includes(username.toLowerCase());
+
+                        if (isAvailable) {
+                            statusEl.innerHTML = '<i class="fas fa-check"></i> Username tersedia';
+                            statusEl.className = 'username-status username-available';
+                            this.classList.add('is-valid');
+                            this.classList.remove('is-invalid');
+                        } else {
+                            statusEl.innerHTML = '<i class="fas fa-times"></i> Username sudah digunakan';
+                            statusEl.className = 'username-status username-taken';
+                            this.classList.add('is-invalid');
+                            this.classList.remove('is-valid');
+                        }
+
+                        validateForm();
+                    }, 1000);
+                } else {
+                    statusEl.innerHTML = '';
+                    this.classList.remove('is-valid', 'is-invalid');
+                }
+
+                validateForm();
+            });
+        }
+
+        // Name validation
+        if (namaLengkapInput) {
+            namaLengkapInput.addEventListener('input', function() {
+                const name = this.value;
+                if (name.length >= 2) {
+                    this.classList.add('is-valid');
+                    this.classList.remove('is-invalid');
+                } else {
+                    this.classList.remove('is-valid', 'is-invalid');
+                }
+                validateForm();
+            });
+        }
+
+        // Form validation
+        function validateForm() {
+            const nameValid = namaLengkapInput.value.length >= 2;
+            const usernameValid = usernameInput.classList.contains('is-valid');
+            const passwordValid = passwordInput.classList.contains('is-valid');
+            const confirmPasswordValid = confirmPasswordInput.classList.contains('is-valid');
+            const termsChecked = agreeTerms.checked;
+
+            const isValid = nameValid && usernameValid && passwordValid && confirmPasswordValid && termsChecked;
+
+            registerBtn.disabled = !isValid;
+        }
+
+        // Terms checkbox validation
+        agreeTerms.addEventListener('change', validateForm);
+
+        // Form submit handler
+        document.getElementById('registerForm').addEventListener('submit', function(e) {
+            registerBtn.classList.add('loading');
+            registerBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Memproses...';
+        });
     });
 </script>
 
