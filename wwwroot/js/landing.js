@@ -117,8 +117,7 @@ function initializeScrollEffects() {
         });
     }
 
-    // Back to top button
-    createBackToTopButton();
+    // BACK-TO-TOP BUTTON DIHAPUS - TIDAK ADA LAGI
 }
 
 // Lazy Loading for Images
@@ -201,47 +200,7 @@ function formatPriceInput(input) {
     }
 }
 
-// Create back to top button
-function createBackToTopButton() {
-    const backToTopButton = document.createElement('button');
-    backToTopButton.innerHTML = '<i class="fas fa-chevron-up"></i>';
-    backToTopButton.className = 'btn btn-primary back-to-top';
-    backToTopButton.style.cssText = `
-        position: fixed;
-        bottom: 30px;
-        right: 30px;
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        z-index: 1000;
-        opacity: 0;
-        visibility: hidden;
-        transition: all 0.3s ease;
-        border: none;
-        box-shadow: 0 4px 15px rgba(0,123,255,0.3);
-    `;
-
-    document.body.appendChild(backToTopButton);
-
-    // Show/hide button based on scroll position
-    window.addEventListener('scroll', function () {
-        if (window.scrollY > 300) {
-            backToTopButton.style.opacity = '1';
-            backToTopButton.style.visibility = 'visible';
-        } else {
-            backToTopButton.style.opacity = '0';
-            backToTopButton.style.visibility = 'hidden';
-        }
-    });
-
-    // Scroll to top on click
-    backToTopButton.addEventListener('click', function () {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
-    });
-}
+// FUNGSI createBackToTopButton() DIHAPUS SEPENUHNYA
 
 // Price Calculator for Car Details Page
 function calculateLoanPayment(price, downPaymentPercent, months) {
@@ -335,18 +294,13 @@ function trackCarView(carId, carName) {
     }
 }
 
-// Add CSS for navbar scroll effect
+// Add CSS for navbar scroll effect - BACK-TO-TOP CSS DIHAPUS
 const style = document.createElement('style');
 style.textContent = `
     .navbar-scrolled {
         background-color: rgba(255, 255, 255, 0.95) !important;
         backdrop-filter: blur(10px);
         box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    }
-    
-    .back-to-top:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 6px 20px rgba(0,123,255,0.4);
     }
     
     .loading {

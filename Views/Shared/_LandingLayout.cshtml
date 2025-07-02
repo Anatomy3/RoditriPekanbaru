@@ -10,10 +10,135 @@
     <link rel="stylesheet" href="~/RoditriPekanbaru.styles.css" asp-append-version="true" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        .navbar-brand img {
-            height: 40px;
+        /* ===== ZOOM 80% - SAMA SEPERTI BROWSER ZOOM ===== */
+        body {
+            zoom: 0.8;
         }
 
+        /* STICKY NAVBAR STYLES */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1030;
+            transition: all 0.3s ease;
+        }
+
+            .navbar.scrolled {
+                background: rgba(255, 255, 255, 0.95) !important;
+                box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+                border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            }
+
+        /* Body padding untuk navbar fixed */
+        body {
+            padding-top: 80px;
+        }
+
+        /* Navbar brand styling */
+        .navbar-brand {
+            color: #e74c3c !important;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+            .navbar-brand:hover {
+                color: #c0392b !important;
+            }
+
+        /* Navigation links styling */
+        .navbar-nav .nav-link {
+            color: #333 !important;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem !important;
+        }
+
+            .navbar-nav .nav-link:hover {
+                color: #e74c3c !important;
+            }
+
+        /* Dropdown styling */
+        .dropdown-menu {
+            border: none;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            padding: 0.5rem 0;
+        }
+
+        .dropdown-item {
+            padding: 0.5rem 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+            .dropdown-item:hover {
+                background-color: #f8f9fa;
+                color: #e74c3c;
+            }
+
+        /* Button styling */
+        .btn {
+            border-radius: 8px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+            .btn:hover {
+                transform: translateY(-1px);
+            }
+
+        /* Basic responsive adjustments tanpa media queries */
+        .navbar-toggler {
+            border: none;
+            padding: 0.25rem 0.5rem;
+        }
+
+        .navbar-collapse {
+            flex-grow: 1;
+        }
+
+        /* Footer styling */
+        .footer {
+            background-color: #e74c3c;
+            color: white;
+            padding: 40px 0;
+            margin-top: 50px;
+        }
+
+            .footer h5 {
+                color: white;
+                margin-bottom: 20px;
+            }
+
+            .footer a {
+                color: #bdc3c7;
+                transition: color 0.3s ease;
+                text-decoration: none;
+            }
+
+                .footer a:hover {
+                    color: #3498db;
+                }
+
+        .social-links a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            text-align: center;
+            line-height: 40px;
+            transition: all 0.3s ease;
+            margin-right: 10px;
+        }
+
+            .social-links a:hover {
+                background: #3498db;
+                transform: translateY(-3px);
+            }
+
+        /* Basic styling untuk compatibility */
         .search-box {
             min-width: 300px;
         }
@@ -42,17 +167,13 @@
                 color: inherit;
             }
 
-        .brand-logo {
-            height: 60px;
-            margin-bottom: 10px;
-        }
-
         .car-card {
             border: 1px solid #ddd;
             border-radius: 10px;
             overflow: hidden;
             margin-bottom: 20px;
             transition: transform 0.3s ease;
+            position: relative;
         }
 
             .car-card:hover {
@@ -72,27 +193,6 @@
             color: #e74c3c;
         }
 
-        .filter-section {
-            background-color: #f8f9fa;
-            padding: 20px;
-            border-radius: 10px;
-            margin-bottom: 30px;
-        }
-
-        .hero-banner {
-            background: linear-gradient(135deg, #e74c3c 0%, #e74c3c 100%);
-            color: white;
-            padding: 80px 0;
-            text-align: center;
-        }
-
-        .footer {
-            background-color: #e74c3c;
-            color: white;
-            padding: 40px 0;
-            margin-top: 50px;
-        }
-
         .flash-sale {
             position: absolute;
             top: 10px;
@@ -104,10 +204,6 @@
             font-size: 12px;
             font-weight: bold;
             z-index: 10;
-        }
-
-        .car-card {
-            position: relative;
         }
     </style>
 </head>
@@ -121,43 +217,70 @@
                     <span class="fw-bold" style="color: #e74c3c;">RodiTri Pekanbaru</span>
                 </a>
 
-                <!-- User Account -->
-                <div class="navbar-nav ms-auto">
-                    @if (Context.Session.GetString("Username") != null)
-                    {
-                        <div class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" role="button" data-bs-toggle="dropdown">
-                                <i class="fas fa-user-circle me-1" style="font-size: 1.2rem;"></i>
-                                @Context.Session.GetString("NamaLengkap")
-                            </a>
-                            <ul class="dropdown-menu">
-                                @if (Context.Session.GetString("Level") == "Admin")
-                                {
+                <!-- Navbar Toggle for Mobile -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Navigation Menu -->
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <!-- Spacer untuk push content ke kanan -->
+                    <div class="navbar-nav me-auto"></div>
+
+                    <!-- User Account - Right Side -->
+                    <div class="navbar-nav">
+                        @if (Context.Session.GetString("Username") != null)
+                        {
+                            <!-- Pesanan Saya (hanya muncul kalau sudah login) -->
+                            <div class="nav-item me-3">
+                                <a class="nav-link" href="@Url.Action("MyOrders", "CustomerPreOrder")">
+                                    <i class="fas fa-shopping-bag me-1"></i>Pesanan Saya
+                                </a>
+                            </div>
+
+                            <!-- User Dropdown -->
+                            <div class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" role="button" data-bs-toggle="dropdown">
+                                    <i class="fas fa-user-circle me-1" style="font-size: 1.2rem;"></i>
+                                    @Context.Session.GetString("NamaLengkap")
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-end">
                                     <li>
-                                        <a class="dropdown-item" href="@Url.Action("Index", "Home")">
-                                            <i class="fas fa-cog me-2"></i> Admin Panel
+                                        <a class="dropdown-item" href="@Url.Action("MyOrders", "CustomerPreOrder")">
+                                            <i class="fas fa-shopping-bag me-2"></i> Pesanan Saya
                                         </a>
                                     </li>
+                                    @if (Context.Session.GetString("Level") == "Admin")
+                                    {
+                                        <li><hr class="dropdown-divider"></li>
+                                        <li>
+                                            <a class="dropdown-item" href="@Url.Action("Index", "Home")">
+                                                <i class="fas fa-cog me-2"></i> Admin Panel
+                                            </a>
+                                        </li>
+                                    }
                                     <li><hr class="dropdown-divider"></li>
-                                }
-                                <li>
-                                    <a class="dropdown-item" href="@Url.Action("Logout", "Auth")">
-                                        <i class="fas fa-sign-out-alt me-2"></i> Logout
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    }
-                    else
-                    {
-                        <a class="btn me-2" href="@Url.Action("Login", "Auth")" style="border: 1px solid #e74c3c; color: #e74c3c;">
-                            <i class="fas fa-sign-in-alt"></i> Masuk
-                        </a>
-                        <a class="btn" href="@Url.Action("Register", "Auth")" style="background-color: #e74c3c; border-color: #e74c3c; color: white;">
-                            <i class="fas fa-user-plus"></i> Daftar
-                        </a>
+                                    <li>
+                                        <a class="dropdown-item" href="@Url.Action("Logout", "Auth")">
+                                            <i class="fas fa-sign-out-alt me-2"></i> Logout
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        }
+                        else
+                        {
+                            <!-- Pesanan Saya (untuk user belum login) -->
+                            <a class="btn me-2" href="@Url.Action("TrackOrder", "CustomerPreOrder")" style="border: 1px solid #17a2b8; color: #17a2b8;">
+                                <i class="fas fa-shopping-bag"></i> Pesanan Saya
+                            </a>
 
-                    }
+                            <!-- Login Button -->
+                            <a class="btn" href="@Url.Action("Login", "Auth")" style="background-color: #e74c3c; border-color: #e74c3c; color: white;">
+                                <i class="fas fa-sign-in-alt"></i> Masuk
+                            </a>
+                        }
+                    </div>
                 </div>
             </div>
         </nav>
@@ -175,9 +298,9 @@
                     <h5><i class="fas fa-car me-2"></i>RodiTri Pekanbaru</h5>
                     <p>Dealer mobil terpercaya di Pekanbaru dengan pilihan mobil bekas berkualitas dan pelayanan terbaik sejak 2020.</p>
                     <div class="social-links">
-                        <a href="#" class="text-white me-3"><i class="fab fa-facebook fa-lg"></i></a>
-                        <a href="#" class="text-white me-3"><i class="fab fa-instagram fa-lg"></i></a>
-                        <a href="#" class="text-white me-3"><i class="fab fa-whatsapp fa-lg"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-facebook fa-lg"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-instagram fa-lg"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-whatsapp fa-lg"></i></a>
                         <a href="#" class="text-white"><i class="fab fa-youtube fa-lg"></i></a>
                     </div>
                 </div>
@@ -199,6 +322,7 @@
                         <li>• Trade In</li>
                         <li>• Konsultasi Pembelian</li>
                         <li>• Bantuan Kredit</li>
+                        <li>• <strong>Pre-Order Mobil</strong></li>
                     </ul>
                 </div>
             </div>
@@ -221,6 +345,26 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="~/js/landing.js" asp-append-version="true"></script>
+
+    <!-- STICKY NAVBAR SCRIPT -->
+    <script>
+        $(document).ready(function() {
+            // Sticky navbar on scroll
+            $(window).scroll(function() {
+                if ($(this).scrollTop() > 50) {
+                    $('.navbar').addClass('scrolled');
+                } else {
+                    $('.navbar').removeClass('scrolled');
+                }
+            });
+
+            // Close mobile menu when clicking on a link
+            $('.navbar-nav a').on('click', function() {
+                $('.navbar-collapse').collapse('hide');
+            });
+        });
+    </script>
+
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

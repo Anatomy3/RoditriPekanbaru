@@ -1,0 +1,288 @@
+﻿@model RoditriPekanbaru.Controllers.PreOrderFormViewModel
+@{
+    ViewData["Title"] = "Pre-Order Mobil";
+    Layout = "~/Views/Shared/_LandingLayout.cshtml";
+    var mobil = ViewBag.Mobil as RoditriPekanbaru.Models.Mobil;
+}
+
+<div class="container py-5">
+    <!-- Header -->
+    <div class="text-center mb-5">
+        <h1 class="fw-bold text-primary">
+            <i class="fas fa-calendar-check me-2"></i>Pre-Order Mobil
+        </h1>
+        <p class="text-muted">Booking mobil impian Anda dengan mudah dan aman</p>
+    </div>
+
+    @if (mobil != null)
+    {
+        <!-- Car Info Card -->
+        <div class="card shadow mb-4">
+            <div class="card-header bg-primary text-white">
+                <h5 class="mb-0">
+                    <i class="fas fa-car me-2"></i>Mobil yang Akan Di-PreOrder
+                </h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-4">
+                        @if (!string.IsNullOrEmpty(mobil.GambarMobil))
+                        {
+                            <img src="@mobil.GambarMobil" alt="@mobil.NamaMobil" class="img-fluid rounded shadow">
+                        }
+                        else
+                        {
+                            <div class="bg-light d-flex align-items-center justify-content-center rounded" style="height: 200px;">
+                                <i class="fas fa-car fa-3x text-muted"></i>
+                            </div>
+                        }
+                    </div>
+                    <div class="col-md-8">
+                        <h4 class="fw-bold mb-3">@mobil.NamaMobil</h4>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <p class="mb-2"><strong>Tahun:</strong> @mobil.Tahun</p>
+                                <p class="mb-2"><strong>Warna:</strong> @mobil.Warna</p>
+                            </div>
+                            <div class="col-sm-6">
+                                <p class="mb-2"><strong>No. Polisi:</strong> @mobil.NoPolisi</p>
+                                <p class="mb-2"><strong>Kondisi:</strong> @mobil.Kondisi</p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <h3 class="text-danger fw-bold mb-0" id="hargaMobil">
+                                @mobil.Harga.ToString("C0", new System.Globalization.CultureInfo("id-ID"))
+                            </h3>
+                            <span class="badge bg-success fs-6">Tersedia</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pre-Order Form -->
+        <div class="card shadow">
+            <div class="card-header bg-warning text-dark">
+                <h5 class="mb-0">
+                    <i class="fas fa-edit me-2"></i>Form Pre-Order
+                </h5>
+            </div>
+            <div class="card-body">
+                @if (TempData["ErrorMessage"] != null)
+                {
+                    <div class="alert alert-danger">
+                        <i class="fas fa-exclamation-triangle me-2"></i>
+                        @TempData["ErrorMessage"]
+                    </div>
+                }
+
+                <form asp-action="Create" method="post">
+                    <input type="hidden" asp-for="MobilId" value="@mobil.MobilId" />
+                    <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                    <div class="row">
+                        <!-- Customer Information -->
+                        <div class="col-md-6">
+                            <h6 class="text-primary mb-3">
+                                <i class="fas fa-user me-2"></i>Data Pemesan
+                            </h6>
+
+                            <div class="mb-3">
+                                <label asp-for="NamaCustomer" class="form-label">Nama Lengkap <span class="text-danger">*</span></label>
+                                <input asp-for="NamaCustomer" class="form-control" placeholder="Masukkan nama lengkap Anda">
+                                <span asp-validation-for="NamaCustomer" class="text-danger"></span>
+                            </div>
+
+                            <div class="mb-3">
+                                <label asp-for="NoTelepon" class="form-label">No. Telepon/WhatsApp <span class="text-danger">*</span></label>
+                                <input asp-for="NoTelepon" class="form-control" placeholder="08xxxxxxxxxx">
+                                <span asp-validation-for="NoTelepon" class="text-danger"></span>
+                                <small class="form-text text-muted">Nomor ini akan digunakan untuk komunikasi</small>
+                            </div>
+
+                            <div class="mb-3">
+                                <label asp-for="Email" class="form-label">Email</label>
+                                <input asp-for="Email" type="email" class="form-control" placeholder="email@example.com">
+                                <span asp-validation-for="Email" class="text-danger"></span>
+                            </div>
+
+                            <div class="mb-3">
+                                <label asp-for="JenisKelamin" class="form-label">Jenis Kelamin <span class="text-danger">*</span></label>
+                                <select asp-for="JenisKelamin" class="form-select">
+                                    <option value="">-- Pilih Jenis Kelamin --</option>
+                                    <option value="Laki-laki">Laki-laki</option>
+                                    <option value="Perempuan">Perempuan</option>
+                                </select>
+                                <span asp-validation-for="JenisKelamin" class="text-danger"></span>
+                            </div>
+
+                            <div class="mb-3">
+                                <label asp-for="Pekerjaan" class="form-label">Pekerjaan</label>
+                                <input asp-for="Pekerjaan" class="form-control" placeholder="Contoh: Karyawan Swasta">
+                                <span asp-validation-for="Pekerjaan" class="text-danger"></span>
+                            </div>
+
+                            <div class="mb-3">
+                                <label asp-for="Alamat" class="form-label">Alamat Lengkap <span class="text-danger">*</span></label>
+                                <textarea asp-for="Alamat" class="form-control" rows="3" placeholder="Masukkan alamat lengkap Anda"></textarea>
+                                <span asp-validation-for="Alamat" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <!-- Payment Information -->
+                        <div class="col-md-6">
+                            <h6 class="text-primary mb-3">
+                                <i class="fas fa-money-bill-wave me-2"></i>Informasi Pembayaran
+                            </h6>
+
+                            <div class="mb-3">
+                                <label asp-for="JumlahDP" class="form-label">Jumlah DP (Down Payment) <span class="text-danger">*</span></label>
+                                <div class="input-group">
+                                    <span class="input-group-text">Rp</span>
+                                    <input asp-for="JumlahDP" class="form-control" id="jumlahDP" type="number" min="1000000" step="100000" placeholder="10000000">
+                                </div>
+                                <span asp-validation-for="JumlahDP" class="text-danger"></span>
+                                <small class="form-text text-muted">Minimal Rp 1.000.000</small>
+                            </div>
+
+                            <!-- Calculation Summary -->
+                            <div class="card bg-light mb-3">
+                                <div class="card-body">
+                                    <h6 class="card-title">
+                                        <i class="fas fa-calculator me-2"></i>Ringkasan Pembayaran
+                                    </h6>
+                                    <div class="d-flex justify-content-between mb-2">
+                                        <span>Harga Mobil:</span>
+                                        <strong class="text-success" id="displayHargaMobil">
+                                            @mobil.Harga.ToString("C0", new System.Globalization.CultureInfo("id-ID"))
+                                        </strong>
+                                    </div>
+                                    <div class="d-flex justify-content-between mb-2">
+                                        <span>Jumlah DP:</span>
+                                        <strong class="text-primary" id="displayDP">Rp 0</strong>
+                                    </div>
+                                    <hr>
+                                    <div class="d-flex justify-content-between">
+                                        <span><strong>Sisa Pembayaran:</strong></span>
+                                        <strong class="text-warning" id="sisaPembayaran">
+                                            @mobil.Harga.ToString("C0", new System.Globalization.CultureInfo("id-ID"))
+                                        </strong>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label asp-for="Catatan" class="form-label">Catatan Tambahan</label>
+                                <textarea asp-for="Catatan" class="form-control" rows="3" placeholder="Catatan atau permintaan khusus (opsional)"></textarea>
+                                <span asp-validation-for="Catatan" class="text-danger"></span>
+                            </div>
+
+                            <!-- Important Information -->
+                            <div class="alert alert-info">
+                                <h6><i class="fas fa-info-circle me-2"></i>Informasi Penting:</h6>
+                                <ul class="mb-0">
+                                    <li>DP minimal Rp 1.000.000</li>
+                                    <li>Setelah pre-order, Anda akan mendapat nomor tracking</li>
+                                    <li>Tim kami akan menghubungi dalam 1x24 jam</li>
+                                    <li>Mobil akan di-hold untuk Anda selama 7 hari</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div class="text-center mt-4">
+                        <button type="submit" class="btn btn-warning btn-lg px-5">
+                            <i class="fas fa-paper-plane me-2"></i>Kirim Pre-Order
+                        </button>
+                        <a href="@Url.Action("CarDetails", "Landing", new { id = mobil.MobilId })" class="btn btn-outline-secondary btn-lg ms-3">
+                            <i class="fas fa-arrow-left me-2"></i>Kembali
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="text-center">
+            <i class="fas fa-exclamation-triangle fa-5x text-warning mb-4"></i>
+            <h3>Mobil Tidak Ditemukan</h3>
+            <p class="text-muted">Mobil yang ingin Anda pre-order tidak tersedia.</p>
+            <a href="@Url.Action("Index", "Landing")" class="btn btn-primary">
+                <i class="fas fa-arrow-left me-2"></i>Kembali ke Beranda
+            </a>
+        </div>
+    }
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <script>
+        $(document).ready(function() {
+            const hargaMobil = @mobil?.Harga ?? 0;
+
+            // Calculate payment when DP changes
+            $('#jumlahDP').on('input', function() {
+                calculatePayment();
+            });
+
+            function calculatePayment() {
+                const jumlahDP = parseFloat($('#jumlahDP').val()) || 0;
+                const sisa = hargaMobil - jumlahDP;
+
+                // Update display
+                $('#displayDP').text(formatRupiah(jumlahDP));
+
+                if (sisa >= 0) {
+                    $('#sisaPembayaran').text(formatRupiah(sisa));
+                    $('#sisaPembayaran').removeClass('text-danger').addClass('text-warning');
+                } else {
+                    $('#sisaPembayaran').text('DP melebihi harga mobil');
+                    $('#sisaPembayaran').removeClass('text-warning').addClass('text-danger');
+                }
+            }
+
+            function formatRupiah(amount) {
+                return new Intl.NumberFormat('id-ID', {
+                    style: 'currency',
+                    currency: 'IDR',
+                    minimumFractionDigits: 0
+                }).format(amount);
+            }
+
+            // Form validation
+            $('form').submit(function(e) {
+                const jumlahDP = parseFloat($('#jumlahDP').val()) || 0;
+
+                if (jumlahDP > hargaMobil) {
+                    e.preventDefault();
+                    alert('Jumlah DP tidak boleh melebihi harga mobil!');
+                    return false;
+                }
+
+                if (jumlahDP < 1000000) {
+                    e.preventDefault();
+                    alert('Jumlah DP minimal Rp 1.000.000!');
+                    return false;
+                }
+
+                // Show loading
+                $('button[type="submit"]').prop('disabled', true)
+                    .html('<i class="fas fa-spinner fa-spin me-2"></i>Memproses...');
+            });
+
+            // Set suggestions for DP
+            $('.dp-suggestion').click(function() {
+                const percentage = $(this).data('percentage');
+                const dpAmount = hargaMobil * (percentage / 100);
+                $('#jumlahDP').val(dpAmount);
+                calculatePayment();
+            });
+        });
+    </script>
+}

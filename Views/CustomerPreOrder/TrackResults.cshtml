@@ -1,0 +1,324 @@
+﻿@model IEnumerable<RoditriPekanbaru.Models.PreOrder>
+@{
+    ViewData["Title"] = "Hasil Pelacakan";
+    Layout = "~/Views/Shared/_LandingLayout.cshtml";
+    var searchInput = ViewBag.SearchInput?.ToString();
+}
+
+<div class="container py-5">
+    <!-- Header -->
+    <div class="text-center mb-4">
+        <h1 class="fw-bold text-primary">
+            <i class="fas fa-list-alt me-2"></i>Hasil Pelacakan
+        </h1>
+        <p class="text-muted">
+            Menampilkan hasil untuk: <strong>"@searchInput"</strong>
+        </p>
+    </div>
+
+    <!-- Search Again -->
+    <div class="text-center mb-4">
+        <a href="@Url.Action("TrackOrder")" class="btn btn-outline-primary">
+            <i class="fas fa-search me-2"></i>Lacak Pesanan Lain
+        </a>
+    </div>
+
+    <!-- Results -->
+    @if (Model != null && Model.Any())
+    {
+        <div class="row">
+            @foreach (var preOrder in Model)
+            {
+                <div class="col-lg-6 col-xl-4 mb-4">
+                    <div class="card shadow h-100">
+                        <div class="card-header d-flex justify-content-between align-items-center">
+                            <h6 class="mb-0">
+                                <i class="fas fa-receipt me-2"></i>Pre-Order #@preOrder.PreOrderId
+                            </h6>
+                            @if (preOrder.Status == "Pending")
+                            {
+                                <span class="badge bg-warning text-dark">@preOrder.Status</span>
+                            }
+                            else if (preOrder.Status == "Approved")
+                            {
+                                <span class="badge bg-success">@preOrder.Status</span>
+                            }
+                            else if (preOrder.Status == "Rejected")
+                            {
+                                <span class="badge bg-danger">@preOrder.Status</span>
+                            }
+                            else if (preOrder.Status == "Completed")
+                            {
+                                <span class="badge bg-primary">@preOrder.Status</span>
+                            }
+                            else
+                            {
+                                <span class="badge bg-secondary">@preOrder.Status</span>
+                            }
+                        </div>
+                        <div class="card-body">
+                            <!-- Customer Info -->
+                            <div class="mb-3">
+                                <h6 class="text-primary">
+                                    <i class="fas fa-user me-2"></i>Informasi Pemesan
+                                </h6>
+                                <p class="mb-1"><strong>@preOrder.NamaCustomer</strong></p>
+                                <p class="text-muted small mb-0">
+                                    <i class="fas fa-phone me-1"></i>@preOrder.Customer?.NoTelepon
+                                </p>
+                            </div>
+
+                            <!-- Car Info -->
+                            <div class="mb-3">
+                                <h6 class="text-primary">
+                                    <i class="fas fa-car me-2"></i>Mobil
+                                </h6>
+                                <p class="mb-1"><strong>@preOrder.DetailMobil</strong></p>
+                                <p class="text-success fw-bold small mb-0">
+                                    @preOrder.HargaMobil.ToString("C0", new System.Globalization.CultureInfo("id-ID"))
+                                </p>
+                            </div>
+
+                            <!-- Payment Info -->
+                            <div class="mb-3">
+                                <h6 class="text-primary">
+                                    <i class="fas fa-money-bill-wave me-2"></i>Pembayaran
+                                </h6>
+                                <div class="row text-center">
+                                    <div class="col-6">
+                                        <div class="border-end">
+                                            <p class="text-muted small mb-0">DP Dibayar</p>
+                                            <p class="fw-bold text-primary small mb-0">
+                                                @preOrder.JumlahDP.ToString("C0", new System.Globalization.CultureInfo("id-ID"))
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <p class="text-muted small mb-0">Sisa</p>
+                                        <p class="fw-bold text-warning small mb-0">
+                                            @preOrder.SisaPembayaran.ToString("C0", new System.Globalization.CultureInfo("id-ID"))
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Date Info -->
+                            <div class="mb-3">
+                                <h6 class="text-primary">
+                                    <i class="fas fa-calendar me-2"></i>Timeline
+                                </h6>
+                                <p class="small mb-1">
+                                    <strong>Pre-Order:</strong> @preOrder.TanggalPreOrder.ToString("dd MMM yyyy")
+                                </p>
+                                @if (preOrder.TanggalUpdate.HasValue)
+                                {
+                                    <p class="small mb-0">
+                                        <strong>Update:</strong> @preOrder.TanggalUpdate.Value.ToString("dd MMM yyyy HH:mm")
+                                    </p>
+                                }
+                            </div>
+
+                            <!-- Status Information -->
+                            <div class="alert @(GetStatusAlertClass(preOrder.Status)) small mb-3">
+                                <i class="fas @(GetStatusIcon(preOrder.Status)) me-2"></i>
+                                <strong>@GetStatusMessage(preOrder.Status)</strong>
+                            </div>
+
+                            <!-- Tracking Number -->
+                            @if (preOrder.Catatan.Contains("TRK"))
+                            {
+                                <div class="mb-3">
+                                    <h6 class="text-primary">
+                                        <i class="fas fa-barcode me-2"></i>Tracking
+                                    </h6>
+                                    <div class="input-group input-group-sm">
+                                        <input type="text" class="form-control"
+                                               value="@ExtractTrackingNumber(preOrder.Catatan)"
+                                               id="tracking-@preOrder.PreOrderId" readonly>
+                                        <button class="btn btn-outline-primary" type="button"
+                                                onclick="copyToClipboard('tracking-@preOrder.PreOrderId')">
+                                            <i class="fas fa-copy"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                        <div class="card-footer">
+                            <div class="d-flex gap-2">
+                                <a href="@Url.Action("Detail", new { id = preOrder.PreOrderId })"
+                                   class="btn btn-primary btn-sm flex-fill">
+                                    <i class="fas fa-eye me-1"></i>Detail
+                                </a>
+                                <a href="https://wa.me/6281234567890?text=Halo,%20saya%20ingin%20menanyakan%20status%20pre-order%20ID%20@preOrder.PreOrderId"
+                                   class="btn btn-success btn-sm" target="_blank">
+                                    <i class="fab fa-whatsapp"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+
+        <!-- Summary Information -->
+        <div class="card mt-4">
+            <div class="card-body">
+                <div class="row text-center">
+                    <div class="col-md-3">
+                        <h5 class="text-primary">@Model.Count()</h5>
+                        <p class="text-muted small mb-0">Total Pesanan</p>
+                    </div>
+                    <div class="col-md-3">
+                        <h5 class="text-warning">@Model.Count(p => p.Status == "Pending")</h5>
+                        <p class="text-muted small mb-0">Menunggu</p>
+                    </div>
+                    <div class="col-md-3">
+                        <h5 class="text-success">@Model.Count(p => p.Status == "Approved")</h5>
+                        <p class="text-muted small mb-0">Disetujui</p>
+                    </div>
+                    <div class="col-md-3">
+                        <h5 class="text-primary">@Model.Count(p => p.Status == "Completed")</h5>
+                        <p class="text-muted small mb-0">Selesai</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+    else
+    {
+        <!-- No Results -->
+        <div class="text-center py-5">
+            <i class="fas fa-search fa-5x text-muted mb-4"></i>
+            <h3 class="text-muted">Tidak Ada Pesanan Ditemukan</h3>
+            <p class="text-muted mb-4">
+                Tidak ada pesanan yang ditemukan dengan "@searchInput".<br>
+                Pastikan nomor tracking atau nomor telepon sudah benar.
+            </p>
+            <div class="d-flex flex-wrap justify-content-center gap-2">
+                <a href="@Url.Action("TrackOrder")" class="btn btn-primary">
+                    <i class="fas fa-search me-2"></i>Coba Lagi
+                </a>
+                <a href="https://wa.me/6281234567890?text=Halo,%20saya%20kesulitan%20melacak%20pesanan%20pre-order%20saya."
+                   class="btn btn-success" target="_blank">
+                    <i class="fab fa-whatsapp me-2"></i>Minta Bantuan
+                </a>
+            </div>
+        </div>
+    }
+
+    <!-- Help Section -->
+    <div class="card mt-5">
+        <div class="card-header bg-info text-white">
+            <h6 class="mb-0">
+                <i class="fas fa-question-circle me-2"></i>Perlu Bantuan?
+            </h6>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <h6>Hubungi Customer Service</h6>
+                    <p class="small text-muted mb-2">
+                        <i class="fas fa-phone me-2"></i>(0761) 123-4567
+                    </p>
+                    <p class="small text-muted mb-2">
+                        <i class="fab fa-whatsapp me-2"></i>+62 812-3456-7890
+                    </p>
+                    <p class="small text-muted">
+                        <i class="fas fa-clock me-2"></i>Senin-Sabtu: 08:00-17:00 WIB
+                    </p>
+                </div>
+                <div class="col-md-6">
+                    <h6>Kunjungi Showroom</h6>
+                    <p class="small text-muted mb-2">
+                        <i class="fas fa-map-marker-alt me-2"></i>Jl. Sudirman No. 123, Pekanbaru
+                    </p>
+                    <p class="small text-muted">
+                        Datang langsung untuk konsultasi lebih lanjut tentang pesanan Anda.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@functions {
+    string GetStatusAlertClass(string status)
+    {
+        return status switch
+        {
+            "Pending" => "alert-warning",
+            "Approved" => "alert-success",
+            "Rejected" => "alert-danger",
+            "Completed" => "alert-primary",
+            _ => "alert-secondary"
+        };
+    }
+
+    string GetStatusIcon(string status)
+    {
+        return status switch
+        {
+            "Pending" => "fa-clock",
+            "Approved" => "fa-check-circle",
+            "Rejected" => "fa-times-circle",
+            "Completed" => "fa-flag-checkered",
+            _ => "fa-info-circle"
+        };
+    }
+
+    string GetStatusMessage(string status)
+    {
+        return status switch
+        {
+            "Pending" => "Pesanan sedang diproses. Tim kami akan menghubungi Anda segera.",
+            "Approved" => "Pesanan disetujui! Silakan lakukan pembayaran DP sesuai instruksi.",
+            "Rejected" => "Pesanan ditolak. Hubungi customer service untuk informasi lebih lanjut.",
+            "Completed" => "Pesanan selesai! Terima kasih telah mempercayai RodiTri Pekanbaru.",
+            _ => "Status tidak diketahui. Hubungi customer service."
+        };
+    }
+
+    string ExtractTrackingNumber(string catatan)
+    {
+        if (string.IsNullOrEmpty(catatan)) return "";
+
+        var match = System.Text.RegularExpressions.Regex.Match(catatan, @"TRK\d+");
+        return match.Success ? match.Value : "";
+    }
+}
+
+@section Scripts {
+    <script>
+        function copyToClipboard(elementId) {
+            const element = document.getElementById(elementId);
+            element.select();
+            element.setSelectionRange(0, 99999); // For mobile devices
+
+            navigator.clipboard.writeText(element.value).then(function() {
+                showToast('Nomor tracking berhasil disalin!');
+            }).catch(function() {
+                // Fallback
+                document.execCommand('copy');
+                showToast('Nomor tracking berhasil disalin!');
+            });
+        }
+
+        function showToast(message) {
+            const toast = document.createElement('div');
+            toast.className = 'position-fixed top-0 end-0 m-3 alert alert-success alert-dismissible fade show';
+            toast.style.zIndex = '9999';
+            toast.innerHTML = `
+                <i class="fas fa-check-circle me-2"></i>${message}
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            `;
+
+            document.body.appendChild(toast);
+
+            setTimeout(() => {
+                if (toast.parentNode) {
+                    toast.parentNode.removeChild(toast);
+                }
+            }, 3000);
+        }
+    </script>
+}

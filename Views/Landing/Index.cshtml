@@ -1,10 +1,15 @@
 ﻿@model RoditriPekanbaru.ViewModels.LandingViewModel
 @{
     ViewData["Title"] = "RodiTri Pekanbaru - Dealer Mobil Bekas Terpercaya";
-    Layout = "~/Views/Shared/_PublicLayout.cshtml";
+    Layout = "~/Views/Shared/_LandingLayout.cshtml";
 }
 
 <style>
+    /* ===== ZOOM 80% - SAMA SEPERTI BROWSER ZOOM ===== */
+    body {
+        zoom: 0.8;
+    }
+
     /* Banner Image Styles - More Spacing */
     .banner-image {
         width: 100%;
@@ -26,12 +31,12 @@
     }
 
     #bannerCarousel {
-        margin: 20px auto 40px auto;
+        margin: 60px auto 40px auto; /* TAMBAH LEBIH BANYAK MARGIN TOP */
     }
 
-    /* Banner container spacing */
+    /* Banner container spacing - TAMBAH LEBIH BANYAK PADDING TOP */
     .banner-container {
-        padding: 20px 15px;
+        padding: 80px 15px 20px 15px; /* PADDING TOP DITAMBAH LAGI */
     }
 
     /* Mobile Responsive */
@@ -362,6 +367,96 @@
         border-top: 1px solid #f0f0f0;
     }
 
+    /* FAQ Section Styles - BARU */
+    .faq-section {
+        background: white;
+        padding: 60px 0;
+        margin-top: 50px;
+    }
+
+    .faq-container {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .faq-header {
+        text-align: center;
+        margin-bottom: 40px;
+    }
+
+        .faq-header h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .faq-header p {
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+    .faq-item {
+        border: 1px solid #e1e1e1;
+        border-radius: 10px;
+        margin-bottom: 15px;
+        overflow: hidden;
+        transition: all 0.3s ease;
+    }
+
+        .faq-item:hover {
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+    .faq-question {
+        background: #f8f9fa;
+        padding: 20px;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-weight: 600;
+        color: #333;
+        transition: all 0.3s ease;
+    }
+
+        .faq-question:hover {
+            background: #e9ecef;
+        }
+
+        .faq-question.active {
+            background: #e74c3c;
+            color: white;
+        }
+
+    .faq-icon {
+        font-size: 18px;
+        transition: transform 0.3s ease;
+    }
+
+    .faq-question.active .faq-icon {
+        transform: rotate(180deg);
+    }
+
+    .faq-answer {
+        padding: 0 20px;
+        max-height: 0;
+        overflow: hidden;
+        transition: all 0.3s ease;
+        background: white;
+    }
+
+        .faq-answer.active {
+            padding: 20px;
+            max-height: 200px;
+        }
+
+        .faq-answer p {
+            color: #666;
+            line-height: 1.6;
+            margin: 0;
+        }
+
     /* Pagination - Carro Style */
     .pagination-wrapper {
         display: flex;
@@ -618,10 +713,11 @@
     }
 </style>
 
-<!-- Banner Section -->
+<!-- Banner Section dengan spacing yang diperbaiki -->
 @if (ViewBag.Banners != null && ((List<RoditriPekanbaru.Models.Banner>)ViewBag.Banners).Any())
 {
-    <div class="container">
+    <div class="container" style="padding-top: 40px;">
+        <!-- TAMBAH LEBIH BANYAK PADDING TOP -->
         <div id="bannerCarousel" class="carousel slide mb-4" data-bs-ride="carousel">
             <div class="carousel-indicators">
                 @for (int i = 0; i < ((List<RoditriPekanbaru.Models.Banner>)ViewBag.Banners).Count; i++)
@@ -889,6 +985,80 @@
     }
 </div>
 
+<!-- FAQ Section - BARU -->
+<section class="faq-section">
+    <div class="container">
+        <div class="faq-container">
+            <div class="faq-header">
+                <h2>FAQ</h2>
+                <p>Pertanyaan yang sering ditanyakan seputar layanan RodiTri Pekanbaru</p>
+            </div>
+
+            <div class="faq-list">
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>Apakah mobil bekas di RodiTri Pekanbaru sudah melalui inspeksi kualitas?</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Ya, semua mobil bekas di RodiTri Pekanbaru telah melalui inspeksi menyeluruh oleh teknisi berpengalaman. Kami memeriksa kondisi mesin, kelistrikan, body, dan dokumen untuk memastikan kualitas terbaik bagi pelanggan.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>Bagaimana cara melakukan pre-order mobil di RodiTri Pekanbaru?</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Anda dapat melakukan pre-order dengan mengklik tombol "Pre-Order Sekarang" pada halaman detail mobil yang diinginkan. Isi formulir dengan data lengkap dan tentukan jumlah DP. Tim kami akan menghubungi Anda dalam 1x24 jam untuk konfirmasi.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>Apakah RodiTri Pekanbaru menyediakan layanan trade-in?</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Ya, kami menyediakan layanan trade-in. Anda dapat menukar mobil lama dengan mobil yang tersedia di showroom kami. Tim penilai kami akan memberikan harga terbaik untuk mobil lama Anda sesuai kondisi pasar.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>Dokumen apa saja yang diperlukan untuk pembelian mobil?</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Dokumen yang diperlukan: KTP asli dan fotocopy, KK asli dan fotocopy, NPWP, slip gaji 3 bulan terakhir (untuk kredit), dan buku tabungan. Untuk pembelian cash, cukup KTP dan KK saja.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>Berapa lama proses kredit mobil di RodiTri Pekanbaru?</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Proses kredit mobil biasanya memakan waktu 3-7 hari kerja tergantung kelengkapan dokumen dan persetujuan dari leasing. Kami bermitra dengan berbagai leasing terpercaya untuk memberikan bunga kompetitif.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>Apakah ada garansi untuk mobil bekas yang dibeli?</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Ya, kami memberikan garansi mesin 30 hari untuk semua mobil bekas yang dibeli di RodiTri Pekanbaru. Garansi mencakup perbaikan major component jika terjadi kerusakan dalam periode garansi.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 <!-- Filter Modals - Functional Filters Only -->
 <!-- Price Modal - FUNCTIONAL -->
 <div class="modal fade" id="priceModal" tabindex="-1">
@@ -1056,6 +1226,30 @@
 </div>
 
 <script>
+    // FAQ Functions - BARU
+    function toggleFaq(element) {
+        const faqItem = element.parentElement;
+        const faqAnswer = faqItem.querySelector('.faq-answer');
+        const isActive = element.classList.contains('active');
+
+        // Close all other FAQ items
+        document.querySelectorAll('.faq-question.active').forEach(item => {
+            if (item !== element) {
+                item.classList.remove('active');
+                item.parentElement.querySelector('.faq-answer').classList.remove('active');
+            }
+        });
+
+        // Toggle current FAQ item
+        if (isActive) {
+            element.classList.remove('active');
+            faqAnswer.classList.remove('active');
+        } else {
+            element.classList.add('active');
+            faqAnswer.classList.add('active');
+        }
+    }
+
     // Filter Functions - FUNCTIONAL
     function applyPriceFilter() {
         const minHarga = document.getElementById('minHarga').value;
@@ -1217,7 +1411,7 @@
     }
 
     document.addEventListener('DOMContentLoaded', function() {
-        console.log('Landing page loaded successfully');
+        console.log('Landing page loaded successfully - ZOOM 80%');
 
         // Initial responsive check
         handleResponsive();

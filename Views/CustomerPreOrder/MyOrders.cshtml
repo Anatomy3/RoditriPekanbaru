@@ -1,0 +1,290 @@
+﻿@model IEnumerable<RoditriPekanbaru.Models.PreOrder>
+@{
+    ViewData["Title"] = "Pesanan Saya";
+    Layout = "~/Views/Shared/_LandingLayout.cshtml";
+    var customerName = ViewBag.CustomerName?.ToString();
+    var isLoggedIn = ViewBag.IsLoggedIn ?? false;
+}
+
+<div class="container py-5">
+    <!-- Header -->
+    <div class="text-center mb-5">
+        <h1 class="fw-bold text-primary">
+            <i class="fas fa-shopping-bag me-2"></i>Pesanan Saya
+        </h1>
+        @if (!string.IsNullOrEmpty(customerName))
+        {
+            <p class="text-muted">Selamat datang, <strong>@customerName</strong></p>
+        }
+    </div>
+
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <i class="fas fa-exclamation-triangle me-2"></i>
+            @TempData["ErrorMessage"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    }
+
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <i class="fas fa-check-circle me-2"></i>
+            @TempData["SuccessMessage"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    }
+
+    <!-- Quick Actions -->
+    <div class="row mb-4">
+        <div class="col-md-6">
+            <div class="card bg-primary text-white">
+                <div class="card-body text-center">
+                    <i class="fas fa-plus-circle fa-2x mb-2"></i>
+                    <h5>Cari Mobil Baru</h5>
+                    <p class="mb-3">Jelajahi koleksi mobil terbaru kami</p>
+                    <a href="@Url.Action("Index", "Landing")" class="btn btn-light">
+                        <i class="fas fa-search me-2"></i>Lihat Mobil
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card bg-success text-white">
+                <div class="card-body text-center">
+                    <i class="fas fa-headset fa-2x mb-2"></i>
+                    <h5>Butuh Bantuan?</h5>
+                    <p class="mb-3">Tim customer service siap membantu</p>
+                    <a href="https://wa.me/6281234567890?text=Halo,%20saya%20perlu%20bantuan%20mengenai%20pesanan%20saya"
+                       class="btn btn-light" target="_blank">
+                        <i class="fab fa-whatsapp me-2"></i>Hubungi CS
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Orders List -->
+    @if (Model != null && Model.Any())
+    {
+        <!-- Summary Stats -->
+        <div class="row mb-4">
+            <div class="col-md-3">
+                <div class="card text-center bg-light">
+                    <div class="card-body">
+                        <h3 class="text-primary">@Model.Count()</h3>
+                        <p class="text-muted mb-0">Total Pesanan</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card text-center bg-warning">
+                    <div class="card-body">
+                        <h3 class="text-white">@Model.Count(p => p.Status == "Pending")</h3>
+                        <p class="text-white mb-0">Menunggu</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card text-center bg-success">
+                    <div class="card-body">
+                        <h3 class="text-white">@Model.Count(p => p.Status == "Approved")</h3>
+                        <p class="text-white mb-0">Disetujui</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card text-center bg-primary">
+                    <div class="card-body">
+                        <h3 class="text-white">@Model.Count(p => p.Status == "Completed")</h3>
+                        <p class="text-white mb-0">Selesai</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Filter Tabs -->
+        <div class="card mb-4">
+            <div class="card-header">
+                <ul class="nav nav-tabs card-header-tabs" id="orderTabs" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="all-tab" data-bs-toggle="tab" data-bs-target="#all" type="button">
+                            <i class="fas fa-list me-1"></i>Semua (@Model.Count())
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="pending-tab" data-bs-toggle="tab" data-bs-target="#pending" type="button">
+                            <i class="fas fa-clock me-1"></i>Menunggu (@Model.Count(p => p.Status == "Pending"))
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="approved-tab" data-bs-toggle="tab" data-bs-target="#approved" type="button">
+                            <i class="fas fa-check me-1"></i>Disetujui (@Model.Count(p => p.Status == "Approved"))
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="completed-tab" data-bs-toggle="tab" data-bs-target="#completed" type="button">
+                            <i class="fas fa-flag-checkered me-1"></i>Selesai (@Model.Count(p => p.Status == "Completed"))
+                        </button>
+                    </li>
+                </ul>
+            </div>
+            <div class="card-body">
+                <div class="tab-content" id="orderTabsContent">
+                    <!-- All Orders -->
+                    <div class="tab-pane fade show active" id="all" role="tabpanel">
+                        @await Html.PartialAsync("_OrderList", Model.OrderByDescending(p => p.TanggalDibuat))
+                    </div>
+
+                    <!-- Pending Orders -->
+                    <div class="tab-pane fade" id="pending" role="tabpanel">
+                        @await Html.PartialAsync("_OrderList", Model.Where(p => p.Status == "Pending").OrderByDescending(p => p.TanggalDibuat))
+                    </div>
+
+                    <!-- Approved Orders -->
+                    <div class="tab-pane fade" id="approved" role="tabpanel">
+                        @await Html.PartialAsync("_OrderList", Model.Where(p => p.Status == "Approved").OrderByDescending(p => p.TanggalDibuat))
+                    </div>
+
+                    <!-- Completed Orders -->
+                    <div class="tab-pane fade" id="completed" role="tabpanel">
+                        @await Html.PartialAsync("_OrderList", Model.Where(p => p.Status == "Completed").OrderByDescending(p => p.TanggalDibuat))
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+    else
+    {
+        <!-- Empty State -->
+        <div class="text-center py-5">
+            <div class="card">
+                <div class="card-body py-5">
+                    <i class="fas fa-shopping-bag fa-5x text-muted mb-4"></i>
+                    <h3 class="text-muted mb-3">Belum Ada Pesanan</h3>
+                    <p class="text-muted mb-4">
+                        Anda belum memiliki pesanan pre-order. Mulai jelajahi koleksi mobil kami dan lakukan pre-order untuk mobil impian Anda!
+                    </p>
+
+                    <div class="row justify-content-center">
+                        <div class="col-md-8">
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <div class="card border-primary">
+                                        <div class="card-body text-center">
+                                            <i class="fas fa-search fa-2x text-primary mb-2"></i>
+                                            <h6>Cari Mobil</h6>
+                                            <p class="small text-muted">Jelajahi ribuan mobil berkualitas</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <div class="card border-success">
+                                        <div class="card-body text-center">
+                                            <i class="fas fa-calendar-check fa-2x text-success mb-2"></i>
+                                            <h6>Pre-Order</h6>
+                                            <p class="small text-muted">Booking dengan DP minimal</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-4">
+                        <a href="@Url.Action("Index", "Landing")" class="btn btn-primary btn-lg me-3">
+                            <i class="fas fa-car me-2"></i>Lihat Mobil
+                        </a>
+                        <a href="https://wa.me/6281234567890?text=Halo,%20saya%20ingin%20tahu%20lebih%20lanjut%20tentang%20pre-order%20mobil"
+                           class="btn btn-outline-success btn-lg" target="_blank">
+                            <i class="fab fa-whatsapp me-2"></i>Tanya CS
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
+    <!-- Info Panel -->
+    <div class="card mt-5">
+        <div class="card-header bg-info text-white">
+            <h6 class="mb-0">
+                <i class="fas fa-info-circle me-2"></i>Informasi Pre-Order
+            </h6>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <h6 class="text-primary">Status Pesanan:</h6>
+                    <ul class="list-unstyled">
+                        <li class="mb-2">
+                            <span class="badge bg-warning text-dark me-2">Pending</span>
+                            Pesanan sedang diproses oleh tim kami
+                        </li>
+                        <li class="mb-2">
+                            <span class="badge bg-success me-2">Approved</span>
+                            Pesanan disetujui, silakan lakukan pembayaran DP
+                        </li>
+                        <li class="mb-2">
+                            <span class="badge bg-primary me-2">Completed</span>
+                            Pesanan selesai, terima kasih atas kepercayaan Anda
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-6">
+                    <h6 class="text-primary">Ketentuan Pre-Order:</h6>
+                    <ul class="list-unstyled">
+                        <li class="mb-1">• DP minimal Rp 1.000.000</li>
+                        <li class="mb-1">• Mobil di-hold selama 7 hari</li>
+                        <li class="mb-1">• Konfirmasi dalam 1x24 jam</li>
+                        <li class="mb-1">• Harga terjamin tidak berubah</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function() {
+            // Auto refresh status setiap 30 detik (opsional)
+            // setInterval(function() {
+            //     location.reload();
+            // }, 30000);
+
+            // Show toast notification jika ada
+        @if (TempData["SuccessMessage"] != null)
+        {
+            <text>
+                    showToast('@TempData["SuccessMessage"]', 'success');
+            </text>
+        }
+        });
+
+        function showToast(message, type = 'info') {
+            const toastHtml = `
+                <div class="toast align-items-center text-white bg-${type === 'success' ? 'success' : 'primary'} border-0 position-fixed"
+                     style="top: 20px; right: 20px; z-index: 9999;" role="alert">
+                    <div class="d-flex">
+                        <div class="toast-body">
+                            <i class="fas fa-${type === 'success' ? 'check-circle' : 'info-circle'} me-2"></i>
+                            ${message}
+                        </div>
+                        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+                    </div>
+                </div>
+            `;
+
+            $('body').append(toastHtml);
+            const toast = new bootstrap.Toast($('.toast').last());
+            toast.show();
+
+            // Auto remove after 5 seconds
+            setTimeout(() => {
+                $('.toast').last().remove();
+            }, 5000);
+        }
+    </script>
+}

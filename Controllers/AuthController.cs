@@ -44,11 +44,14 @@ namespace RoditriPekanbaru.Controllers
 
                 if (admin != null)
                 {
-                    // Set session
+                    // Set admin session
                     HttpContext.Session.SetString("UserId", admin.AdminId.ToString());
                     HttpContext.Session.SetString("Username", admin.Username);
                     HttpContext.Session.SetString("NamaLengkap", admin.NamaLengkap);
                     HttpContext.Session.SetString("Level", admin.Level);
+
+                    // ===== SOLUSI UTAMA: LINK ADMIN DENGAN CUSTOMER =====
+                    await SetupCustomerSession(admin);
 
                     // Update last login time
                     admin.LastLogin = DateTime.Now;
@@ -102,7 +105,18 @@ namespace RoditriPekanbaru.Controllers
                 _context.Add(newUser);
                 await _context.SaveChangesAsync();
 
-                return RedirectToAction("Login");
+                // ===== SOLUSI: AUTO LOGIN SETELAH REGISTER =====
+                // Set admin session
+                HttpContext.Session.SetString("UserId", newUser.AdminId.ToString());
+                HttpContext.Session.SetString("Username", newUser.Username);
+                HttpContext.Session.SetString("NamaLengkap", newUser.NamaLengkap);
+                HttpContext.Session.SetString("Level", newUser.Level);
+
+                // Setup customer session untuk user baru
+                await SetupCustomerSession(newUser);
+
+                // Redirect ke landing page, bukan ke login
+                return RedirectToAction("Index", "Landing");
             }
 
             return View(model);
@@ -115,6 +129,97 @@ namespace RoditriPekanbaru.Controllers
             return RedirectToAction("Index", "Landing");
         }
 
+        // ===== METODE UTAMA UNTUK SINKRONISASI ADMIN-CUSTOMER =====
+        private async Task SetupCustomerSession(Admin admin)
+        {
+            try
+            {
+                // 1. Cari customer berdasarkan nama lengkap admin
+                var existingCustomer = await _context.Customers
+                    .FirstOrDefaultAsync(c => c.NamaCustomer.ToLower() == admin.NamaLengkap.ToLower());
+
+                Customer customer;
+
+                if (existingCustomer != null)
+                {
+                    // 2a. Jika customer sudah ada, gunakan yang ada
+                    customer = existingCustomer;
+                }
+                else
+                {
+                    // 2b. Jika customer belum ada, create customer baru
+                    customer = new Customer
+                    {
+                        NamaCustomer = admin.NamaLengkap,
+                        Alamat = "Alamat akan diupdate saat pre-order", // Default alamat
+                        NoTelepon = "000000000000", // Default phone, akan diupdate
+                        Email = $"{admin.Username}@roditripekanbaru.com", // Generate email
+                        JenisKelamin = "Laki-laki", // Default, bisa diupdate nanti
+                        Pekerjaan = "Tidak diketahui", // Default
+                        TanggalDaftar = DateTime.Now
+                    };
+
+                    _context.Customers.Add(customer);
+                    await _context.SaveChangesAsync();
+                }
+
+                // 3. Simpan CustomerId ke session
+                HttpContext.Session.SetString("CustomerId", customer.CustomerId.ToString());
+                HttpContext.Session.SetString("CustomerName", customer.NamaCustomer);
+
+                // 4. Optional: Simpan data customer lain yang mungkin diperlukan
+                HttpContext.Session.SetString("CustomerEmail", customer.Email ?? "");
+                HttpContext.Session.SetString("CustomerPhone", customer.NoTelepon);
+            }
+            catch (Exception ex)
+            {
+                // Log error tapi jangan gagalkan login
+                // In production, use proper logging
+                Console.WriteLine($"Error setting up customer session: {ex.Message}");
+
+                // Set default customer session jika ada error
+                HttpContext.Session.SetString("CustomerId", "0");
+                HttpContext.Session.SetString("CustomerName", admin.NamaLengkap);
+            }
+        }
+
+        // ===== METODE HELPER UNTUK MENDAPATKAN ATAU MEMBUAT CUSTOMER =====
+        public async Task<Customer> GetOrCreateCustomerForCurrentUser()
+        {
+            var userIdStr = HttpContext.Session.GetString("UserId");
+            var customerIdStr = HttpContext.Session.GetString("CustomerId");
+
+            // Jika sudah ada CustomerId di session, coba ambil customer
+            if (!string.IsNullOrEmpty(customerIdStr) && int.TryParse(customerIdStr, out int customerId) && customerId > 0)
+            {
+                var existingCustomer = await _context.Customers.FindAsync(customerId);
+                if (existingCustomer != null)
+                {
+                    return existingCustomer;
+                }
+            }
+
+            // Jika tidak ada atau tidak ditemukan, buat berdasarkan admin yang login
+            if (!string.IsNullOrEmpty(userIdStr) && int.TryParse(userIdStr, out int userId))
+            {
+                var admin = await _context.Admins.FindAsync(userId);
+                if (admin != null)
+                {
+                    await SetupCustomerSession(admin);
+
+                    // Ambil customer yang baru dibuat/ditemukan
+                    var newCustomerIdStr = HttpContext.Session.GetString("CustomerId");
+                    if (!string.IsNullOrEmpty(newCustomerIdStr) && int.TryParse(newCustomerIdStr, out int newCustomerId))
+                    {
+                        return await _context.Customers.FindAsync(newCustomerId);
+                    }
+                }
+            }
+
+            // Fallback: return null jika tidak bisa create
+            return null;
+        }
+
         // Helper method to check if user is logged in
         private bool IsAuthenticated()
         {
@@ -125,6 +230,17 @@ namespace RoditriPekanbaru.Controllers
         private bool IsAdmin()
         {
             return HttpContext.Session.GetString("Level") == "Admin";
+        }
+
+        // Helper method to get current customer ID from session
+        public int? GetCurrentCustomerId()
+        {
+            var customerIdStr = HttpContext.Session.GetString("CustomerId");
+            if (!string.IsNullOrEmpty(customerIdStr) && int.TryParse(customerIdStr, out int customerId))
+            {
+                return customerId;
+            }
+            return null;
         }
     }
 }

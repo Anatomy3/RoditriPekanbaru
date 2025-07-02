@@ -76,6 +76,34 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFubmVyXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/Framework/RoditriPekanbaru/RoditriPekanbaru/Views/CustomerPreOrder/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VzdG9tZXJQcmVPcmRlclxDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Framework/RoditriPekanbaru/RoditriPekanbaru/Views/CustomerPreOrder/Detail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VzdG9tZXJQcmVPcmRlclxEZXRhaWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Framework/RoditriPekanbaru/RoditriPekanbaru/Views/CustomerPreOrder/MyOrders.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VzdG9tZXJQcmVPcmRlclxNeU9yZGVycy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Framework/RoditriPekanbaru/RoditriPekanbaru/Views/CustomerPreOrder/Success.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VzdG9tZXJQcmVPcmRlclxTdWNjZXNzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Framework/RoditriPekanbaru/RoditriPekanbaru/Views/CustomerPreOrder/TrackOrder.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VzdG9tZXJQcmVPcmRlclxUcmFja09yZGVyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Framework/RoditriPekanbaru/RoditriPekanbaru/Views/CustomerPreOrder/TrackResults.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VzdG9tZXJQcmVPcmRlclxUcmFja1Jlc3VsdHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Framework/RoditriPekanbaru/RoditriPekanbaru/Views/CustomerPreOrder/_OrderList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VzdG9tZXJQcmVPcmRlclxfT3JkZXJMaXN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/Framework/RoditriPekanbaru/RoditriPekanbaru/Views/Customer/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VzdG9tZXJcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -138,6 +166,26 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/Framework/RoditriPekanbaru/RoditriPekanbaru/Views/Mobil/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW9iaWxcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Framework/RoditriPekanbaru/RoditriPekanbaru/Views/PreOrder/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJlT3JkZXJcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Framework/RoditriPekanbaru/RoditriPekanbaru/Views/PreOrder/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJlT3JkZXJcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Framework/RoditriPekanbaru/RoditriPekanbaru/Views/PreOrder/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJlT3JkZXJcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Framework/RoditriPekanbaru/RoditriPekanbaru/Views/PreOrder/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJlT3JkZXJcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Framework/RoditriPekanbaru/RoditriPekanbaru/Views/PreOrder/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJlT3JkZXJcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Framework/RoditriPekanbaru/RoditriPekanbaru/Views/Shared/Error.cshtml]

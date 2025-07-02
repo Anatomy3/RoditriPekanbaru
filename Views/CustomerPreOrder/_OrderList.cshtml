@@ -1,0 +1,294 @@
+﻿@model IEnumerable<RoditriPekanbaru.Models.PreOrder>
+
+@if (Model != null && Model.Any())
+{
+    <div class="row">
+        @foreach (var order in Model)
+        {
+            <div class="col-lg-6 col-xl-4 mb-4">
+                <div class="card h-100 order-card">
+                    <!-- Status Badge -->
+                    <div class="card-header d-flex justify-content-between align-items-center py-2">
+                        <small class="text-muted">
+                            <i class="fas fa-calendar me-1"></i>
+                            @order.TanggalPreOrder.ToString("dd MMM yyyy")
+                        </small>
+                        @if (order.Status == "Pending")
+                        {
+                            <span class="badge bg-warning text-dark">
+                                <i class="fas fa-clock me-1"></i>@order.Status
+                            </span>
+                        }
+                        else if (order.Status == "Approved")
+                        {
+                            <span class="badge bg-success">
+                                <i class="fas fa-check me-1"></i>@order.Status
+                            </span>
+                        }
+                        else if (order.Status == "Rejected")
+                        {
+                            <span class="badge bg-danger">
+                                <i class="fas fa-times me-1"></i>@order.Status
+                            </span>
+                        }
+                        else if (order.Status == "Completed")
+                        {
+                            <span class="badge bg-primary">
+                                <i class="fas fa-flag-checkered me-1"></i>@order.Status
+                            </span>
+                        }
+                        else
+                        {
+                            <span class="badge bg-secondary">@order.Status</span>
+                        }
+                    </div>
+
+                    <div class="card-body">
+                        <!-- Car Info -->
+                        <div class="d-flex align-items-start mb-3">
+                            @if (!string.IsNullOrEmpty(order.Mobil?.GambarMobil))
+                            {
+                                <img src="@order.Mobil.GambarMobil" alt="@order.DetailMobil"
+                                     class="rounded me-3" style="width: 80px; height: 60px; object-fit: cover;">
+                            }
+                            else
+                            {
+                                <div class="bg-light rounded me-3 d-flex align-items-center justify-content-center"
+                                     style="width: 80px; height: 60px;">
+                                    <i class="fas fa-car text-muted"></i>
+                                </div>
+                            }
+                            <div class="flex-grow-1">
+                                <h6 class="mb-1 fw-bold text-truncate">@order.DetailMobil</h6>
+                                <p class="small text-success mb-0 fw-bold">
+                                    @order.HargaMobil.ToString("C0", new System.Globalization.CultureInfo("id-ID"))
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Order Details -->
+                        <div class="mb-3">
+                            <div class="row text-center">
+                                <div class="col-6">
+                                    <div class="border-end">
+                                        <p class="small text-muted mb-0">DP Dibayar</p>
+                                        <p class="fw-bold text-primary small mb-0">
+                                            @order.JumlahDP.ToString("C0", new System.Globalization.CultureInfo("id-ID"))
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <p class="small text-muted mb-0">Sisa</p>
+                                    <p class="fw-bold text-warning small mb-0">
+                                        @order.SisaPembayaran.ToString("C0", new System.Globalization.CultureInfo("id-ID"))
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tracking Info -->
+                        @if (order.Catatan.Contains("TRK"))
+                        {
+                            <div class="mb-3">
+                                <div class="d-flex align-items-center">
+                                    <small class="text-muted me-2">Tracking:</small>
+                                    <code class="small bg-light px-2 py-1 rounded flex-grow-1">
+                                        @System.Text.RegularExpressions.Regex.Match(order.Catatan, @"TRK\d+").Value
+                                    </code>
+                                    <button class="btn btn-sm btn-outline-secondary ms-1"
+                                            onclick="copyTracking('@System.Text.RegularExpressions.Regex.Match(order.Catatan, @"TRK\d+").Value')"
+                                            title="Copy Tracking">
+                                        <i class="fas fa-copy"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        }
+
+                        <!-- Status Message -->
+                        <div class="alert @GetStatusAlertClass(order.Status) py-2 small">
+                            <i class="fas @GetStatusIcon(order.Status) me-1"></i>
+                            @GetStatusMessage(order.Status)
+                        </div>
+                    </div>
+
+                    <!-- Actions -->
+                    <div class="card-footer bg-transparent">
+                        <div class="d-flex gap-2">
+                            <a href="@Url.Action("Detail", new { id = order.PreOrderId })"
+                               class="btn btn-outline-primary btn-sm flex-grow-1">
+                                <i class="fas fa-eye me-1"></i>Detail
+                            </a>
+
+                            @if (order.Status == "Pending" || order.Status == "Approved")
+                            {
+                                <a href="https://wa.me/6281234567890?text=Halo,%20saya%20ingin%20menanyakan%20status%20pre-order%20ID%20@order.PreOrderId"
+                                   class="btn btn-success btn-sm" target="_blank" title="Chat WhatsApp">
+                                    <i class="fab fa-whatsapp"></i>
+                                </a>
+                            }
+
+                            @if (order.Status == "Approved")
+                            {
+                                <button class="btn btn-warning btn-sm"
+                                        onclick="showPaymentInfo(@order.PreOrderId, '@order.JumlahDP.ToString("N0")')"
+                                        title="Info Pembayaran">
+                                    <i class="fas fa-credit-card"></i>
+                                </button>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}
+else
+{
+    <div class="text-center py-4">
+        <i class="fas fa-inbox fa-3x text-muted mb-3"></i>
+        <h5 class="text-muted">Tidak ada pesanan</h5>
+        <p class="text-muted">Belum ada pesanan dengan status ini.</p>
+    </div>
+}
+
+<!-- Payment Info Modal -->
+<div class="modal fade" id="paymentModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">
+                    <i class="fas fa-credit-card me-2"></i>Informasi Pembayaran DP
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div class="alert alert-success">
+                    <i class="fas fa-check-circle me-2"></i>
+                    <strong>Pre-order Anda telah disetujui!</strong> Silakan lakukan pembayaran DP untuk melanjutkan proses.
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h6 class="mb-0">Detail Pembayaran</h6>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-6">
+                                <strong>Jumlah DP:</strong>
+                            </div>
+                            <div class="col-6 text-end">
+                                <span class="text-primary fw-bold" id="paymentAmount">-</span>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-6">
+                                <strong>Rekening Transfer:</strong>
+                            </div>
+                            <div class="col-6 text-end">
+                                <strong>BCA: 1234567890</strong><br>
+                                <small>A.N. RodiTri Pekanbaru</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="alert alert-info mt-3">
+                    <i class="fas fa-info-circle me-2"></i>
+                    <strong>Petunjuk:</strong><br>
+                    1. Transfer sesuai jumlah DP yang tertera<br>
+                    2. Kirim bukti transfer via WhatsApp<br>
+                    3. Tim kami akan konfirmasi dalam 1x24 jam
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                <a href="#" id="whatsappPaymentLink" class="btn btn-success" target="_blank">
+                    <i class="fab fa-whatsapp me-2"></i>Kirim Bukti Transfer
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+@functions {
+    string GetStatusAlertClass(string status)
+    {
+        return status switch
+        {
+            "Pending" => "alert-warning",
+            "Approved" => "alert-success",
+            "Rejected" => "alert-danger",
+            "Completed" => "alert-primary",
+            _ => "alert-secondary"
+        };
+    }
+
+    string GetStatusIcon(string status)
+    {
+        return status switch
+        {
+            "Pending" => "fa-clock",
+            "Approved" => "fa-check-circle",
+            "Rejected" => "fa-times-circle",
+            "Completed" => "fa-flag-checkered",
+            _ => "fa-info-circle"
+        };
+    }
+
+    string GetStatusMessage(string status)
+    {
+        return status switch
+        {
+            "Pending" => "Pesanan sedang diproses. Kami akan menghubungi Anda segera.",
+            "Approved" => "Pesanan disetujui! Silakan lakukan pembayaran DP.",
+            "Rejected" => "Pesanan ditolak. Hubungi CS untuk informasi lebih lanjut.",
+            "Completed" => "Pesanan selesai! Terima kasih atas kepercayaan Anda.",
+            _ => "Status tidak diketahui. Hubungi customer service."
+        };
+    }
+}
+
+<style>
+    .order-card {
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+        .order-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+</style>
+
+<script>
+    function copyTracking(trackingNumber) {
+        navigator.clipboard.writeText(trackingNumber).then(function() {
+            showToast('Nomor tracking berhasil disalin!', 'success');
+        }).catch(function() {
+            // Fallback for older browsers
+            const textArea = document.createElement('textarea');
+            textArea.value = trackingNumber;
+            document.body.appendChild(textArea);
+            textArea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textArea);
+            showToast('Nomor tracking berhasil disalin!', 'success');
+        });
+    }
+
+    function showPaymentInfo(orderId, amount) {
+        document.getElementById('paymentAmount').textContent = 'Rp ' + amount;
+        document.getElementById('whatsappPaymentLink').href =
+            `https://wa.me/6281234567890?text=Halo,%20saya%20ingin%20kirim%20bukti%20transfer%20DP%20untuk%20pre-order%20ID%20${orderId}%20sebesar%20Rp%20${amount}`;
+
+        var paymentModal = new bootstrap.Modal(document.getElementById('paymentModal'));
+        paymentModal.show();
+    }
+
+    function showToast(message, type = 'info') {
+        // Function akan di-override oleh parent view
+        if (typeof window.showToast === 'function') {
+            window.showToast(message, type);
+        }
+    }
+</script>

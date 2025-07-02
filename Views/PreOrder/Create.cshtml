@@ -1,0 +1,185 @@
+﻿@model RoditriPekanbaru.Models.PreOrder
+
+@{
+    ViewData["Title"] = "Tambah Pre-Order Baru";
+}
+
+<div class="container-fluid">
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Tambah Pre-Order Baru</h1>
+        <a asp-action="Index" class="btn btn-secondary">
+            <i class="fas fa-arrow-left"></i> Kembali ke Daftar
+        </a>
+    </div>
+
+    <!-- Form Card -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Form Data Pre-Order</h6>
+        </div>
+        <div class="card-body">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group mb-3">
+                            <label asp-for="CustomerId" class="control-label"></label>
+                            <select asp-for="CustomerId" class="form-control" asp-items="ViewBag.CustomerId">
+                                <option value="">-- Pilih Customer --</option>
+                            </select>
+                            <span asp-validation-for="CustomerId" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label asp-for="MobilId" class="control-label"></label>
+                            <select asp-for="MobilId" class="form-control" asp-items="ViewBag.MobilId" id="mobilSelect">
+                                <option value="">-- Pilih Mobil --</option>
+                            </select>
+                            <span asp-validation-for="MobilId" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label asp-for="TanggalPreOrder" class="control-label"></label>
+                            <input asp-for="TanggalPreOrder" class="form-control" type="date" />
+                            <span asp-validation-for="TanggalPreOrder" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label asp-for="Status" class="control-label"></label>
+                            <select asp-for="Status" class="form-control" asp-items="ViewBag.StatusList">
+                                <option value="">-- Pilih Status --</option>
+                            </select>
+                            <span asp-validation-for="Status" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <!-- Info Mobil yang dipilih -->
+                        <div class="card bg-light mb-3" id="mobilInfo" style="display: none;">
+                            <div class="card-header">
+                                <h6 class="mb-0"><i class="fas fa-car"></i> Informasi Mobil</h6>
+                            </div>
+                            <div class="card-body">
+                                <p class="mb-1"><strong>Mobil:</strong> <span id="namaMobil">-</span></p>
+                                <p class="mb-1"><strong>Harga:</strong> <span id="hargaMobil" class="text-success font-weight-bold">-</span></p>
+                                <p class="mb-0"><strong>Sisa Pembayaran:</strong> <span id="sisaPembayaran" class="text-warning font-weight-bold">-</span></p>
+                            </div>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label asp-for="JumlahDP" class="control-label"></label>
+                            <div class="input-group">
+                                <span class="input-group-text">Rp</span>
+                                <input asp-for="JumlahDP" class="form-control" id="jumlahDP" type="number" min="0" step="1000" />
+                            </div>
+                            <span asp-validation-for="JumlahDP" class="text-danger"></span>
+                            <small class="form-text text-muted">Masukkan jumlah DP dalam Rupiah</small>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label asp-for="Catatan" class="control-label"></label>
+                            <textarea asp-for="Catatan" class="form-control" rows="4" placeholder="Catatan tambahan tentang pre-order ini..."></textarea>
+                            <span asp-validation-for="Catatan" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group text-center mt-4">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-save"></i> Simpan Pre-Order
+                    </button>
+                    <a asp-action="Index" class="btn btn-secondary ml-2">
+                        <i class="fas fa-times"></i> Batal
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <script>
+        $(document).ready(function() {
+            // Set default date to today
+            var today = new Date().toISOString().split('T')[0];
+            $('#TanggalPreOrder').val(today);
+
+            // Handle mobil selection change
+            $('#mobilSelect').change(function() {
+                var mobilId = $(this).val();
+                if (mobilId) {
+                    // Get mobil price via AJAX
+                    $.ajax({
+                        url: '@Url.Action("GetMobilPrice", "PreOrder")',
+                        type: 'GET',
+                        data: { mobilId: mobilId },
+                        success: function(response) {
+                            if (response.harga > 0) {
+                                $('#namaMobil').text(response.namaMobil);
+                                $('#hargaMobil').text(formatRupiah(response.harga));
+                                $('#mobilInfo').show();
+                                calculateSisaPembayaran();
+                            }
+                        },
+                        error: function() {
+                            alert('Gagal mengambil informasi mobil');
+                        }
+                    });
+                } else {
+                    $('#mobilInfo').hide();
+                }
+            });
+
+            // Calculate sisa pembayaran when DP changes
+            $('#jumlahDP').on('input', function() {
+                calculateSisaPembayaran();
+            });
+
+            function calculateSisaPembayaran() {
+                var hargaMobil = parseFloat($('#hargaMobil').text().replace(/[^\d]/g, '')) || 0;
+                var jumlahDP = parseFloat($('#jumlahDP').val()) || 0;
+                var sisa = hargaMobil - jumlahDP;
+
+                if (sisa >= 0) {
+                    $('#sisaPembayaran').text(formatRupiah(sisa));
+                    $('#sisaPembayaran').removeClass('text-danger').addClass('text-warning');
+                } else {
+                    $('#sisaPembayaran').text('DP melebihi harga mobil');
+                    $('#sisaPembayaran').removeClass('text-warning').addClass('text-danger');
+                }
+            }
+
+            function formatRupiah(amount) {
+                return new Intl.NumberFormat('id-ID', {
+                    style: 'currency',
+                    currency: 'IDR',
+                    minimumFractionDigits: 0
+                }).format(amount);
+            }
+
+            // Form validation
+            $('form').submit(function(e) {
+                var hargaMobil = parseFloat($('#hargaMobil').text().replace(/[^\d]/g, '')) || 0;
+                var jumlahDP = parseFloat($('#jumlahDP').val()) || 0;
+
+                if (jumlahDP > hargaMobil) {
+                    e.preventDefault();
+                    alert('Jumlah DP tidak boleh melebihi harga mobil!');
+                    return false;
+                }
+
+                if (jumlahDP <= 0) {
+                    e.preventDefault();
+                    alert('Jumlah DP harus lebih dari 0!');
+                    return false;
+                }
+            });
+        });
+    </script>
+}

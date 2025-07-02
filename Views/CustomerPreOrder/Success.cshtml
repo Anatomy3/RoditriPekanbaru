@@ -1,0 +1,201 @@
+﻿@{
+    ViewData["Title"] = "Pre-Order Berhasil";
+    Layout = "~/Views/Shared/_LandingLayout.cshtml";
+    var trackingNumber = TempData["TrackingNumber"]?.ToString();
+    var customerName = TempData["CustomerName"]?.ToString();
+    var mobilName = TempData["MobilName"]?.ToString();
+    var preOrderId = TempData["PreOrderId"]?.ToString();
+}
+
+<div class="container py-5">
+    <div class="text-center">
+        <!-- Success Icon -->
+        <div class="mb-4">
+            <i class="fas fa-check-circle text-success" style="font-size: 5rem;"></i>
+        </div>
+
+        <!-- Success Message -->
+        <h1 class="text-success fw-bold mb-3">Pre-Order Berhasil!</h1>
+        <p class="text-muted mb-4">Terima kasih @customerName, pre-order Anda telah berhasil diproses.</p>
+
+        <!-- Order Summary Card -->
+        <div class="card shadow mx-auto" style="max-width: 600px;">
+            <div class="card-header bg-success text-white">
+                <h5 class="mb-0">
+                    <i class="fas fa-receipt me-2"></i>Detail Pre-Order
+                </h5>
+            </div>
+            <div class="card-body">
+                <div class="row text-start">
+                    <div class="col-sm-5 fw-semibold">Nomor Tracking:</div>
+                    <div class="col-sm-7">
+                        <span class="badge bg-primary fs-6 user-select-all" id="trackingNumber">@trackingNumber</span>
+                        <button class="btn btn-sm btn-outline-primary ms-2" onclick="copyTracking()" title="Copy">
+                            <i class="fas fa-copy"></i>
+                        </button>
+                    </div>
+                </div>
+                <hr>
+                <div class="row text-start">
+                    <div class="col-sm-5 fw-semibold">Nama Pemesan:</div>
+                    <div class="col-sm-7">@customerName</div>
+                </div>
+                <hr>
+                <div class="row text-start">
+                    <div class="col-sm-5 fw-semibold">Mobil:</div>
+                    <div class="col-sm-7">@mobilName</div>
+                </div>
+                <hr>
+                <div class="row text-start">
+                    <div class="col-sm-5 fw-semibold">Tanggal Pre-Order:</div>
+                    <div class="col-sm-7">@DateTime.Now.ToString("dd MMMM yyyy, HH:mm", new System.Globalization.CultureInfo("id-ID"))</div>
+                </div>
+                <hr>
+                <div class="row text-start">
+                    <div class="col-sm-5 fw-semibold">Status:</div>
+                    <div class="col-sm-7">
+                        <span class="badge bg-warning text-dark">Menunggu Konfirmasi</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Important Information -->
+        <div class="alert alert-info mt-4 mx-auto text-start" style="max-width: 600px;">
+            <h6 class="fw-bold">
+                <i class="fas fa-info-circle me-2"></i>Langkah Selanjutnya:
+            </h6>
+            <ol class="mb-0">
+                <li><strong>Simpan nomor tracking</strong> untuk memantau status pesanan</li>
+                <li><strong>Tim kami akan menghubungi</strong> Anda dalam 1x24 jam</li>
+                <li><strong>Mobil di-hold</strong> untuk Anda selama 7 hari kerja</li>
+                <li><strong>Lakukan pembayaran DP</strong> sesuai arahan tim kami</li>
+            </ol>
+        </div>
+
+        <!-- Contact Information -->
+        <div class="card mt-4 mx-auto" style="max-width: 600px;">
+            <div class="card-header bg-primary text-white">
+                <h6 class="mb-0">
+                    <i class="fas fa-headset me-2"></i>Butuh Bantuan?
+                </h6>
+            </div>
+            <div class="card-body">
+                <div class="row text-center">
+                    <div class="col-md-6 mb-3">
+                        <a href="tel:+6281234567890" class="btn btn-success w-100">
+                            <i class="fas fa-phone me-2"></i>Telepon Kami
+                            <br><small>(0761) 123-4567</small>
+                        </a>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <a href="https://wa.me/6281234567890?text=Halo,%20saya%20sudah%20melakukan%20pre-order%20dengan%20nomor%20tracking%20@trackingNumber.%20Mohon%20info%20lebih%20lanjut."
+                           class="btn btn-primary w-100" target="_blank">
+                            <i class="fab fa-whatsapp me-2"></i>WhatsApp
+                            <br><small>+62 812-3456-7890</small>
+                        </a>
+                    </div>
+                </div>
+                <div class="text-muted small text-center">
+                    <i class="fas fa-clock me-1"></i>
+                    Layanan: Senin-Sabtu 08:00-17:00 WIB
+                </div>
+            </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="mt-5">
+            <a href="@Url.Action("TrackOrder")" class="btn btn-warning btn-lg me-3">
+                <i class="fas fa-search me-2"></i>Lacak Pesanan
+            </a>
+            <a href="@Url.Action("Index", "Landing")" class="btn btn-outline-primary btn-lg">
+                <i class="fas fa-home me-2"></i>Kembali ke Beranda
+            </a>
+        </div>
+
+        <!-- Share Options -->
+        <div class="mt-4">
+            <p class="text-muted">Bagikan ke teman:</p>
+            <div class="d-flex justify-content-center gap-2">
+                <button class="btn btn-sm btn-outline-primary" onclick="shareWhatsApp()">
+                    <i class="fab fa-whatsapp me-1"></i>WhatsApp
+                </button>
+                <button class="btn btn-sm btn-outline-info" onclick="copyTrackingLink()">
+                    <i class="fas fa-link me-1"></i>Copy Link
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        function copyTracking() {
+            const trackingNumber = '@trackingNumber';
+            navigator.clipboard.writeText(trackingNumber).then(function() {
+                showToast('Nomor tracking berhasil disalin!');
+            }).catch(function() {
+                // Fallback for older browsers
+                const textArea = document.createElement('textarea');
+                textArea.value = trackingNumber;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+                showToast('Nomor tracking berhasil disalin!');
+            });
+        }
+
+        function shareWhatsApp() {
+            const trackingNumber = '@trackingNumber';
+            const customerName = '@customerName';
+            const mobilName = '@mobilName';
+            const message = `Halo! Saya baru saja melakukan pre-order mobil di RodiTri Pekanbaru:\n\n` +
+                          `📋 Nomor Tracking: ${trackingNumber}\n` +
+                          `👤 Nama: ${customerName}\n` +
+                          `🚗 Mobil: ${mobilName}\n` +
+                          `📅 Tanggal: @DateTime.Now.ToString("dd MMMM yyyy")\n\n` +
+                          `Kamu juga bisa pre-order mobil impianmu di RodiTri Pekanbaru! 🚗✨`;
+
+            const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+        }
+
+        function copyTrackingLink() {
+            const trackingUrl = window.location.origin + '@Url.Action("TrackOrder", "CustomerPreOrder")';
+            const message = `Cek status pre-order saya di: ${trackingUrl}\nNomor Tracking: @trackingNumber`;
+
+            navigator.clipboard.writeText(message).then(function() {
+                showToast('Link tracking berhasil disalin!');
+            }).catch(function() {
+                showToast('Gagal menyalin link. Coba lagi.');
+            });
+        }
+
+        function showToast(message) {
+            // Simple toast notification
+            const toast = document.createElement('div');
+            toast.className = 'position-fixed top-0 start-50 translate-middle-x mt-3 alert alert-success alert-dismissible fade show';
+            toast.style.zIndex = '9999';
+            toast.innerHTML = `
+                <i class="fas fa-check-circle me-2"></i>${message}
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            `;
+
+            document.body.appendChild(toast);
+
+            // Auto remove after 3 seconds
+            setTimeout(() => {
+                if (toast.parentNode) {
+                    toast.parentNode.removeChild(toast);
+                }
+            }, 3000);
+        }
+    </script>
+
+    <style>
+        .user-select-all {
+            user-select: all;
+        }
+    </style>
+}

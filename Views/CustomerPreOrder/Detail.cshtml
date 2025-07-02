@@ -1,0 +1,385 @@
+﻿@model RoditriPekanbaru.Models.PreOrder
+@{
+    ViewData["Title"] = "Detail Pre-Order";
+    Layout = "~/Views/Shared/_LandingLayout.cshtml";
+}
+
+<div class="container py-5">
+    <!-- Header -->
+    <div class="text-center mb-4">
+        <h1 class="fw-bold text-primary">
+            <i class="fas fa-receipt me-2"></i>Detail Pre-Order
+        </h1>
+        <p class="text-muted">Pre-Order ID: #@Model.PreOrderId</p>
+    </div>
+
+    <!-- Back Button -->
+    <div class="mb-4">
+        <a href="@Url.Action("TrackOrder")" class="btn btn-outline-secondary">
+            <i class="fas fa-arrow-left me-2"></i>Kembali ke Tracking
+        </a>
+    </div>
+
+    <!-- Status Banner -->
+    <div class="card mb-4">
+        <div class="card-body text-center">
+            <div class="row align-items-center">
+                <div class="col-md-8">
+                    <h4 class="mb-0">Status Saat Ini</h4>
+                    <p class="text-muted mb-0">Terakhir diupdate: @(Model.TanggalUpdate?.ToString("dd MMMM yyyy, HH:mm") ?? Model.TanggalDibuat.ToString("dd MMMM yyyy, HH:mm"))</p>
+                </div>
+                <div class="col-md-4">
+                    @if (Model.Status == "Pending")
+                    {
+                        <span class="badge bg-warning text-dark fs-5 px-4 py-2">
+                            <i class="fas fa-clock me-2"></i>Menunggu Konfirmasi
+                        </span>
+                    }
+                    else if (Model.Status == "Approved")
+                    {
+                        <span class="badge bg-success fs-5 px-4 py-2">
+                            <i class="fas fa-check-circle me-2"></i>Disetujui
+                        </span>
+                    }
+                    else if (Model.Status == "Rejected")
+                    {
+                        <span class="badge bg-danger fs-5 px-4 py-2">
+                            <i class="fas fa-times-circle me-2"></i>Ditolak
+                        </span>
+                    }
+                    else if (Model.Status == "Completed")
+                    {
+                        <span class="badge bg-primary fs-5 px-4 py-2">
+                            <i class="fas fa-flag-checkered me-2"></i>Selesai
+                        </span>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <!-- Customer Information -->
+        <div class="col-lg-6 mb-4">
+            <div class="card h-100">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">
+                        <i class="fas fa-user me-2"></i>Informasi Pemesan
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <table class="table table-borderless">
+                        <tr>
+                            <td class="fw-semibold text-muted" style="width: 40%;">Nama:</td>
+                            <td><strong>@Model.NamaCustomer</strong></td>
+                        </tr>
+                        <tr>
+                            <td class="fw-semibold text-muted">No. Telepon:</td>
+                            <td>
+                                <a href="tel:@Model.Customer?.NoTelepon" class="text-decoration-none">
+                                    <i class="fas fa-phone me-1"></i>@Model.Customer?.NoTelepon
+                                </a>
+                            </td>
+                        </tr>
+                        @if (!string.IsNullOrEmpty(Model.Customer?.Email))
+                        {
+                            <tr>
+                                <td class="fw-semibold text-muted">Email:</td>
+                                <td>
+                                    <a href="mailto:@Model.Customer.Email" class="text-decoration-none">
+                                        <i class="fas fa-envelope me-1"></i>@Model.Customer.Email
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                        <tr>
+                            <td class="fw-semibold text-muted">Alamat:</td>
+                            <td>@Model.Customer?.Alamat</td>
+                        </tr>
+                        <tr>
+                            <td class="fw-semibold text-muted">Jenis Kelamin:</td>
+                            <td>@Model.Customer?.JenisKelamin</td>
+                        </tr>
+                        @if (!string.IsNullOrEmpty(Model.Customer?.Pekerjaan))
+                        {
+                            <tr>
+                                <td class="fw-semibold text-muted">Pekerjaan:</td>
+                                <td>@Model.Customer.Pekerjaan</td>
+                            </tr>
+                        }
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Car Information -->
+        <div class="col-lg-6 mb-4">
+            <div class="card h-100">
+                <div class="card-header bg-success text-white">
+                    <h5 class="mb-0">
+                        <i class="fas fa-car me-2"></i>Informasi Mobil
+                    </h5>
+                </div>
+                <div class="card-body">
+                    @if (!string.IsNullOrEmpty(Model.Mobil?.GambarMobil))
+                    {
+                        <div class="text-center mb-3">
+                            <img src="@Model.Mobil.GambarMobil" alt="@Model.DetailMobil"
+                                 class="img-fluid rounded shadow" style="max-height: 150px;">
+                        </div>
+                    }
+
+                    <table class="table table-borderless">
+                        <tr>
+                            <td class="fw-semibold text-muted" style="width: 40%;">Mobil:</td>
+                            <td><strong>@Model.DetailMobil</strong></td>
+                        </tr>
+                        @if (!string.IsNullOrEmpty(Model.Mobil?.NoPolisi))
+                        {
+                            <tr>
+                                <td class="fw-semibold text-muted">No. Polisi:</td>
+                                <td>@Model.Mobil.NoPolisi</td>
+                            </tr>
+                        }
+                        @if (!string.IsNullOrEmpty(Model.Mobil?.NoRangka))
+                        {
+                            <tr>
+                                <td class="fw-semibold text-muted">No. Rangka:</td>
+                                <td>@Model.Mobil.NoRangka</td>
+                            </tr>
+                        }
+                        @if (!string.IsNullOrEmpty(Model.Mobil?.NoMesin))
+                        {
+                            <tr>
+                                <td class="fw-semibold text-muted">No. Mesin:</td>
+                                <td>@Model.Mobil.NoMesin</td>
+                            </tr>
+                        }
+                        @if (!string.IsNullOrEmpty(Model.Mobil?.Kondisi))
+                        {
+                            <tr>
+                                <td class="fw-semibold text-muted">Kondisi:</td>
+                                <td>@Model.Mobil.Kondisi</td>
+                            </tr>
+                        }
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Financial Summary -->
+    <div class="card mb-4">
+        <div class="card-header bg-warning text-dark">
+            <h5 class="mb-0">
+                <i class="fas fa-calculator me-2"></i>Ringkasan Finansial
+            </h5>
+        </div>
+        <div class="card-body">
+            <div class="row text-center">
+                <div class="col-md-4 mb-3">
+                    <div class="border-end">
+                        <h4 class="text-success fw-bold mb-1">
+                            @Model.HargaMobil.ToString("C0", new System.Globalization.CultureInfo("id-ID"))
+                        </h4>
+                        <p class="text-muted mb-0">Harga Mobil</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="border-end">
+                        <h4 class="text-primary fw-bold mb-1">
+                            @Model.JumlahDP.ToString("C0", new System.Globalization.CultureInfo("id-ID"))
+                        </h4>
+                        <p class="text-muted mb-0">DP yang Dibayar</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <h4 class="text-warning fw-bold mb-1">
+                        @Model.SisaPembayaran.ToString("C0", new System.Globalization.CultureInfo("id-ID"))
+                    </h4>
+                    <p class="text-muted mb-0">Sisa Pembayaran</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Order Timeline -->
+    <div class="card mb-4">
+        <div class="card-header bg-info text-white">
+            <h5 class="mb-0">
+                <i class="fas fa-clock me-2"></i>Timeline Pre-Order
+            </h5>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="mb-2">
+                        <i class="fas fa-calendar-plus text-primary me-2"></i>
+                        <strong>Pre-Order Dibuat:</strong>
+                    </p>
+                    <p class="text-muted ms-4 mb-3">
+                        @Model.TanggalPreOrder.ToString("dddd, dd MMMM yyyy HH:mm", new System.Globalization.CultureInfo("id-ID"))
+                    </p>
+                </div>
+                <div class="col-md-6">
+                    @if (Model.TanggalUpdate.HasValue)
+                    {
+                        <p class="mb-2">
+                            <i class="fas fa-edit text-success me-2"></i>
+                            <strong>Terakhir Diupdate:</strong>
+                        </p>
+                        <p class="text-muted ms-4 mb-3">
+                            @Model.TanggalUpdate.Value.ToString("dddd, dd MMMM yyyy HH:mm", new System.Globalization.CultureInfo("id-ID"))
+                        </p>
+                    }
+                    else
+                    {
+                        <p class="text-muted">
+                            <i class="fas fa-hourglass-half me-2"></i>
+                            Menunggu update dari tim kami
+                        </p>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tracking Information -->
+    @if (Model.Catatan.Contains("TRK"))
+    {
+        <div class="card mb-4">
+            <div class="card-header bg-secondary text-white">
+                <h5 class="mb-0">
+                    <i class="fas fa-barcode me-2"></i>Informasi Tracking
+                </h5>
+            </div>
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col-md-8">
+                        <p class="mb-2"><strong>Nomor Tracking:</strong></p>
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="trackingNumber"
+                                   value="@System.Text.RegularExpressions.Regex.Match(Model.Catatan, @"TRK\d+").Value" readonly>
+                            <button class="btn btn-outline-primary" onclick="copyTracking()">
+                                <i class="fas fa-copy me-1"></i>Copy
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-md-4 text-center">
+                        <button class="btn btn-primary" onclick="shareTracking()">
+                            <i class="fas fa-share me-2"></i>Bagikan
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
+    <!-- Notes -->
+    @if (!string.IsNullOrEmpty(Model.Catatan))
+    {
+        <div class="card mb-4">
+            <div class="card-header">
+                <h6 class="mb-0">
+                    <i class="fas fa-sticky-note me-2"></i>Catatan
+                </h6>
+            </div>
+            <div class="card-body">
+                <p class="mb-0">@Model.Catatan</p>
+            </div>
+        </div>
+    }
+
+    <!-- Contact Information -->
+    <div class="card">
+        <div class="card-header bg-primary text-white">
+            <h5 class="mb-0">
+                <i class="fas fa-headset me-2"></i>Butuh Bantuan?
+            </h5>
+        </div>
+        <div class="card-body">
+            <div class="row text-center">
+                <div class="col-md-4 mb-3">
+                    <a href="tel:+6281234567890" class="btn btn-success w-100">
+                        <i class="fas fa-phone me-2"></i>Telepon
+                        <br><small>(0761) 123-4567</small>
+                    </a>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <a href="https://wa.me/6281234567890?text=Halo,%20saya%20ingin%20menanyakan%20pre-order%20ID%20@Model.PreOrderId"
+                       class="btn btn-primary w-100" target="_blank">
+                        <i class="fab fa-whatsapp me-2"></i>WhatsApp
+                        <br><small>+62 812-3456-7890</small>
+                    </a>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <a href="@Url.Action("Index", "Landing")" class="btn btn-outline-secondary w-100">
+                        <i class="fas fa-home me-2"></i>Beranda
+                        <br><small>Lihat mobil lain</small>
+                    </a>
+                </div>
+            </div>
+            <div class="text-center text-muted small">
+                <i class="fas fa-clock me-1"></i>
+                Layanan Customer Service: Senin-Sabtu 08:00-17:00 WIB
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        function copyTracking() {
+            const trackingNumber = document.getElementById('trackingNumber').value;
+            navigator.clipboard.writeText(trackingNumber).then(function() {
+                showToast('Nomor tracking berhasil disalin!');
+            }).catch(function() {
+                // Fallback
+                const textArea = document.createElement('textarea');
+                textArea.value = trackingNumber;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+                showToast('Nomor tracking berhasil disalin!');
+            });
+        }
+
+        function shareTracking() {
+            const trackingNumber = document.getElementById('trackingNumber').value;
+            const preOrderId = '@Model.PreOrderId';
+            const customerName = '@Model.NamaCustomer';
+            const mobilName = '@Model.DetailMobil';
+
+            const message = `📋 Detail Pre-Order RodiTri Pekanbaru\n\n` +
+                          `👤 Nama: ${customerName}\n` +
+                          `🚗 Mobil: ${mobilName}\n` +
+                          `🔢 ID: #${preOrderId}\n` +
+                          `📱 Tracking: ${trackingNumber}\n\n` +
+                          `Status: @Model.Status\n` +
+                          `Tanggal: @Model.TanggalPreOrder.ToString("dd MMM yyyy")\n\n` +
+                          `Lacak di: ${window.location.origin}@Url.Action("TrackOrder", "CustomerPreOrder")`;
+
+            const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+        }
+
+        function showToast(message) {
+            const toast = document.createElement('div');
+            toast.className = 'position-fixed top-0 end-0 m-3 alert alert-success alert-dismissible fade show';
+            toast.style.zIndex = '9999';
+            toast.innerHTML = `
+                <i class="fas fa-check-circle me-2"></i>${message}
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            `;
+
+            document.body.appendChild(toast);
+
+            setTimeout(() => {
+                if (toast.parentNode) {
+                    toast.parentNode.removeChild(toast);
+                }
+            }, 3000);
+        }
+    </script>
+}

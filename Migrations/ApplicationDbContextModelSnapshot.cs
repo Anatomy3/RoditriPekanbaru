@@ -72,9 +72,82 @@ namespace RoditriPekanbaru.Migrations
                             CreatedDate = new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
                             Level = "User",
-                            NamaLengkap = "User Biasa",
+                            NamaLengkap = "User Demo",
                             Password = "user123",
-                            Username = "user"
+                            Username = "user1"
+                        });
+                });
+
+            modelBuilder.Entity("RoditriPekanbaru.Models.Banner", b =>
+                {
+                    b.Property<int>("BannerId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("DibuatOleh")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("GambarBanner")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("TEXT");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("LinkTujuan")
+                        .HasMaxLength(255)
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("NamaBanner")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime?>("TanggalBerakhir")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("TanggalDibuat")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime?>("TanggalMulai")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("Urutan")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("BannerId");
+
+                    b.ToTable("Banners");
+
+                    b.HasData(
+                        new
+                        {
+                            BannerId = 1,
+                            DibuatOleh = "Administrator",
+                            GambarBanner = "/images/banner1.jpg",
+                            IsActive = true,
+                            LinkTujuan = "#jual-mobil",
+                            NamaBanner = "Banner Promo Tanpa Drama",
+                            TanggalBerakhir = new DateTime(2024, 9, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            TanggalDibuat = new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            TanggalMulai = new DateTime(2024, 6, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Urutan = 1
+                        },
+                        new
+                        {
+                            BannerId = 2,
+                            DibuatOleh = "Administrator",
+                            GambarBanner = "/images/banner2.jpg",
+                            IsActive = true,
+                            LinkTujuan = "#promo",
+                            NamaBanner = "Banner Promo Spesial",
+                            TanggalBerakhir = new DateTime(2024, 8, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            TanggalDibuat = new DateTime(2024, 1, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            TanggalMulai = new DateTime(2024, 6, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Urutan = 2
                         });
                 });
 
@@ -117,6 +190,30 @@ namespace RoditriPekanbaru.Migrations
                     b.HasKey("CustomerId");
 
                     b.ToTable("Customers");
+
+                    b.HasData(
+                        new
+                        {
+                            CustomerId = 1,
+                            Alamat = "Jl. Sudirman No. 10, Pekanbaru",
+                            Email = "john.doe@email.com",
+                            JenisKelamin = "Laki-laki",
+                            NamaCustomer = "John Doe",
+                            NoTelepon = "081234567890",
+                            Pekerjaan = "Karyawan Swasta",
+                            TanggalDaftar = new DateTime(2024, 1, 10, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            CustomerId = 2,
+                            Alamat = "Jl. Diponegoro No. 15, Pekanbaru",
+                            Email = "jane.smith@email.com",
+                            JenisKelamin = "Perempuan",
+                            NamaCustomer = "Jane Smith",
+                            NoTelepon = "082345678901",
+                            Pekerjaan = "Wiraswasta",
+                            TanggalDaftar = new DateTime(2024, 1, 15, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        });
                 });
 
             modelBuilder.Entity("RoditriPekanbaru.Models.Mobil", b =>
@@ -175,6 +272,201 @@ namespace RoditriPekanbaru.Migrations
                     b.HasKey("MobilId");
 
                     b.ToTable("Mobils");
+
+                    b.HasData(
+                        new
+                        {
+                            MobilId = 1,
+                            Harga = 850000000m,
+                            IsAvailable = true,
+                            Kondisi = "Bekas, kondisi sangat baik",
+                            Merek = "Toyota",
+                            Model = "Alphard 2.5 X",
+                            NoMesin = "2GR-FE987654",
+                            NoPolisi = "B 1234 ABC",
+                            NoRangka = "MHFM1BA4XLJ123456",
+                            Tahun = 2021,
+                            TanggalInput = new DateTime(2024, 1, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Warna = "Hitam"
+                        },
+                        new
+                        {
+                            MobilId = 2,
+                            Harga = 285000000m,
+                            IsAvailable = true,
+                            Kondisi = "Bekas, terawat",
+                            Merek = "Honda",
+                            Model = "City E CVT",
+                            NoMesin = "L15Z7654321",
+                            NoPolisi = "B 5678 DEF",
+                            NoRangka = "MHFG1234567890123",
+                            Tahun = 2020,
+                            TanggalInput = new DateTime(2024, 1, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Warna = "Putih"
+                        },
+                        new
+                        {
+                            MobilId = 3,
+                            Harga = 195000000m,
+                            IsAvailable = true,
+                            Kondisi = "Bekas, service record lengkap",
+                            Merek = "Suzuki",
+                            Model = "Ertiga GL MT",
+                            NoMesin = "K15B1122334",
+                            NoPolisi = "B 9012 GHI",
+                            NoRangka = "JSMRB1234567890",
+                            Tahun = 2019,
+                            TanggalInput = new DateTime(2024, 1, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Warna = "Silver"
+                        },
+                        new
+                        {
+                            MobilId = 4,
+                            Harga = 520000000m,
+                            IsAvailable = true,
+                            Kondisi = "Bekas, kilometer rendah",
+                            Merek = "Mitsubishi",
+                            Model = "Pajero Sport Dakar",
+                            NoMesin = "4N15998877",
+                            NoPolisi = "B 3456 JKL",
+                            NoRangka = "MMHKD123456789",
+                            Tahun = 2022,
+                            TanggalInput = new DateTime(2024, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Warna = "Putih"
+                        },
+                        new
+                        {
+                            MobilId = 5,
+                            Harga = 175000000m,
+                            IsAvailable = true,
+                            Kondisi = "Bekas, kondisi prima",
+                            Merek = "Daihatsu",
+                            Model = "Xenia R MT",
+                            NoMesin = "3SZ-VE556677",
+                            NoPolisi = "B 7890 MNO",
+                            NoRangka = "MHDXJ123456789",
+                            Tahun = 2021,
+                            TanggalInput = new DateTime(2024, 2, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Warna = "Merah"
+                        },
+                        new
+                        {
+                            MobilId = 6,
+                            Harga = 165000000m,
+                            IsAvailable = true,
+                            Kondisi = "Bekas, interior rapi",
+                            Merek = "Nissan",
+                            Model = "Grand Livina XV",
+                            NoMesin = "HR15DE445566",
+                            NoPolisi = "B 2468 PQR",
+                            NoRangka = "JNKBJ123456789",
+                            Tahun = 2018,
+                            TanggalInput = new DateTime(2024, 2, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Warna = "Abu-abu"
+                        },
+                        new
+                        {
+                            MobilId = 7,
+                            Harga = 750000000m,
+                            IsAvailable = true,
+                            Kondisi = "Bekas, sangat terawat",
+                            Merek = "BMW",
+                            Model = "X3 xDrive20i",
+                            NoMesin = "B48A20A334455",
+                            NoPolisi = "B 1357 STU",
+                            NoRangka = "WBAXG123456789",
+                            Tahun = 2020,
+                            TanggalInput = new DateTime(2024, 2, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Warna = "Hitam"
+                        },
+                        new
+                        {
+                            MobilId = 8,
+                            Harga = 680000000m,
+                            IsAvailable = true,
+                            Kondisi = "Bekas, full service record",
+                            Merek = "Mercedes-Benz",
+                            Model = "C200 AMG",
+                            NoMesin = "M264920223344",
+                            NoPolisi = "B 2468 VWX",
+                            NoRangka = "WDD2050121A123456",
+                            Tahun = 2019,
+                            TanggalInput = new DateTime(2024, 2, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Warna = "Putih"
+                        });
+                });
+
+            modelBuilder.Entity("RoditriPekanbaru.Models.PreOrder", b =>
+                {
+                    b.Property<int>("PreOrderId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Catatan")
+                        .HasMaxLength(500)
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("CustomerId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<decimal>("JumlahDP")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("MobilId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("TanggalDibuat")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("TanggalPreOrder")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime?>("TanggalUpdate")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasMaxLength(100)
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("PreOrderId");
+
+                    b.HasIndex("CustomerId");
+
+                    b.HasIndex("MobilId");
+
+                    b.ToTable("PreOrders");
+
+                    b.HasData(
+                        new
+                        {
+                            PreOrderId = 1,
+                            Catatan = "Customer tertarik dengan Toyota Alphard, ingin booking dulu",
+                            CustomerId = 1,
+                            JumlahDP = 100000000m,
+                            MobilId = 1,
+                            Status = "Pending",
+                            TanggalDibuat = new DateTime(2024, 6, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            TanggalPreOrder = new DateTime(2024, 6, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            UpdatedBy = "admin"
+                        },
+                        new
+                        {
+                            PreOrderId = 2,
+                            Catatan = "DP sudah diterima, menunggu konfirmasi final dari customer",
+                            CustomerId = 2,
+                            JumlahDP = 75000000m,
+                            MobilId = 4,
+                            Status = "Approved",
+                            TanggalDibuat = new DateTime(2024, 6, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            TanggalPreOrder = new DateTime(2024, 6, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            TanggalUpdate = new DateTime(2024, 6, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            UpdatedBy = "admin"
+                        });
                 });
 
             modelBuilder.Entity("RoditriPekanbaru.Models.TransaksiPenjualan", b =>
@@ -242,6 +534,25 @@ namespace RoditriPekanbaru.Migrations
                     b.HasIndex("MobilId");
 
                     b.ToTable("TransaksiPenjualans");
+                });
+
+            modelBuilder.Entity("RoditriPekanbaru.Models.PreOrder", b =>
+                {
+                    b.HasOne("RoditriPekanbaru.Models.Customer", "Customer")
+                        .WithMany()
+                        .HasForeignKey("CustomerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("RoditriPekanbaru.Models.Mobil", "Mobil")
+                        .WithMany()
+                        .HasForeignKey("MobilId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Customer");
+
+                    b.Navigation("Mobil");
                 });
 
             modelBuilder.Entity("RoditriPekanbaru.Models.TransaksiPenjualan", b =>

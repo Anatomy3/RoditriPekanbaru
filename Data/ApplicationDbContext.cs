@@ -15,6 +15,7 @@ namespace RoditriPekanbaru.Data
         public DbSet<Mobil> Mobils { get; set; }
         public DbSet<TransaksiPenjualan> TransaksiPenjualans { get; set; }
         public DbSet<Banner> Banners { get; set; }
+        public DbSet<PreOrder> PreOrders { get; set; } // TAMBAHAN BARU
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -60,8 +61,8 @@ namespace RoditriPekanbaru.Data
                     LinkTujuan = "#jual-mobil",
                     Urutan = 1,
                     IsActive = true,
-                    TanggalMulai = DateTime.Now,
-                    TanggalBerakhir = DateTime.Now.AddMonths(3),
+                    TanggalMulai = new DateTime(2024, 6, 1),
+                    TanggalBerakhir = new DateTime(2024, 9, 1),
                     TanggalDibuat = new DateTime(2024, 1, 1),
                     DibuatOleh = "Administrator"
                 },
@@ -73,8 +74,8 @@ namespace RoditriPekanbaru.Data
                     LinkTujuan = "#promo",
                     Urutan = 2,
                     IsActive = true,
-                    TanggalMulai = DateTime.Now,
-                    TanggalBerakhir = DateTime.Now.AddMonths(2),
+                    TanggalMulai = new DateTime(2024, 6, 1),
+                    TanggalBerakhir = new DateTime(2024, 8, 1),
                     TanggalDibuat = new DateTime(2024, 1, 5),
                     DibuatOleh = "Administrator"
                 }
@@ -227,6 +228,35 @@ namespace RoditriPekanbaru.Data
                     JenisKelamin = "Perempuan",
                     Pekerjaan = "Wiraswasta",
                     TanggalDaftar = new DateTime(2024, 1, 15)
+                }
+            );
+
+            // Seed PreOrder data (TAMBAHAN BARU)
+            modelBuilder.Entity<PreOrder>().HasData(
+                new PreOrder
+                {
+                    PreOrderId = 1,
+                    CustomerId = 1,
+                    MobilId = 1, // Toyota Alphard
+                    TanggalPreOrder = new DateTime(2024, 6, 1),
+                    JumlahDP = 100000000, // 100 juta
+                    Status = "Pending",
+                    Catatan = "Customer tertarik dengan Toyota Alphard, ingin booking dulu",
+                    TanggalDibuat = new DateTime(2024, 6, 1),
+                    UpdatedBy = "admin"
+                },
+                new PreOrder
+                {
+                    PreOrderId = 2,
+                    CustomerId = 2,
+                    MobilId = 4, // Mitsubishi Pajero
+                    TanggalPreOrder = new DateTime(2024, 6, 5),
+                    JumlahDP = 75000000, // 75 juta
+                    Status = "Approved",
+                    Catatan = "DP sudah diterima, menunggu konfirmasi final dari customer",
+                    TanggalDibuat = new DateTime(2024, 6, 5),
+                    TanggalUpdate = new DateTime(2024, 6, 6),
+                    UpdatedBy = "admin"
                 }
             );
         }

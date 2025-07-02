@@ -2,6 +2,7 @@
 @{
     ViewData["Title"] = Model != null ? $"{Model.NamaMobil} - Detail Mobil" : "Detail Mobil";
     Layout = "~/Views/Shared/_LandingLayout.cshtml";
+    var isLoggedIn = !string.IsNullOrEmpty(Context.Session.GetString("Username"));
 }
 
 @if (Model == null)
@@ -209,6 +210,20 @@ else
                         @if (Model.IsAvailable)
                         {
                             <div class="d-grid gap-3">
+                                <!-- PRE-ORDER BUTTON - LOGIN REQUIRED -->
+                                @if (isLoggedIn)
+                                {
+                                    <a href="@Url.Action("Create", "CustomerPreOrder", new { mobilId = Model.MobilId })" class="btn btn-warning btn-lg">
+                                        <i class="fas fa-calendar-check me-2"></i>Pre-Order Sekarang
+                                    </a>
+                                }
+                                else
+                                {
+                                    <button class="btn btn-warning btn-lg" onclick="showLoginRequiredModal()">
+                                        <i class="fas fa-calendar-check me-2"></i>Pre-Order Sekarang
+                                    </button>
+                                }
+
                                 <a href="tel:+6281234567890" class="btn btn-success btn-lg">
                                     <i class="fas fa-phone me-2"></i>Hubungi Dealer
                                 </a>
@@ -219,6 +234,20 @@ else
                                 <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#scheduleModal">
                                     <i class="fas fa-calendar me-2"></i>Jadwalkan Test Drive
                                 </button>
+                            </div>
+
+                            <!-- Pre-Order Info -->
+                            <div class="alert alert-info mt-3">
+                                <i class="fas fa-info-circle me-2"></i>
+                                <strong>Pre-Order:</strong><br>
+                                @if (isLoggedIn)
+                                {
+                                    <small>Booking mobil dengan DP minimal dan dapatkan nomor antrian. Harga terjamin tidak berubah!</small>
+                                }
+                                else
+                                {
+                                    <small><strong>Login diperlukan</strong> untuk melakukan pre-order. Daftar gratis dan booking mobil impian Anda!</small>
+                                }
                             </div>
 
                             <!-- Financing Calculator -->
@@ -310,6 +339,59 @@ else
         </div>
     </div>
 
+    <!-- Login Required Modal -->
+    <div class="modal fade" id="loginRequiredModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header border-0 text-center">
+                    <div class="w-100">
+                        <i class="fas fa-lock fa-3x text-warning mb-3"></i>
+                        <h4 class="modal-title text-center w-100">Login Diperlukan</h4>
+                    </div>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <p class="mb-4">Untuk melakukan pre-order, Anda perlu login terlebih dahulu agar kami dapat mengelola pesanan Anda dengan baik.</p>
+
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="card border-primary">
+                                <div class="card-body">
+                                    <i class="fas fa-user-check fa-2x text-primary mb-2"></i>
+                                    <h6>Sudah Punya Akun?</h6>
+                                    <p class="small text-muted">Masuk ke akun Anda</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="card border-success">
+                                <div class="card-body">
+                                    <i class="fas fa-user-plus fa-2x text-success mb-2"></i>
+                                    <h6>Pengguna Baru?</h6>
+                                    <p class="small text-muted">Daftar gratis sekarang</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="alert alert-info mt-3">
+                        <i class="fas fa-gift me-2"></i>
+                        <strong>Keuntungan Login:</strong><br>
+                        <small>• Tracking pesanan mudah • Riwayat pre-order • Notifikasi status • Promo eksklusif</small>
+                    </div>
+                </div>
+                <div class="modal-footer border-0 justify-content-center">
+                    <a href="@Url.Action("Login", "Auth")" class="btn btn-primary">
+                        <i class="fas fa-sign-in-alt me-2"></i>Masuk
+                    </a>
+                    <a href="@Url.Action("Register", "Auth")" class="btn btn-success">
+                        <i class="fas fa-user-plus me-2"></i>Daftar Gratis
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Schedule Test Drive Modal -->
     <div class="modal fade" id="scheduleModal" tabindex="-1">
         <div class="modal-dialog">
@@ -358,4 +440,13 @@ else
             </div>
         </div>
     </div>
+}
+
+@section Scripts {
+    <script>
+        function showLoginRequiredModal() {
+            var loginModal = new bootstrap.Modal(document.getElementById('loginRequiredModal'));
+            loginModal.show();
+        }
+    </script>
 }
